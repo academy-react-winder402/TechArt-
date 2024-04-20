@@ -65,10 +65,10 @@
 import React from "react";
 import CardComponent from "../Common/Card";
 
-const CourseList = ({ course }) => {
+const CourseList = ({ courses }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {course.map((course, index) => (
+      {courses?.map((course, index) => (
         <CardComponent
           key={index}
           title={course.name}

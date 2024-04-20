@@ -5,7 +5,7 @@ import CourseList from "../Components/Courses/CourseList";
 
 function CoursePage() {
   // Mock data for products
-  const course = [
+  const courses = [
     {
       id: 1,
       name: "Product 1",
