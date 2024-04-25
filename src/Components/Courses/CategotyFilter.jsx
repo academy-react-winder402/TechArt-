@@ -9,6 +9,7 @@ import {
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
 import CourseList from "./CourseList";
+import SearchBox from "../Common/SearchBox";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -63,6 +64,54 @@ function classNames(...classes) {
 export default function CategoryFilter() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const courses = [
+    {
+      id: 1,
+      name: "Product 1",
+      imageUrl: "",
+      description: "Description of Product 1",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      imageUrl: "",
+      description: "Description of Product 2",
+    },
+    {
+      id: 3,
+      name: "Product 2",
+      imageUrl: "",
+      description: "Description of Product 2",
+    },
+    {
+      id: 4,
+      name: "Product 2",
+      imageUrl: "",
+      description: "Description of Product 2",
+    },
+    {
+      id: 1,
+      name: "Product 1",
+      imageUrl: "",
+      description: "Description of Product 1",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      imageUrl: "",
+      description: "Description of Product 2",
+    },
+    {
+      id: 3,
+      name: "Product 2",
+      imageUrl: "",
+      description: "Description of Product 2",
+    },
+    {
+      id: 4,
+      name: "Product 2",
+      imageUrl: "",
+      description: "Description of Product 2",
+    },
     {
       id: 1,
       name: "Product 1",
@@ -351,7 +400,12 @@ export default function CategoryFilter() {
                 ))}
               </form>
               <div className="flex items-center ">
-                <CourseList courses={courses} />
+                <div>
+                  <div className="mb-20 flex ">
+                    <SearchBox />
+                  </div>
+                  <CourseList courses={courses} />
+                </div>
               </div>
             </div>
           </section>
