@@ -24,7 +24,7 @@ export default function HeroSections() {
         backgroundImage: `url(${image})`,
       }}
     >
-      <div className=" absolute inset-0 bg-gradient-to-b from-transparent to-indigo-950 opacity-80"></div>
+      <div className="  inset-0 bg-gradient-to-b from-transparent to-indigo-950 opacity-80"></div>
       <div className="px-6 pt-6 lg:px-8">
         <nav className="flex items-center justify-between" aria-label="Global">
           <div className="flex lg:hidden">
