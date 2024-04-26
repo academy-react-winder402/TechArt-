@@ -4,6 +4,7 @@ import { CoursePage } from "../Screens/CoursePage";
 import { Landing } from "../Screens/Landing";
 import { LoginPage } from "../Screens/LoginPage";
 import { BlogPageRouter } from "./BlogPageRouter";
+import { CourseDetailRouter } from "./CourseDetailRouter";
 import { CoursePageRouter } from "./CoursePageRouter";
 import { LoginPageRouter } from "./LoginRouter";
 import { PanellRouter } from "./PanellRouter";
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
   ...BlogPageRouter,
   ...LoginPageRouter,
   ...PanellRouter,
+  ...CourseDetailRouter,
 
   {
     path: "/",
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <PanellRouter />,
+  },
+  {
+    path: "/coursedetail",
+    element: <CourseDetailRouter />,
   },
 ]);
 
