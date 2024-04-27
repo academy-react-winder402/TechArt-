@@ -63,18 +63,20 @@
 // }
 // ProductListComponent.js
 import React from "react";
+import { Link } from "react-router-dom";
 import CardComponent from "../Common/Card";
 
 const CourseList = ({ courses }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {courses?.map((course, index) => (
-        <CardComponent
-          key={index}
-          title={course.name}
-          image={course.image}
-          description={course.description}
-        />
+      {courses?.map((course) => (
+        <Link key={course.id} to={`/course/${course.id}`}>
+          <CardComponent
+            title={course.name}
+            image={course.image}
+            description={course.description}
+          />
+        </Link>
       ))}
     </div>
   );

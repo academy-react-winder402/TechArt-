@@ -3,7 +3,7 @@ import { CourseDetailPage } from "../Screens/CourseDetailPage";
 
 const CourseDetailRouter = [
   {
-    path: "/coursedetail",
+    path: "/coursedetail/:courseId",
     element: <CourseDetailPage />,
   },
 ];
