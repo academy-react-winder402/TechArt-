@@ -70,7 +70,7 @@ const CourseList = ({ courses }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {courses?.map((course) => (
-        <Link key={course.id} to={`/course/${course.id}`}>
+        <Link key={course.id} to={`/coursedetail/${course.id}`}>
           <CardComponent
             title={course.name}
             image={course.image}
