@@ -3,6 +3,7 @@ import { BlogPage } from "../Screens/BlogPage";
 import { CoursePage } from "../Screens/CoursePage";
 import { Landing } from "../Screens/Landing";
 import { LoginPage } from "../Screens/LoginPage";
+import { BlogDetailRouter } from "./BlogDetailRouter";
 import { BlogPageRouter } from "./BlogPageRouter";
 import { CourseDetailRouter } from "./CourseDetailRouter";
 import { CoursePageRouter } from "./CoursePageRouter";
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
   ...LoginPageRouter,
   ...PanellRouter,
   ...CourseDetailRouter,
+  ...BlogDetailRouter,
 
   {
     path: "/",
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/coursedetail",
     element: <CourseDetailRouter />,
+  },
+  {
+    path: "/blogdetail",
+    element: <BlogDetailRouter />,
   },
 ]);
 
