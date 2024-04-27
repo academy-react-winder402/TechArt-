@@ -13,7 +13,7 @@ import HeroSections from "./../Components/Landing/HeroSection";
 
 function Landing() {
   return (
-    <div className="container border-2 border-red mx-auto">
+    <div className="container  mx-auto">
       <Heading />
       <HeroSections />
       <Shortcut />

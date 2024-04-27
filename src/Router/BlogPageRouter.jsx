@@ -3,7 +3,7 @@ import { BlogPage } from "../Screens/BlogPage";
 
 const BlogPageRouter = [
   {
-    path: "/courses",
+    path: "/blogs",
     element: <BlogPage />,
   },
 ];

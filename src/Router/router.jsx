@@ -7,6 +7,7 @@ import { BlogDetailRouter } from "./BlogDetailRouter";
 import { BlogPageRouter } from "./BlogPageRouter";
 import { CourseDetailRouter } from "./CourseDetailRouter";
 import { CoursePageRouter } from "./CoursePageRouter";
+import { EditProfilePageRouter } from "./EditProfileRouter";
 import { LoginPageRouter } from "./LoginRouter";
 import { PanellRouter } from "./PanellRouter";
 const router = createBrowserRouter([
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
   ...PanellRouter,
   ...CourseDetailRouter,
   ...BlogDetailRouter,
+  ...EditProfilePageRouter,
 
   {
     path: "/",
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/blogdetail",
     element: <BlogDetailRouter />,
+  },
+  {
+    path: "/editprofile",
+    element: <EditProfilePageRouter />,
   },
 ]);
 

@@ -3,7 +3,6 @@ import Heading from "../Components/Common/Header";
 import CategoryFilter from "../Components/Courses/CategotyFilter";
 
 import Pagination from "../Components/Common/Pagination";
-import SearchBox from "../Components/Common/SearchBox";
 
 function CoursePage() {
   return (
