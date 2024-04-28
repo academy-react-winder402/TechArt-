@@ -6,7 +6,7 @@ export default {
     extend: {
       BackgroundImage: {},
       colors: {
-        dark: "#232A3C",
+        dark: "#262626",
         medium: "293245",
       },
     },

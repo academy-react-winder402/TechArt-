@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 
 export default function Toggle() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
-    if (theme === "dark") setDarkMode(true);
+    if (theme === "dark") setDarkMode(false);
   }, []);
 
   useEffect(() => {
@@ -21,13 +21,13 @@ export default function Toggle() {
 
   return (
     <div
-      className="relative w-16 h-8 flex items-center dark:bg-gray-900 bg-teal-500 cursor-pointer rounded-full p-1"
+      className="relative w-16 h-8 flex items-center dark:bg-teal-500 bg-gray-900 cursor-pointer rounded-full p-1"
       onClick={() => setDarkMode(!darkMode)}
     >
-      <SunIcon className="text-white" size={18} />
+      <SunIcon className="text-yellow-400" size={18} />
       <div
         className="absolute bg-white dark:bg-medium w-6 h-6 rounded-full shadow-md transform transition-transform duration-300"
-        style={darkMode ? { left: "2px" } : { right: "2px" }}
+        style={!darkMode ? { left: "2px" } : { right: "2px" }}
       ></div>
       <MoonIcon className="ml-aouto text-yellow-400" size={10} />
     </div>
