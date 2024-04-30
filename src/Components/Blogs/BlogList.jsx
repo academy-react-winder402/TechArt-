@@ -10,7 +10,7 @@ const PostList = ({ posts }) => {
           <CardComponent
             key={index}
             title={post.name}
-            image={post.image}
+            imageUrl={post.imageUrl}
             description={post.description}
           />
         </Link>

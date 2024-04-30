@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/20/solid";
 import SearchBox from "../Common/SearchBox";
 import PostList from "./BlogList";
+import image from "../../assets/Images/03.jpg";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -67,73 +68,73 @@ export default function BlogFilter() {
     {
       id: 1,
       name: "Product 1",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 1",
     },
     {
       id: 2,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
     {
       id: 3,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
     {
       id: 4,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
     {
-      id: 1,
+      id: 5,
       name: "Product 1",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 1",
     },
     {
-      id: 2,
+      id: 6,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
     {
-      id: 3,
+      id: 7,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
     {
-      id: 4,
+      id: 8,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
     {
-      id: 1,
+      id: 9,
       name: "Product 1",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 1",
     },
     {
-      id: 2,
+      id: 10,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
     {
-      id: 3,
+      id: 11,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
     {
-      id: 4,
+      id: 12,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: image,
       description: "Description of Product 2",
     },
   ];
