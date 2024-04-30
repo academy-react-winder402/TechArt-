@@ -1,10 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import image from "../../assets/Images/09.jpg";
+
 const navigation = [
   { name: "صفحه اصلی", href: "/" },
   { name: "دوره ها", href: "/courses" },
@@ -16,16 +15,16 @@ const navigation = [
 
 export default function HeroSections() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navigate = useNavigate();
+
   return (
     <div
-      className="bg-cover "
+      className="bg-cover relative"
       style={{
         backgroundImage: `url(${image})`,
       }}
     >
-      <div className="  inset-0 bg-gradient-to-b from-transparent to-indigo-950 opacity-80"></div>
-      <div className="px-6 pt-6 lg:px-8">
+      <div className="inset-0 bg-gradient-to-b from-transparent to-indigo-950 opacity-80 absolute"></div>
+      <div className="px-6 pt-6 lg:px-8 relative">
         <nav className="flex items-center justify-between" aria-label="Global">
           <div className="flex lg:hidden">
             <button
@@ -42,9 +41,10 @@ export default function HeroSections() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-sm font-semibold leading-6 text-white"
+                className="text-sm font-semibold leading-6 text-white relative"
               >
                 {item.name}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
               </Link>
             ))}
           </div>
@@ -72,9 +72,10 @@ export default function HeroSections() {
                     <Link
                       key={item.name}
                       to={item.href}
-                      className="text-sm font-semibold leading-6 text-white"
+                      className="text-sm font-semibold leading-6 text-white relative"
                     >
                       {item.name}
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white opacity-0 transition-opacity duration-300"></span>
                     </Link>
                   ))}
                 </div>

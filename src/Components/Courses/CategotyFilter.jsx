@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/20/solid";
 import CourseList from "./CourseList";
 import SearchBox from "../Common/SearchBox";
-
+import image from "../../assets/Images/02.jpg";
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
   { name: "Best Rating", href: "#", current: false },
@@ -67,19 +67,19 @@ export default function CategoryFilter() {
     {
       id: 1,
       name: "Product 1",
-      imageUrl: "",
+      imageUrl: "../../assets/Images/02.jpg",
       description: "Description of Product 1",
     },
     {
       id: 2,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: "../../assets/Images/02.jpg",
       description: "Description of Product 2",
     },
     {
       id: 3,
       name: "Product 2",
-      imageUrl: "",
+      imageUrl: "../../assets/Images/02.jpg",
       description: "Description of Product 2",
     },
     {

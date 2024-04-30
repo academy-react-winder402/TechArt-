@@ -73,7 +73,7 @@ const CourseList = ({ courses }) => {
         <Link key={course.id} to={`/coursedetail/${course.id}`}>
           <CardComponent
             title={course.name}
-            image={course.image}
+            imageUrl={course.imageUrl}
             description={course.description}
           />
         </Link>
