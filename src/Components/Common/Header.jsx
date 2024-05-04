@@ -1,4 +1,5 @@
 import Toggle from "./DarkModeToggle";
+import UserProfileDropdown from "./ProfileDropdown";
 
 export default function Heading() {
   return (
@@ -16,7 +17,12 @@ export default function Heading() {
           >
             وررود و ثبت نام
           </button> */}
-          <Toggle />
+          <div className="flex">
+            <Toggle />
+            <div className="px-4 z-10">
+              <UserProfileDropdown />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,6 @@
 import React from "react";
+import SearchBox from "../Common/SearchBox";
+import BlogDetailsFilter from "./BlogDetailsFilter";
 
 const BlogDetailContent = ({ children }) => {
   return (
@@ -8,6 +10,8 @@ const BlogDetailContent = ({ children }) => {
         {/* Sidebar content */}
         <h2 className="text-lg font-semibold mb-4">Sidebar</h2>
         {/* Add your sidebar content here */}
+        <SearchBox />
+        <BlogDetailsFilter />
       </div>
 
       {/* Main Content */}

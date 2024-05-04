@@ -9,6 +9,7 @@ import Goals from "../Components/Landing/Goals";
 import Grid from "../Components/Landing/GridList";
 import Shortcut from "../Components/Landing/ShortcutSection";
 import Testimonials from "../Components/Landing/Testimonials";
+import Slider from "../Components/Slider/Slider";
 import HeroSections from "./../Components/Landing/HeroSection";
 
 function Landing() {
@@ -16,6 +17,7 @@ function Landing() {
     <div className="container  mx-auto">
       <Heading />
       <HeroSections />
+
       <Shortcut />
       <Goals />
       <Grid />

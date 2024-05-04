@@ -75,6 +75,7 @@ const CourseList = ({ courses }) => {
             title={course.name}
             imageUrl={course.imageUrl}
             description={course.description}
+            price={course.price}
           />
         </Link>
       ))}

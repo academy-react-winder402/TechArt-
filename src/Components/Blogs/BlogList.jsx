@@ -12,6 +12,7 @@ const PostList = ({ posts }) => {
             title={post.name}
             imageUrl={post.imageUrl}
             description={post.description}
+            price={post.price}
           />
         </Link>
       ))}

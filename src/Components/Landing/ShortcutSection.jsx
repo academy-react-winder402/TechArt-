@@ -10,7 +10,8 @@ const supportLinks = [
     href: "#",
     description:
       "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: PhoneIcon,
+    // icon: PhoneIcon,
+    image: "",
   },
   {
     name: "Technical Support",
@@ -35,7 +36,7 @@ export default function Shortcut() {
 
       {/* Overlapping cards */}
       <section
-        className="relative z-10 mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-8"
+        className="relative z-10 mx-auto -mt-32 max-w-6xl px-6 pb-32 lg:px-8 bg-black"
         aria-labelledby="contact-heading"
       >
         <h2 className="sr-only" id="contact-heading">
@@ -48,12 +49,12 @@ export default function Shortcut() {
               className="flex flex-col rounded-2xl bg-white shadow-xl"
             >
               <div className="relative flex-1 px-6 pt-16 pb-8 md:px-8">
-                <div className="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-indigo-600 p-5 shadow-lg">
+                {/* <div className="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-indigo-600 p-5 shadow-lg">
                   <link.icon
                     className="h-6 w-6 text-white"
                     aria-hidden="true"
                   />
-                </div>
+                </div> */}
                 <h3 className="text-xl font-medium text-gray-900">
                   {link.name}
                 </h3>
