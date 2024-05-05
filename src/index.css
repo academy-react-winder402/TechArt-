@@ -45,3 +45,8 @@ body {
   min-width: 320px;
   /* min-height: 100vh; */
 }
+.blue-day {
+  background-color: #3182ce; /* رنگ آبی مورد نظر */
+  color: #fff; /* رنگ متن */
+  border-radius: 50%;
+}

@@ -19,7 +19,6 @@ const MyCalendar = () => {
       end: new Date(2024, 4, 5, 16, 0),
       description: "موضوع: انرژی و کار",
     },
-    // سایر رویدادها ادامه دارد...
   ];
 
   const openModal = (event) => {
@@ -35,6 +34,13 @@ const MyCalendar = () => {
     <div className="text-center">
       <h1 className="text-2xl font-bold mb-4">تقویم برنامه کلاس‌ها</h1>
       <Calendar
+        tileClassName={({ date }) => {
+          const event = events.find((event) => {
+            const eventDate = event.start.toISOString().slice(0, 10);
+            return eventDate === date.toISOString().slice(0, 10);
+          });
+          return event ? "blue-day" : "";
+        }}
         onClickDay={(date) => {
           const event = events.find((event) => {
             const eventDate = event.start.toISOString().slice(0, 10);
@@ -45,6 +51,7 @@ const MyCalendar = () => {
           }
         }}
       />
+
       <ReactModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
