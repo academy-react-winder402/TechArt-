@@ -50,3 +50,7 @@ body {
   color: #fff; /* رنگ متن */
   border-radius: 50%;
 }
+.selected-nav-item {
+  border-bottom-width: 2px; /* اندازه خط */
+  margin-bottom: 4px; /* فاصله بین خط و متن */
+}
