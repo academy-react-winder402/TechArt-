@@ -31,6 +31,13 @@ const RecentCourseSlider = () => {
       description: "Description of Product 2",
       price: "1000 ریال",
     },
+    {
+      id: 4,
+      name: "Product 2",
+      imageUrl: image,
+      description: "Description of Product 2",
+      price: "1000 ریال",
+    },
   ];
   return (
     <div className="relative bg-gray-50 px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
@@ -39,13 +46,14 @@ const RecentCourseSlider = () => {
       </div>
       <div className="relative mx-auto max-w-7xl">
         <Swiper
-          slidesPerView={1}
+          slidesPerView={3} // Display three slides per view
+          spaceBetween={30} // Add some space between slides
           navigation
           pagination={{ clickable: true }}
           className="mySwiper"
         >
           {posts.map((post) => (
-            <SwiperSlide key={post.title}>
+            <SwiperSlide key={post.id}>
               <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <div className="flex-shrink-0">
                   <img
