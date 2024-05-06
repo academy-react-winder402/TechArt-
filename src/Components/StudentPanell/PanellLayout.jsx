@@ -38,23 +38,11 @@ export default function PanellLayout() {
         ```
       */}
       <div className="min-h-full">
-        <Popover as="header" className="bg-indigo-600 pb-24">
+        <Popover as="header" className="bg-cyan-950	 pb-24">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="relative flex items-center justify-center py-5 lg:justify-between">
-                  {/* Logo */}
-                  <div className="absolute left-0 flex-shrink-0 lg:static">
-                    <a href="#">
-                      <span className="sr-only">Your Company</span>
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
-                        alt="Your Company"
-                      />
-                    </a>
-                  </div>
-
                   {/* Right section on desktop */}
                   <div className="hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5">
                     <button
