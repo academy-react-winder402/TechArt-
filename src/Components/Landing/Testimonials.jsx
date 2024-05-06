@@ -1,73 +1,90 @@
 import React from "react";
+import SwiperCore from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
+import "swiper/swiper-bundle.css";
+import "tailwindcss/tailwind.css";
+import image from "../../assets/Images/12.png";
 
-const testimonialData = [
-  {
-    quote: "Lorem ipsum dolor sit amet,",
-    author: "John Doe",
-    company: "CEO, Company X",
-    avatar: "https://via.placeholder.com/150",
-  },
-  {
-    quote: "Ut enim ad ex ea commodo consequat.",
-    author: "Jane Smith",
-    company: "Marketing Director, Company Y",
-    avatar: "https://via.placeholder.com/150",
-  },
-  {
-    quote: "illum dolore eu fugiat nulla pariatur.",
-    author: "Alice Johnson",
-    company: "CTO, Company Z",
-    avatar: "https://via.placeholder.com/150",
-  },
-  {
-    quote: "mollit anim id est laborum.",
-    author: "Bob Brown",
-    company: "COO, Company W",
-    avatar: "https://via.placeholder.com/150",
-  },
-];
+SwiperCore.use([Navigation, Pagination]);
 
-const Testimonial = ({ quote, author, company, avatar }) => {
+const Testimonials = () => {
+  const posts = [
+    {
+      id: 1,
+      name: "Product 2",
+      description:
+        "Description of Product 2.Description of Product 2.Description of Product 2.Description of Product 2.",
+      profileImage: image,
+      nickname: "malihe",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+
+      description: "Description of Product 2",
+      profileImage: image,
+      nickname: "malihe",
+    },
+    {
+      id: 3,
+      name: "Product 2",
+
+      description: "Description of Product 2",
+      profileImage: image,
+      nickname: "malihe",
+    },
+    {
+      id: 4,
+      name: "Product 2",
+      description: "Description of Product 2",
+      profileImage: image,
+      nickname: "malihe",
+    },
+  ];
   return (
-    <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl my-4">
-      <div className="md:flex">
-        <div className="md:flex-shrink-0">
-          <div className="p-8">
-            <blockquote>
-              <div className="text-lg font-medium text-gray-800">{quote}</div>
-            </blockquote>
-            <div className="mt-4">
-              <div className="text-base font-semibold text-gray-700">
-                {author}
-              </div>
-              <div className="text-base text-gray-600">{company}</div>
-            </div>
-          </div>
-        </div>
+    <div className="relative bg-gray-50 px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
+      <div className="absolute inset-0">
+        <div className="h-1/3 bg-white sm:h-2/3" />
       </div>
-      <img
-        className="h-12 w-12 rounded-full object-cover md:w-12"
-        src={avatar}
-        alt={`${author}'s Avatar`}
-      />
+      <div className="relative mx-auto max-w-7xl">
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={30}
+          navigation
+          pagination={{ clickable: true }}
+          className="mySwiper"
+        >
+          {posts.map((post) => (
+            <SwiperSlide key={post.id}>
+              <div className="flex bg-slate-200 flex-col overflow-hidden rounded-lg shadow-lg">
+                <div className="flex items-center">
+                  <img
+                    className="w-12 h-12 rounded-full mr-4"
+                    src={post.profileImage}
+                    alt=""
+                  />
+                  <h2 className="text-xl font-bold px-2">{post.nickname}</h2>
+                </div>
+                <h3 className="px-3 py-8">
+                  {post.description && post.description.length > 50
+                    ? post.description.slice(0, 40) + "..."
+                    : post.description}
+                </h3>
+
+                <div className="flex flex-1 flex-col justify-between bg-yellow-300	 p-3">
+                  <div className="mt-1 flex items-center">
+                    <div className="ml-3"></div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };
 
-const TestimonialSection = () => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {testimonialData.map((testimonial, index) => (
-        <Testimonial
-          key={index}
-          quote={testimonial.quote}
-          author={testimonial.author}
-          company={testimonial.company}
-          avatar={testimonial.avatar}
-        />
-      ))}
-    </div>
-  );
-};
-
-export default TestimonialSection;
+export default Testimonials;
