@@ -15,13 +15,13 @@ export default function PageSections() {
       {/* Navbar */}
 
       {/* 3 column wrapper */}
-      <div className="flex-grow max-w-7xl mx-auto flex lg:px-8">
+      <div className="flex-grow max-w-7xl mx-auto flex lg:px-8 ">
         {/* Left sidebar */}
-        <div className="border-b border-gray-200 xl:w-64 xl:flex-shrink-0 xl:border-b-0 xl:border-r xl:border-gray-200">
-          <div className="h-full py-6 pl-4 pr-6 sm:pl-6 lg:pl-8 xl:pl-0">
+        <div className="border-b  border-gray-200 xl:w-64 xl:flex-shrink-0 xl:border-b-0 xl:border-r xl:border-gray-200">
+          <div className="h-full  py-6 pl-4 pr-6 sm:pl-6 lg:pl-8 xl:pl-0">
             {/* Start left column area */}
             <div
-              className="h-full border-2 "
+              className="h-full rounded-lg bg-yellow-400 "
               style={{ minHeight: "calc(50vh - 4rem)" }}
             >
               <SidebarNav />
@@ -31,8 +31,8 @@ export default function PageSections() {
         </div>
 
         {/* Right sidebar */}
-        <div className="bg-indigo-950 rounded-lg   lg:border-gray-200 lg:mr-0 lg:ml-0">
-          <div className="h-full py-6 lg:w-80">
+        <div className="bg-indigo-950    lg:border-gray-200 lg:mr-0 lg:ml-0">
+          <div className="h-full py-6    lg:w-80">
             {/* Start right column area */}
             <div
               className="h-full"
@@ -43,11 +43,11 @@ export default function PageSections() {
         </div>
 
         {/* Main content */}
-        <div className="bg-white lg:min-w-0 lg:flex-1">
-          <div className="h-full py-6 sm:px-6 flex justify-center items-center">
+        <div className=" lg:min-w-0 lg:flex-1 ">
+          <div className="h-full py-6 lg:px-0  flex justify-center items-center">
             {/* Start main area*/}
             <div
-              className="h-full border-2"
+              className="h-full  bg-yellow-400 rounded-lg"
               style={{ minHeight: "calc(100vh - 8rem)" }}
             >
               <LoginForm className="" />

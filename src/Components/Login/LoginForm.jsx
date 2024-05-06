@@ -22,7 +22,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex flex-col  py-6  sm:px-6 mt-5 flex-grow ">
+    <div className="flex flex-col bg-yellow-400 py-6  sm:px-6 mt-5 flex-grow ">
       <div className=" sm:w-full sm:max-w-md">
         <h2 className="mt-3 text-center text-3xl font-bold tracking-tight text-gray-900">
           Sign in to your account
