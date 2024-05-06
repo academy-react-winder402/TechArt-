@@ -16,12 +16,6 @@ const navigation = [
   { name: "Documents", icon: InboxIcon, href: "#", current: false },
   { name: "Reports", icon: ChartBarIcon, href: "#", current: false },
 ];
-const secondaryNavigation = [
-  { name: "Website redesign", href: "#" },
-  { name: "GraphQL API", href: "#" },
-  { name: "Customer migration guides", href: "#" },
-  { name: "Profit sharing program", href: "#" },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -29,15 +23,8 @@ function classNames(...classes) {
 
 export default function SidebarNav() {
   return (
-    <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5 pb-4">
-      <div className="flex flex-shrink-0 items-center px-4">
-        <img
-          className="h-8 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-          alt="Your Company"
-        />
-      </div>
-      <div className="mt-5 flex flex-grow flex-col">
+    <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-black pt-5 pb-4">
+      <div className="mt-5 flex flex-grow flex-col ">
         <nav className="flex-1 space-y-8 bg-white px-2" aria-label="Sidebar">
           <div className="space-y-1">
             {navigation.map((item) => (
@@ -63,29 +50,6 @@ export default function SidebarNav() {
                 {item.name}
               </a>
             ))}
-          </div>
-          <div className="space-y-1">
-            <h3
-              className="px-3 text-sm font-medium text-gray-500"
-              id="projects-headline"
-            >
-              {/* <LoginForm /> */}
-            </h3>
-            <div
-              className="space-y-1"
-              role="group"
-              aria-labelledby="projects-headline"
-            >
-              {secondaryNavigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                >
-                  <span className="truncate">{item.name}</span>
-                </a>
-              ))}
-            </div>
           </div>
         </nav>
       </div>
