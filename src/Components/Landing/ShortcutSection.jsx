@@ -3,40 +3,37 @@ import {
   NewspaperIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
+import image07 from "../../assets/Images/07.png";
+import image08 from "../../assets/Images/08.png";
+import image10 from "../../assets/Images/10.png";
 
 const supportLinks = [
   {
     name: "Sales",
     href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    // icon: PhoneIcon,
-    image: "",
+    description: "Varius facilisi mauris sed sit. ",
+    image: image07,
   },
   {
     name: "Technical Support",
     href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: LifebuoyIcon,
+    description: "Varius facilisi mauris sed sit.",
+    image: image08,
   },
   {
     name: "Media Inquiries",
     href: "#",
-    description:
-      "Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames.",
-    icon: NewspaperIcon,
+    description: "Varius facilisi mauris sed sit.",
+    image: image10,
   },
 ];
 
 export default function Shortcut() {
   return (
     <div className="bg-white">
-      {/* Header */}
-
       {/* Overlapping cards */}
       <section
-        className="relative z-10 mx-auto -mt-32 max-w-6xl px-6 pb-32 lg:px-8 bg-black"
+        className="relative z-10 mx-auto -mt-32 max-w-6xl px-6 pb-32 lg:px-8 bg-slate-200	rounded-2xl"
         aria-labelledby="contact-heading"
       >
         <h2 className="sr-only" id="contact-heading">
@@ -44,31 +41,17 @@ export default function Shortcut() {
         </h2>
         <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
           {supportLinks.map((link) => (
-            <div
-              key={link.name}
-              className="flex flex-col rounded-2xl bg-white shadow-xl"
-            >
+            <div key={link.name} className="flex flex-col rounded-2xl  ">
               <div className="relative flex-1 px-6 pt-16 pb-8 md:px-8">
-                {/* <div className="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-indigo-600 p-5 shadow-lg">
-                  <link.icon
-                    className="h-6 w-6 text-white"
-                    aria-hidden="true"
-                  />
-                </div> */}
-                <h3 className="text-xl font-medium text-gray-900">
-                  {link.name}
-                </h3>
+                <img
+                  src={link.image}
+                  alt={link.name}
+                  className="h-auto w-auto mx-auto"
+                />
+
                 <p className="mt-4 text-base text-gray-500">
                   {link.description}
                 </p>
-              </div>
-              <div className="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8">
-                <a
-                  href={link.href}
-                  className="text-base font-medium text-indigo-700 hover:text-indigo-600"
-                >
-                  Contact us<span aria-hidden="true"> &rarr;</span>
-                </a>
               </div>
             </div>
           ))}

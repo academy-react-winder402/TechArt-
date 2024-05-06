@@ -8,9 +8,8 @@ import Features from "../Components/Landing/Features";
 import Goals from "../Components/Landing/Goals";
 import Grid from "../Components/Landing/GridList";
 import Shortcut from "../Components/Landing/ShortcutSection";
-import Testimonials from "../Components/Landing/Testimonials";
-import Slider from "../Components/Slider/Slider";
 import HeroSections from "./../Components/Landing/HeroSection";
+import TestimonialSection from "./../Components/Landing/Testimonials";
 
 function Landing() {
   return (
@@ -24,7 +23,7 @@ function Landing() {
       <AdsCard />
       <Features />
       <Events />
-      <Testimonials />
+      <TestimonialSection />
       <BlogCard />
       <Footer />
     </div>

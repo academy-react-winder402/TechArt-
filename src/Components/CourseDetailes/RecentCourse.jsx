@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-import "tailwindcss/tailwind.css"; // You can remove this if you're not using Tailwind CSS
+import "tailwindcss/tailwind.css"; 
 import image from "../../assets/Images/02.jpg";
 SwiperCore.use([Navigation, Pagination]);
 

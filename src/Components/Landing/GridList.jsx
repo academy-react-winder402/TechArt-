@@ -1,69 +1,117 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
-const files = [
-  {
-    title: "IMG_4985.HEIC",
-    size: "3.9 MB",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "3.9 MB",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
-  {
-    title: "IMG_4985.HEIC",
-    size: "3.9 MB",
-    source:
-      "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80",
-  },
+import React from "react";
+import SwiperCore from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import { Navigation } from "swiper/modules";
+import "swiper/swiper-bundle.css";
+import "tailwindcss/tailwind.css";
+import image from "../../assets/Images/02.jpg";
+SwiperCore.use([Navigation, Pagination]);
 
-  // More files...
-];
+const Grid = () => {
+  const posts = [
+    {
+      id: 1,
+      name: "Product 1",
+      imageUrl: image,
+      description: "Description of Product 1",
+      price: "1000 ریال",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      imageUrl: image,
+      description: "Description of Product 2",
+      price: "1000 ریال",
+    },
+    {
+      id: 3,
+      name: "Product 2",
+      imageUrl: image,
+      description: "Description of Product 2",
+      price: "1000 ریال",
+    },
+    {
+      id: 4,
+      name: "Product 2",
+      imageUrl: image,
+      description: "Description of Product 2",
+      price: "1000 ریال",
+    },
 
-export default function Grid() {
+    {
+      id: 5,
+      name: "Product 2",
+      imageUrl: image,
+      description: "Description of Product 2",
+      price: "1000 ریال",
+    },
+    {
+      id: 6,
+      name: "Product 2",
+      imageUrl: image,
+      description: "Description of Product 2",
+      price: "1000 ریال",
+    },
+    {
+      id: 7,
+      name: "Product 2",
+      imageUrl: image,
+      description: "Description of Product 2",
+      price: "1000 ریال",
+    },
+    {
+      id: 8,
+      name: "Product 2",
+      imageUrl: image,
+      description: "Description of Product 2",
+      price: "1000 ریال",
+    },
+  ];
   return (
-    <ul
-      role="list"
-      className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
-    >
-      {files.map((file) => (
-        <li key={file.source} className="relative">
-          <div className="group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-            <img
-              src={file.source}
-              alt=""
-              className="pointer-events-none object-cover group-hover:opacity-75"
-            />
-            <button
-              type="button"
-              className="absolute inset-0 focus:outline-none"
-            >
-              <span className="sr-only">View details for {file.title}</span>
-            </button>
-          </div>
-          <p className="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">
-            {file.title}
-          </p>
-          <p className="pointer-events-none block text-sm font-medium text-gray-500">
-            {file.size}
-          </p>
-        </li>
-      ))}
-    </ul>
+    <div className="relative bg-gray-50 px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
+      <div className="absolute inset-0">
+        <div className="h-1/3 bg-white sm:h-2/3" />
+      </div>
+      <div className="relative mx-auto max-w-7xl">
+        <Swiper
+          slidesPerView={4} // Display four slides per view
+          slidesPerColumn={2} // Display two rows
+          spaceBetween={30} // Add some space between slides
+          navigation
+          pagination={{ clickable: true }}
+          className="mySwiper"
+        >
+          {posts.map((post) => (
+            <SwiperSlide key={post.id}>
+              <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                <div className="flex-shrink-0">
+                  <img
+                    className="h-48 w-full object-cover"
+                    src={post.imageUrl}
+                    alt=""
+                  />
+                </div>
+                <div className="flex flex-1 flex-col justify-between bg-white p-6">
+                  <div className="flex-1"></div>
+                  <div className="mt-6 flex items-center">
+                    <div className="flex-shrink-0"></div>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium text-gray-900"></p>
+                      <div className="flex space-x-1 text-sm text-gray-500">
+                        <span aria-hidden="true">&middot;</span>
+                        <span>{post.readingTime} read</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
   );
-}
+};
+
+export default Grid;
