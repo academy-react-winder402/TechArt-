@@ -2,6 +2,7 @@ import LikeButton from "./../Common/Like";
 import BookmarkButton from "./../Common/Bookmark";
 import VoiceCommentForm from "../Comment/VoiceCm";
 import CommentForm from "../Comment/textCm";
+import BlogDetailCmTab from "./BlogDetailCmTab";
 
 export default function BlogMainContent() {
   return (
@@ -174,8 +175,7 @@ export default function BlogMainContent() {
             neque erat velit.
           </p>
         </div>
-        <CommentForm />
-        <VoiceCommentForm />
+        <BlogDetailCmTab />
       </div>
     </div>
   );
