@@ -25,11 +25,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/courses",
-    element: <CoursePage />,
+    element: <CoursePageRouter />,
   },
   {
     path: "/blogs",
-    element: <BlogPage />,
+    element: <BlogPageRouter />,
   },
   {
     path: "/login",

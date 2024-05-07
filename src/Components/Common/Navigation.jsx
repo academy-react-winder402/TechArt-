@@ -10,17 +10,16 @@ const Navigation = ({ currentPath }) => {
     { name: " تماس  با ما", href: "#" },
   ];
   return (
-    <div className="hidden lg:flex lg:gap-x-12">
+    <div className="lg:flex lg:gap-x-12 pr-8">
       {navigation.map((item) => (
         <Link
           key={item.name}
           to={item.href}
-          className={`text-sm font-semibold leading-6 text-black relative ${
+          className={`text-sm  font-semibold leading-10 text-white relative ${
             currentPath === item.href ? "selected-nav-item" : ""
           }`}
         >
           {item.name}
-          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
         </Link>
       ))}
     </div>
