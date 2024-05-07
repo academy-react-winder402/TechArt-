@@ -3,6 +3,7 @@ import { Dialog } from "@headlessui/react";
 import { Link, useLocation } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import image from "../../assets/Images/09.jpg";
+import Navigation from "./../Common/Navigation";
 
 const navigation = [
   { name: "صفحه اصلی", href: "/" },
@@ -38,18 +39,10 @@ export default function HeroSections() {
             </button>
           </div>
           <div className="hidden text-white  lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`text-sm font-semibold leading-6 text-white relative ${
-                  location.pathname === item.href ? "selected-nav-item" : ""
-                }`}
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
-              </Link>
-            ))}
+            <Navigation
+              navigationItems={navigation}
+              currentPath={location.pathname}
+            />
           </div>
           <div className=""></div>
         </nav>
@@ -95,9 +88,9 @@ export default function HeroSections() {
             </div>
           </Dialog.Panel>
         </Dialog>
-        {/* اینجا خط اولیه زیر navigation */}
         <div className="border-b-2 border-white mt-2 mb-4"></div>
       </div>
+
       <main>
         <div className="relative px-6 lg:px-8">
           <div className=" max-w-2xl py-32 sm:py-48 lg:py-23">
