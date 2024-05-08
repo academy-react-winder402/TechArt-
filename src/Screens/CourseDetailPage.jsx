@@ -1,15 +1,30 @@
+import React, { useState, useEffect } from "react";
+import PageFramework from "../Components/Common/Course&BlogDetailSkeleone";
 import Footer from "../Components/Common/Footer";
 import Heading from "../Components/Common/Header";
 import CourseDetailes from "../Components/CourseDetailes/CourseDetailes";
 
 function CourseDetailPage() {
-  return (
-    <div className="container border-2 border-red mx-auto">
-      <Heading />
-      <CourseDetailes />
+  const [loading, setLoading] = useState(true);
 
-      <Footer />
-    </div>
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false); // اعلام پایان بارگذاری
+    }, 3000); // زمان شبیه‌سازی بارگذاری
+  }, []);
+
+  return (
+    <>
+      {loading ? (
+        <PageFramework />
+      ) : (
+        <div className="container border-2 border-red mx-auto">
+          <Heading />
+          <CourseDetailes />
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
 

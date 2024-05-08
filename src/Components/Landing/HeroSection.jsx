@@ -25,8 +25,8 @@ export default function HeroSections() {
         backgroundImage: `url(${image})`,
       }}
     >
-      <div className="inset-0 bg-gradient-to-b from-transparent to-indigo-950 opacity-80 absolute"></div>
-      <div className="px-6 pt-6 lg:px-8 relative">
+      <div className="inset-0 bg-gradient-to-b from-transparent to-indigo-950 opacity-90 absolute"></div>
+      <div className=" bg-gradient-to-b from-black opacity-70 to-indigo-950	 pt-4  relative">
         <nav className="flex items-center justify-between" aria-label="Global">
           <div className="flex lg:hidden">
             <button
@@ -38,7 +38,7 @@ export default function HeroSections() {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="hidden text-white  lg:flex lg:gap-x-12">
+          <div className="hidden text-white 	 lg:flex lg:gap-x-12">
             <Navigation
               navigationItems={navigation}
               currentPath={location.pathname}
@@ -88,7 +88,6 @@ export default function HeroSections() {
             </div>
           </Dialog.Panel>
         </Dialog>
-        <div className="border-b-2 border-white mt-2 mb-4"></div>
       </div>
 
       <main>
@@ -110,7 +109,7 @@ export default function HeroSections() {
                 </a>
                 <a
                   href="#"
-                  className="rounded-md bg-amber-400 px-3.5 py-1.5 text-base font-semibold leading-7 text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-amber-400 dark:bg-medium px-3.5 py-1.5 text-base font-semibold leading-7 text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   همه دوره ها
                 </a>

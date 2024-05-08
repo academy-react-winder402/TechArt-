@@ -10,6 +10,7 @@ import Grid from "../Components/Landing/GridList";
 import Shortcut from "../Components/Landing/ShortcutSection";
 import HeroSections from "./../Components/Landing/HeroSection";
 import TestimonialSection from "./../Components/Landing/Testimonials";
+import ScrowllToTopButton from "./../Components/Common/ScrowlToTopButton";
 
 function Landing() {
   return (
@@ -26,6 +27,8 @@ function Landing() {
       <TestimonialSection />
       <BlogCard />
       <Footer />
+
+      <ScrowllToTopButton />
     </div>
   );
 }

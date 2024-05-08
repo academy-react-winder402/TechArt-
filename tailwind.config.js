@@ -7,7 +7,7 @@ export default {
       BackgroundImage: {},
       colors: {
         dark: "#262626",
-        medium: "293245",
+        medium: "#32a895",
       },
     },
   },
