@@ -52,13 +52,6 @@ const Grid = () => {
       description: "Description of Product 2",
       price: "1000 ریال",
     },
-    {
-      id: 2,
-      name: "Product 2",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-    },
     // Add more items as needed
   ];
 
@@ -69,14 +62,13 @@ const Grid = () => {
       </div>
       <div className="relative mx-auto max-w-7xl">
         <Swiper
-          slidesPerView={4}
           spaceBetween={10}
           navigation
           pagination={{ clickable: true }}
           className="mySwiper"
           breakpoints={{
             640: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 20,
             },
             768: {

@@ -50,11 +50,23 @@ const Testimonials = () => {
       </div>
       <div className="relative mx-auto max-w-7xl">
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
           navigation
           pagination={{ clickable: true }}
           className="mySwiper"
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
         >
           {posts.map((post) => (
             <SwiperSlide key={post.id}>
