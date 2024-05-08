@@ -71,6 +71,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 2,
@@ -78,6 +80,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 3,
@@ -85,6 +89,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 4,
@@ -92,6 +98,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 5,
@@ -99,6 +107,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 6,
@@ -106,6 +116,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 7,
@@ -113,6 +125,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 8,
@@ -120,6 +134,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 9,
@@ -127,6 +143,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 10,
@@ -134,6 +152,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 11,
@@ -141,6 +161,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
     {
       id: 12,
@@ -148,6 +170,8 @@ export default function BlogFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1403/06/06",
     },
   ];
 

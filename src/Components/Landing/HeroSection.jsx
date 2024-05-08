@@ -25,8 +25,8 @@ export default function HeroSections() {
         backgroundImage: `url(${image})`,
       }}
     >
-      <div className="inset-0 bg-gradient-to-b from-transparent to-indigo-950 opacity-90 absolute"></div>
-      <div className=" bg-gradient-to-b from-black opacity-70 to-indigo-950	 pt-4  relative">
+      <div className="inset-0 bg-gradient-to-b from-transparent to-indigo-950 opacity-90 dark:bg-dark-to-b dark:from-transparent dark:to-dark dark:opacity-100 absolute"></div>
+      <div className=" bg-gradient-to-b from-black opacity-70 to-indigo-950	dark:bg-gradient-to-b dark:from-black dark:opacity-70 dark:to-transparent pt-4  relative">
         <nav className="flex items-center justify-between" aria-label="Global">
           <div className="flex lg:hidden">
             <button
@@ -109,7 +109,7 @@ export default function HeroSections() {
                 </a>
                 <a
                   href="#"
-                  className="rounded-md bg-amber-400 dark:bg-medium px-3.5 py-1.5 text-base font-semibold leading-7 text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-amber-400 dark:bg-medium dark:text-white px-3.5 py-1.5 text-base font-semibold leading-7 text-black shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   همه دوره ها
                 </a>

@@ -27,7 +27,7 @@ const ScrowllToTopButton = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-4 right-4 bg-indigo-900	 text-white py-2 px-4 rounded-full ${
+      className={`fixed bottom-4 right-4 bg-indigo-900 dark:bg-medium	 text-white py-2 px-4 rounded-full ${
         isVisible ? "opacity-100" : "opacity-0"
       } transition-opacity duration-300`}
     >

@@ -70,6 +70,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 2,
@@ -77,6 +79,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 3,
@@ -84,6 +88,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 4,
@@ -91,6 +97,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 1,
@@ -98,6 +106,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 2,
@@ -105,6 +115,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 3,
@@ -112,6 +124,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 4,
@@ -119,6 +133,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 1,
@@ -126,6 +142,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 1",
       price: 1000,
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 2,
@@ -133,6 +151,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: 1000,
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 3,
@@ -140,6 +160,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
     {
       id: 4,
@@ -147,6 +169,8 @@ export default function CategoryFilter() {
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
+      athor: "admin",
+      date: "1043/06/06",
     },
   ];
 
@@ -411,7 +435,7 @@ export default function CategoryFilter() {
                   </Disclosure>
                 ))}
               </form>
-              <div className="flex items-center ">
+              <div className=" ">
                 <div>
                   <div className="mb-20 flex ">
                     <SearchBox />

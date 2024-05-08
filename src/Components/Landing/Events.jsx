@@ -64,13 +64,13 @@ function classNames(...classes) {
 export default function Events() {
   return (
     <div className="flow-root">
-      <ul role="list" className="-mb-8">
+      <ul role="list" className="">
         {timeline.map((event, eventIdx) => (
           <li key={event.id}>
-            <div className="relative pb-8">
+            <div className="relative px-6 py-4  dark:bg-dark">
               {eventIdx !== timeline.length - 1 ? (
                 <span
-                  className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
+                  className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-medium"
                   aria-hidden="true"
                 />
               ) : null}
@@ -79,7 +79,7 @@ export default function Events() {
                   <span
                     className={classNames(
                       event.iconBackground,
-                      "h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white"
+                      "h-8 w-8 rounded-full my-2 flex items-center justify-center ring-8 ring-white"
                     )}
                   >
                     <event.icon
@@ -90,17 +90,17 @@ export default function Events() {
                 </div>
                 <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                   <div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 dark:text-medium">
                       {event.content}{" "}
                       <a
                         href={event.href}
-                        className="font-medium text-gray-900"
+                        className="font-medium text-gray-900 dark:text-white mx-6"
                       >
                         {event.target}
                       </a>
                     </p>
                   </div>
-                  <div className="whitespace-nowrap text-right text-sm text-gray-500">
+                  <div className="whitespace-nowrap text-right text-sm text-gray-500 dark:text-medium">
                     <time dateTime={event.datetime}>{event.date}</time>
                   </div>
                 </div>

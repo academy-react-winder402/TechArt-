@@ -17,7 +17,7 @@ export default function PageSections() {
       {/* 3 column wrapper */}
       <div className="flex-grow max-w-7xl mx-auto flex lg:px-8 ">
         {/* Left sidebar */}
-        <div className="border-b  border-gray-200 xl:w-64 xl:flex-shrink-0 xl:border-b-0 xl:border-r xl:border-gray-200">
+        <div className="border-b  border-gray-200 xl:w-64 xl:flex-shrink-0 xl:border-gray-200">
           <div className="h-full  py-6 pl-4 pr-6 sm:pl-6 lg:pl-8 xl:pl-0">
             {/* Start left column area */}
             <div
@@ -31,7 +31,7 @@ export default function PageSections() {
         </div>
 
         {/* Right sidebar */}
-        <div className="bg-indigo-950    lg:border-gray-200 lg:mr-0 lg:ml-0">
+        <div className="bg-indigo-950 lg:rounded-xl    lg:mr-0 lg:ml-0">
           <div className="h-full py-6    lg:w-80">
             {/* Start right column area */}
             <div

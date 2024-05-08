@@ -64,7 +64,10 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white shadow-md" aria-labelledby="footer-heading">
+    <footer
+      className="bg-white dark:bg-dark dark:opacity-96 border-2 border-t-sky-300	 shadow-md"
+      aria-labelledby="footer-heading"
+    >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -76,7 +79,7 @@ export default function Footer() {
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               alt="Company name"
             /> */}
-            <p className="text-sm leading-6 text-gray-600">
+            <p className="text-sm leading-6 text-gray-600 dark:text-medium">
               بهترین وب‌سایت برای یادگیری زبان برنامه نویسی
             </p>
             <div className="flex  px-10">
@@ -84,7 +87,7 @@ export default function Footer() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 space-x-6  hover:text-gray-500"
+                  className="text-gray-400 dark:text-medum space-x-6  hover:text-gray-500"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -92,10 +95,10 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          <div className="mt-16 grid text-justify grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                <h3 className="text-sm font-semibold leading-6 text-gray-900 dark:text-medium">
                   دوره ها
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -103,7 +106,7 @@ export default function Footer() {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        className="text-sm leading-6 text-gray-600 dark:text-medium hover:text-gray-900"
                       >
                         {item.name}
                       </a>
@@ -112,7 +115,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                <h3 className="text-sm font-semibold leading-6 dark:text-medium text-gray-900">
                   لینک های مفید
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -120,7 +123,7 @@ export default function Footer() {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        className="text-sm leading-6 text-gray-600 dark:text-medium hover:text-gray-900"
                       >
                         {item.name}
                       </a>
@@ -131,7 +134,7 @@ export default function Footer() {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">
+                <h3 className="text-sm font-semibold leading-6 dark:text-medium text-gray-900">
                   تماس با ما
                 </h3>
                 <ul role="list" className="mt-6 space-y-4">
@@ -139,7 +142,7 @@ export default function Footer() {
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                        className="text-sm leading-6 text-gray-600 dark:text-medium hover:text-gray-900"
                       >
                         {item.name}
                       </a>

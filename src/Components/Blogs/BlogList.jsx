@@ -13,6 +13,8 @@ const PostList = ({ posts }) => {
             imageUrl={post.imageUrl}
             description={post.description}
             price={post.price}
+            athor={post.athor}
+            date={post.date}
           />
         </Link>
       ))}

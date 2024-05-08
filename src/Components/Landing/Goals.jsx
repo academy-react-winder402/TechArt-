@@ -1,5 +1,6 @@
 import image from "../../assets/Images/05.png";
 import DynamicButton from "../Common/Button";
+import Button from "./../Common/Button";
 
 const stats = [
   { label: "Founded", value: "2021" },
@@ -10,15 +11,15 @@ const stats = [
 
 export default function Goals() {
   return (
-    <div className="relative bg-white py-16 sm:py-24">
+    <div className="relative bg-white dark:bg-dark py-16 sm:py-24">
       <div className=" lg:grid lg:max-w-7xl lg:grid-cols-2 lg:items-start lg:gap-24 lg:px-8">
         <div className="relative  max-w-md px-6 sm:max-w-3xl lg:px-0">
           {/* Content area */}
           <div className="pt-12 sm:pt-16 lg:pt-20">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight dark:text-white text-gray-900 sm:text-4xl">
               On a mission to empower teams
             </h2>
-            <div className="mt-6 space-y-6 text-justify text-gray-500">
+            <div className="mt-6 space-y-6 text-justify text-gray-500 dark:text-white">
               <p className="text-lg">
                 Sagittis scelerisque nulla cursus in enim consectetur quam.
                 Dictum urna sed consectetur neque tristique pellentesque.
@@ -26,7 +27,7 @@ export default function Goals() {
                 nisl netus morbi vel porttitor vitae ut. Amet vitae fames
                 senectus vitae.
               </p>
-              <p className="text-base leading-7">
+              <p className="text-base leading-7 dark:text-white">
                 Sollicitudin tristique eros erat odio sed vitae, consequat
                 turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros
                 eu viverra donec ut volutpat donec laoreet quam urna.
@@ -35,8 +36,8 @@ export default function Goals() {
                 eu viverra donec ut volutpat donec laoreet quam urna.
               </p>
             </div>
-            <div className="flex py-6 items-start">
-              <DynamicButton />
+            <div className="flex py-6 items-start ">
+              <Button />
             </div>
           </div>
         </div>

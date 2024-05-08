@@ -20,25 +20,25 @@ const growthFeatures = [
 
 export default function Features() {
   return (
-    <div className="bg-gray-900">
+    <div className="bg-slate-200 dark:bg-dark">
       <div className="px-6 pt-12 lg:px-8 lg:pt-20">
         <div className="text-center">
-          <h2 className="text-xl font-semibold leading-6 text-gray-300">
+          <h2 className="text-xl font-semibold leading-6 text-gray-600">
             Pricing
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <p className="mt-2 text-3xl font-bold tracking-tight dark:text-medium text-black sm:text-4xl lg:text-5xl">
             The right price for you, whoever you are
           </p>
-          <p className="mx-auto mt-3 max-w-4xl text-xl text-gray-300 sm:mt-5 sm:text-2xl">
+          <p className="mx-auto mt-3 max-w-4xl text-xl text-gray-600 sm:mt-5 sm:text-2xl">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
             numquam eligendi quos odit doloribus molestiae voluptatum.
           </p>
         </div>
       </div>
 
-      <div className="mt-16 bg-white pb-12 lg:mt-20 lg:pb-20">
+      <div className="mt-16 bg-white dark:bg-dark pb-12 lg:mt-20 lg:pb-20">
         <div className="relative z-0">
-          <div className="absolute inset-0 h-5/6 bg-gray-900 lg:h-2/3" />
+          <div className="absolute inset-0 h-5/6 bg-slate-200 dark:bg-medium lg:h-2/3" />
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="relative lg:grid lg:grid-cols-7">
               <div className="mx-auto max-w-md lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:mx-0 lg:max-w-none">

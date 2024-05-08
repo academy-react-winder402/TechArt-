@@ -23,7 +23,7 @@ function classNames(...classes) {
 
 export default function SidebarNav() {
   return (
-    <div className="flex flex-grow flex-col overflow-y-auto rounded-lg  border-r border-gray-200 bg-yellow-400 pt-5 pb-4">
+    <div className="flex flex-grow flex-col overflow-y-auto rounded-lg   bg-yellow-400 pt-5 pb-4">
       <div className="mt-5 flex flex-grow flex-col  ">
         <nav
           className="flex-1 space-y-8 bg-yellow-400 px-2"

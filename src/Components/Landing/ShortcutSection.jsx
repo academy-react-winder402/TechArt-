@@ -30,10 +30,10 @@ const supportLinks = [
 
 export default function Shortcut() {
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-dark">
       {/* Overlapping cards */}
       <section
-        className="relative z-10 mx-auto -mt-32 max-w-6xl px-6 pb-32 lg:px-8 bg-slate-200	rounded-2xl"
+        className="relative z-10 mx-auto -mt-32 max-w-6xl px-6 pb-32 lg:px-8 bg-slate-200 dark:bg-teal-100	shadow-lg	rounded-2xl"
         aria-labelledby="contact-heading"
       >
         <h2 className="sr-only" id="contact-heading">

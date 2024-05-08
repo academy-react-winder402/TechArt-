@@ -8,7 +8,7 @@ const UserProfileDropdown = () => {
   };
 
   return (
-    <div className="relative inline-block text-right">
+    <div className="relative 	inline-block text-right">
       <div>
         <button
           type="button"
@@ -24,36 +24,36 @@ const UserProfileDropdown = () => {
 
       {isOpen && (
         <div
-          className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+          className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-indigo-950 ring-1 ring-black ring-opacity-5"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"
         >
           <div className="py-1" role="none">
             <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              href="/editprofile"
+              className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
               Edit Profile
             </a>
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
               Change Password
             </a>
             <a
               href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
               Logout
             </a>
             <a
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              href="/dashboard"
+              className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
               dashboard
