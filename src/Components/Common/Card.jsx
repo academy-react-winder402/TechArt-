@@ -15,7 +15,7 @@ const CardComponent = ({
         alt={title}
       />
       <div className="px-6 py-4">
-        <div className=" absolute border-yellow-200	 w-24  bg-amber-500	 rounded-3xl text-start  -mt-10 lg:z-10">
+        <div className=" absolute border-yellow-200	 w-24  bg-amber-500	 rounded-3xl text-start shadow-md  -mt-10 lg:z-10">
           <div className="pr-3 ">
             <p className="text-gray-700 text-xs ">{athor}</p>
             <p className="text-gray-700 text-xs">{date}</p>

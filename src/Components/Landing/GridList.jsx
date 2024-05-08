@@ -25,49 +25,43 @@ const Grid = () => {
       price: "1000 ریال",
     },
     {
-      id: 3,
+      id: 2,
       name: "Product 2",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
     {
-      id: 4,
-      name: "Product 2",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-    },
-
-    {
-      id: 5,
+      id: 2,
       name: "Product 2",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
     {
-      id: 6,
+      id: 2,
       name: "Product 2",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
     {
-      id: 7,
+      id: 2,
       name: "Product 2",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
     {
-      id: 8,
+      id: 2,
       name: "Product 2",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
+    // Add more items as needed
   ];
+
   return (
     <div className="relative bg-gray-50 dark:bg-dark px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
       <div className="absolute inset-0">
@@ -75,34 +69,47 @@ const Grid = () => {
       </div>
       <div className="relative mx-auto max-w-7xl">
         <Swiper
-          slidesPerView={4} // Display four slides per view
-          slidesPerColumn={2} // Display two rows
-          spaceBetween={30} // Add some space between slides
+          slidesPerView={4}
+          spaceBetween={10}
           navigation
           pagination={{ clickable: true }}
           className="mySwiper"
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+          }}
         >
           {posts.map((post) => (
             <SwiperSlide key={post.id}>
               <div className="flex flex-col overflow-hidden rounded-lg shadow-lg">
                 <div className="flex-shrink-0">
                   <img
-                    className="h-48 w-full object-cover"
+                    className="h-48 sm:h-64 lg:h-64 w-full object-cover"
                     src={post.imageUrl}
                     alt=""
                   />
                 </div>
                 <div className="flex flex-1 flex-col justify-between bg-white dark:bg-medium p-6">
-                  <div className="flex-1"></div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold">{post.name}</h3>
+                    <p className="mt-2 text-sm text-gray-600">
+                      {post.description}
+                    </p>
+                  </div>
                   <div className="mt-6 flex items-center">
-                    <div className="flex-shrink-0"></div>
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-gray-900"></p>
-                      <div className="flex space-x-1 text-sm text-gray-500">
-                        <span aria-hidden="true">&middot;</span>
-                        <span>{post.readingTime} read</span>
-                      </div>
-                    </div>
+                    <span className="text-gray-900 font-medium">
+                      {post.price}
+                    </span>
                   </div>
                 </div>
               </div>

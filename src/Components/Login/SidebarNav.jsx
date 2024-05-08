@@ -9,7 +9,7 @@ import {
 import LoginForm from "./LoginForm";
 
 const navigation = [
-  { name: "Dashboard", icon: HomeIcon, href: "#", current: true },
+  { name: "صفحه اصلی", icon: HomeIcon, href: "/", current: true },
   { name: "Team", icon: UsersIcon, href: "#", current: false },
   { name: "Projects", icon: FolderIcon, href: "#", current: false },
   { name: "Calendar", icon: CalendarIcon, href: "#", current: false },
