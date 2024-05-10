@@ -1,11 +1,13 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { loginAPI } from "./../../Core/Services/api/auth";
 
 const LoginForm = () => {
-  const initialValues = {
-    email: "",
-    password: "",
+  const [userObj, setuserObj] = useState(userObj);
+  const LoginUser = async () => {
+    const userObj = { PhoneOrGmail: "", Password: "" };
+    const user = await loginAPI(userObj);
   };
 
   const validationSchema = Yup.object({
@@ -16,7 +18,7 @@ const LoginForm = () => {
   });
 
   const onSubmit = (values, { setSubmitting }) => {
-    console.log("Form data:", values);
+    console.log("userObj:", values);
     setSubmitting(false);
     // Add your login logic here
   };
@@ -39,7 +41,7 @@ const LoginForm = () => {
       </div>
 
       <Formik
-        initialValues={initialValues}
+        initialValues={userObj}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
