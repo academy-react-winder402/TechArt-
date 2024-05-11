@@ -1,21 +1,19 @@
 import { CheckIcon } from "@heroicons/react/24/outline";
 
 const hobbyFeatures = [
-  "Pariatur quod similique",
-  "Sapiente libero doloribus",
-  "Vel ipsa esse repudiandae",
+  "دپارتمان کودک و نوجوان",
+  "دپارتمان آموزش",
+  "دپارتمان مشاغل",
 ];
 const scaleFeatures = [
-  "Pariatur quod similique",
-  "Sapiente libero doloribus",
-  "Vel ipsa esse repudiandae",
+  "برگزاری اردو های علمی",
+  "برگزاری کارگاه ها و دوره ها به صورت آنلاین",
+  "سیستم منتورینگ قوی در فرآیند آموزش",
 ];
 const growthFeatures = [
-  "Quia rem est sed impedit magnam",
-  "Dolorem vero ratione voluptates",
-  "Qui sed ab doloribus voluptatem dolore",
-  "Laborum commodi molestiae id et fugiat",
-  "Nam ut ipsa nesciunt culpa modi dolor",
+  "بیش ار ده سال سابقه آموزش برنامه نویسی",
+  "تامین نیروی مجرب کار در سر تا سر استان ",
+  "اجرای چندین پروژه خارجی",
 ];
 
 export default function Features() {
@@ -23,15 +21,8 @@ export default function Features() {
     <div className="bg-slate-200 dark:bg-dark">
       <div className="px-6 pt-12 lg:px-8 lg:pt-20">
         <div className="text-center">
-          <h2 className="text-xl font-semibold leading-6 text-gray-600">
-            Pricing
-          </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight dark:text-medium text-black sm:text-4xl lg:text-5xl">
-            The right price for you, whoever you are
-          </p>
-          <p className="mx-auto mt-3 max-w-4xl text-xl text-gray-600 sm:mt-5 sm:text-2xl">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-            numquam eligendi quos odit doloribus molestiae voluptatum.
+            هدف ما تربیت رهبرانی برای فرداست
           </p>
         </div>
       </div>
@@ -50,18 +41,10 @@ export default function Features() {
                           className="text-center text-2xl font-medium text-gray-900"
                           id="tier-hobby"
                         >
-                          Hobby
+                          دپارتمان ها
                         </h3>
                         <div className="mt-4 flex items-center justify-center">
-                          <span className="flex items-start px-3 text-6xl tracking-tight text-gray-900">
-                            <span className="mt-2 mr-2 text-4xl font-medium tracking-tight">
-                              $
-                            </span>
-                            <span className="font-bold">79</span>
-                          </span>
-                          <span className="text-xl font-medium text-gray-500">
-                            /month
-                          </span>
+                          <span className="flex items-start px-3 text-6xl tracking-tight text-gray-900"></span>
                         </div>
                       </div>
                     </div>
@@ -88,7 +71,7 @@ export default function Features() {
                             className="block w-full rounded-lg border border-transparent bg-white px-6 py-3 text-center text-base font-medium text-indigo-600 hover:bg-gray-50"
                             aria-describedby="tier-hobby"
                           >
-                            Start your trial
+                            تماس با ما
                           </a>
                         </div>
                       </div>
@@ -105,7 +88,7 @@ export default function Features() {
                   <div className="absolute inset-x-0 top-0 translate-y-px transform">
                     <div className="flex -translate-y-1/2 transform justify-center">
                       <span className="inline-flex rounded-full bg-indigo-600 px-4 py-1 text-base font-semibold text-white">
-                        Most popular
+                        آکادمی تک آرت
                       </span>
                     </div>
                   </div>
@@ -115,18 +98,10 @@ export default function Features() {
                         className="text-center text-3xl font-semibold tracking-tight text-gray-900 sm:-mx-6"
                         id="tier-growth"
                       >
-                        Growth
+                        افتخارات
                       </h3>
                       <div className="mt-4 flex items-center justify-center">
-                        <span className="flex items-start px-3 text-6xl tracking-tight text-gray-900 sm:text-6xl">
-                          <span className="mt-2 mr-2 text-4xl font-medium tracking-tight">
-                            $
-                          </span>
-                          <span className="font-bold">149</span>
-                        </span>
-                        <span className="text-2xl font-medium text-gray-500">
-                          /month
-                        </span>
+                        <span className="flex items-start px-3 text-6xl tracking-tight text-gray-900 sm:text-6xl"></span>
                       </div>
                     </div>
                   </div>
@@ -153,7 +128,7 @@ export default function Features() {
                           className="block w-full rounded-lg border border-transparent bg-indigo-600 px-6 py-4 text-center text-xl font-medium leading-6 text-white hover:bg-indigo-700"
                           aria-describedby="tier-growth"
                         >
-                          Start your trial
+                          درباره ی ما
                         </a>
                       </div>
                     </div>
@@ -169,18 +144,10 @@ export default function Features() {
                           className="text-center text-2xl font-medium text-gray-900"
                           id="tier-scale"
                         >
-                          Scale
+                          امکانات اختصاصی
                         </h3>
                         <div className="mt-4 flex items-center justify-center">
-                          <span className="flex items-start px-3 text-6xl tracking-tight text-gray-900">
-                            <span className="mt-2 mr-2 text-4xl font-medium tracking-tight">
-                              $
-                            </span>
-                            <span className="font-bold">349</span>
-                          </span>
-                          <span className="text-xl font-medium text-gray-500">
-                            /month
-                          </span>
+                          <span className="flex items-start px-3 text-6xl tracking-tight text-gray-900"></span>
                         </div>
                       </div>
                     </div>
@@ -207,7 +174,7 @@ export default function Features() {
                             className="block w-full rounded-lg border border-transparent bg-white px-6 py-3 text-center text-base font-medium text-indigo-600 hover:bg-gray-50"
                             aria-describedby="tier-scale"
                           >
-                            Start your trial
+                            رویداد ها
                           </a>
                         </div>
                       </div>

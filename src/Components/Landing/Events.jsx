@@ -7,8 +7,8 @@ import {
 const timeline = [
   {
     id: 1,
-    content: "Applied to",
-    target: "Front End Developer",
+    content: "محمد حسین بحرالعلوم",
+    target: "استعداد سنجی",
     href: "#",
     date: "Sep 20",
     datetime: "2020-09-20",
@@ -17,8 +17,9 @@ const timeline = [
   },
   {
     id: 2,
-    content: "Advanced to phone screening by",
-    target: "Bethany Blake",
+    content: "محمد حسین بحرالعلوم",
+
+    target: "اینترفیس حرفه ای ",
     href: "#",
     date: "Sep 22",
     datetime: "2020-09-22",
@@ -27,8 +28,8 @@ const timeline = [
   },
   {
     id: 3,
-    content: "Completed phone screening with",
-    target: "Martha Gardner",
+    content: "محمد حسین بحرالعلوم",
+    target: "انیمیشن",
     href: "#",
     date: "Sep 28",
     datetime: "2020-09-28",
@@ -37,8 +38,8 @@ const timeline = [
   },
   {
     id: 4,
-    content: "Advanced to interview by",
-    target: "Bethany Blake",
+    content: "محمد حسین بحرالعلوم",
+    target: "آژاکس و وب سرویس",
     href: "#",
     date: "Sep 30",
     datetime: "2020-09-30",
@@ -47,8 +48,8 @@ const timeline = [
   },
   {
     id: 5,
-    content: "Completed interview with",
-    target: "Katherine Snyder",
+    target: "کارگاه ری اکت و دات نت",
+    content: "محمد حسین بحرالعلوم",
     href: "#",
     date: "Oct 4",
     datetime: "2020-10-04",
@@ -64,6 +65,9 @@ function classNames(...classes) {
 export default function Events() {
   return (
     <div className="flow-root">
+      <div className="text-45 ">
+        <h2>مسیر آموزشی آکادمی</h2>
+      </div>
       <ul role="list" className="">
         {timeline.map((event, eventIdx) => (
           <li key={event.id}>
@@ -91,13 +95,13 @@ export default function Events() {
                 <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                   <div>
                     <p className="text-sm text-gray-500 dark:text-medium">
-                      {event.content}{" "}
                       <a
                         href={event.href}
                         className="font-medium text-gray-900 dark:text-white mx-6"
                       >
                         {event.target}
                       </a>
+                      {event.content}{" "}
                     </p>
                   </div>
                   <div className="whitespace-nowrap text-right text-sm text-gray-500 dark:text-medium">

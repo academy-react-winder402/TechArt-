@@ -113,9 +113,6 @@ export default function BlogMainContent() {
       <div className="relative px-6 lg:px-8">
         <div className="mx-auto max-w-prose text-lg">
           <h1>
-            <span className="block text-center text-lg font-semibold text-indigo-600">
-              Introducing
-            </span>
             <span className="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
               JavaScript for Beginners
             </span>
@@ -145,20 +142,22 @@ export default function BlogMainContent() {
               <BookmarkButton />
             </div>
           </div>
-          <h2>Everything you need to get up and running</h2>
-          <p>
-            Purus morbi dignissim senectus mattis <a href="#">adipiscing</a>.
-            Amet, massa quam varius orci dapibus volutpat cras. In amet eu
-            ridiculus leo sodales cursus tristique. Tincidunt sed tempus ut
-            viverra ridiculus non molestie. Gravida quis fringilla amet eget dui
-            tempor dignissim. Facilisis auctor venenatis varius nunc, congue
-            erat ac. Cras fermentum convallis quam.
-          </p>
+          <div className="pt-10">
+            <h2>Everything you need to get up and running</h2>
+            <p>
+              Purus morbi dignissim senectus mattis <a href="#">adipiscing</a>.
+              Amet, massa quam varius orci dapibus volutpat cras. In amet eu
+              ridiculus leo sodales cursus tristique. Tincidunt sed tempus ut
+              viverra ridiculus non molestie. Gravida quis fringilla amet eget
+              dui tempor dignissim. Facilisis auctor venenatis varius nunc,
+              congue erat ac. Cras fermentum convallis quam.
+            </p>
+          </div>
           {/* Related articles section */}
           <div className="mt-12">
             <h2 className="text-2xl font-semibold mb-4">Related Articles</h2>
             {/* Added grid layout for related articles */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+            <div className="grid pt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
               {/* Related article 1 */}
               <div className="border border-gray-200 border-r-amber-500 border-r-4 rounded-lg p-4">
                 <h3 className="text-lg font-semibold mb-2">
@@ -175,7 +174,9 @@ export default function BlogMainContent() {
             neque erat velit.
           </p>
         </div>
-        <BlogDetailCmTab />
+        <div className="py-10">
+          <BlogDetailCmTab />
+        </div>
       </div>
     </div>
   );

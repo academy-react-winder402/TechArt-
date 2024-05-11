@@ -9,21 +9,21 @@ import image10 from "../../assets/Images/10.png";
 
 const supportLinks = [
   {
-    name: "Sales",
+    name: "دوره های برنامه نویسی",
     href: "#",
-    description: "Varius facilisi mauris sed sit. ",
+    description: "دوره های برنامه نویسی ",
     image: image07,
   },
   {
-    name: "Technical Support",
+    name: "کارگاه های backend و frontend",
     href: "#",
-    description: "Varius facilisi mauris sed sit.",
+    description: "کارگاه های backend و frontend",
     image: image08,
   },
   {
-    name: "Media Inquiries",
+    name: "کارگاه رزومه نویسی",
     href: "#",
-    description: "Varius facilisi mauris sed sit.",
+    description: "کارگاه رزومه نویسی",
     image: image10,
   },
 ];
@@ -36,9 +36,6 @@ export default function Shortcut() {
         className="relative z-10 mx-auto -mt-32 max-w-6xl px-6 pb-32 lg:px-8 bg-slate-200 dark:bg-teal-100	shadow-lg	rounded-2xl"
         aria-labelledby="contact-heading"
       >
-        <h2 className="sr-only" id="contact-heading">
-          Contact us
-        </h2>
         <div className="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
           {supportLinks.map((link) => (
             <div key={link.name} className="flex flex-col rounded-2xl  ">

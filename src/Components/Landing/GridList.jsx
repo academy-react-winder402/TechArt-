@@ -12,42 +12,42 @@ const Grid = () => {
   const posts = [
     {
       id: 1,
-      name: "Product 1",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "رابط کاربری",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "Api نویسی",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "phyton",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "c++",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -58,7 +58,9 @@ const Grid = () => {
   return (
     <div className="relative bg-gray-50 dark:bg-dark px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
       <div className="absolute inset-0">
-        <div className="h-1/3 bg-white dark:bg-dark sm:h-2/3" />
+        <div className="h-1/3 bg-white dark:bg-dark sm:h-2/3">
+          <h2>برترین دوره ها </h2>
+        </div>
       </div>
       <div className="relative mx-auto max-w-7xl">
         <Swiper

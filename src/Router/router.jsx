@@ -10,6 +10,7 @@ import { CoursePageRouter } from "./CoursePageRouter";
 import { EditProfilePageRouter } from "./EditProfileRouter";
 import { LoginPageRouter } from "./LoginRouter";
 import { PanellRouter } from "./PanellRouter";
+import { SignUpPageRouter } from "./SignUpPageRouter";
 const router = createBrowserRouter([
   ...CoursePageRouter,
   ...BlogPageRouter,
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
   ...CourseDetailRouter,
   ...BlogDetailRouter,
   ...EditProfilePageRouter,
+  ...SignUpPageRouter,
 
   {
     path: "/",
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/editprofile",
     element: <EditProfilePageRouter />,
+  },
+  {
+    path: "/register",
+    element: <SignUpPageRouter />,
   },
 ]);
 

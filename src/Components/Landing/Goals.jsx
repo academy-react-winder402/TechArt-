@@ -17,23 +17,23 @@ export default function Goals() {
           {/* Content area */}
           <div className="pt-12 sm:pt-16 lg:pt-20">
             <h2 className="text-3xl font-bold tracking-tight dark:text-white text-gray-900 sm:text-4xl">
-              On a mission to empower teams
+              ماموریت تیم قدرتمند مدرسه تک آرت{" "}
             </h2>
             <div className="mt-6 space-y-6 text-justify text-gray-500 dark:text-white">
               <p className="text-lg">
-                Sagittis scelerisque nulla cursus in enim consectetur quam.
-                Dictum urna sed consectetur neque tristique pellentesque.
-                Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc
-                nisl netus morbi vel porttitor vitae ut. Amet vitae fames
-                senectus vitae.
+                اگر با مفاهیم برنامه نویسی آشنا نیستی و قصد شرکت در دوره آموزش
+                طراحی سایت را داری، پیشنهاد می‌کنیم ابتدا در دوره آموزش برنامه
+                نویسی مقدماتی لقمان آوند شرکت کنی و بعد از آن مسیر یادگیری
+                برنامه نویسی را به درستی انتخاب کنی.
               </p>
               <p className="text-base leading-7 dark:text-white">
-                Sollicitudin tristique eros erat odio sed vitae, consequat
-                turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros
-                eu viverra donec ut volutpat donec laoreet quam urna.
-                Sollicitudin tristique eros erat odio sed vitae, consequat
-                turpis elementum. Lorem nibh vel, eget pretium arcu vitae. Eros
-                eu viverra donec ut volutpat donec laoreet quam urna.
+                اگر در دنیای برنامه‌نویسی تازه‌وارد هستید، یادگیری طراحی وب برای
+                شما دوست داشتنی و نسبتا ساده است. برای کسب‌وکارهای بزرگ، طراحی
+                سایت با استفاده از زبان‌های برنامه‌نویسی وب جذابیت و اهمیت زیادی
+                دارد. بنابراین با یک جستجوی ساده در بین آگهی‌های استخدامی متوجه
+                داغ بودن بازار این حوزه و نیاز شرکت‌ها به طراح وب حرفه‌ای
+                می‌شویم. در چنین شرایطی، یادگیری طراحی وب نویدبخش کسب درآمد بالا
+                و حتی همکاری با شرکت‌های خارجی و کسب درآمد ارزی خواهد بود.
               </p>
             </div>
             <div className="flex py-6 items-start ">

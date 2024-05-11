@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom"; // Import useLocation
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { loginAPI } from "./../../Core/Services/api/auth";
+import { loginAPI } from "./../../Core/Services/api/login";
 
 const LoginForm = () => {
-  const [userObj, setuserObj] = useState(userObj);
+  const location = useLocation(); // Initialize useLocation hook
+
+  const [userObj, setUserObj] = useState({ PhoneOrGmail: "", Password: "" });
+
   const LoginUser = async () => {
-    const userObj = { PhoneOrGmail: "", Password: "" };
     const user = await loginAPI(userObj);
+    // Check if login is successful
+    if (user) {
+      // Redirect to the homepage if login is successful
+      // Access current pathname from location object
+      const currentPathname = location.pathname;
+      // Redirect to the homepage
+      window.location.href = "/";
+    }
   };
 
   const validationSchema = Yup.object({
@@ -20,7 +31,7 @@ const LoginForm = () => {
   const onSubmit = (values, { setSubmitting }) => {
     console.log("userObj:", values);
     setSubmitting(false);
-    // Add your login logic here
+    LoginUser(); // Call LoginUser function upon form submission
   };
 
   return (

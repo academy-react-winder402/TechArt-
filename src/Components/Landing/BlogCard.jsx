@@ -1,10 +1,10 @@
 const posts = [
   {
-    title: "Boost your conversion rate",
+    title: "ترلو (Trello) چیست؟ -ابزار مدیریت پروژه حرفه ای",
     href: "#",
     category: { name: "Article", href: "#" },
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
+      "در دنیای امروزی که بهره‌وری و مدیریت پروژه نقش حیاتی در موفقیت تیم‌ها و کسب‌وکارها ایفا می‌کند، ابزارهای مدیریت کار مانند Trello به‌عنوان یک گزینه کاربردی و ساده به چشم می‌خورند. ",
     date: "Mar 16, 2020",
     datetime: "2020-03-16",
     imageUrl:
@@ -18,11 +18,11 @@ const posts = [
     },
   },
   {
-    title: "How to use search engine optimization to drive sales",
+    title: "ترلو (Trello) چیست؟ -ابزار مدیریت پروژه حرفه ای",
     href: "#",
     category: { name: "Video", href: "#" },
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
+      "در دنیای امروزی که بهره‌وری و مدیریت پروژه نقش حیاتی در موفقیت تیم‌ها و کسب‌وکارها ایفا می‌کند، ابزارهای مدیریت کار مانند Trello به‌عنوان یک گزینه کاربردی و ساده به چشم می‌خورند. ",
     date: "Mar 10, 2020",
     datetime: "2020-03-10",
     imageUrl:
@@ -36,11 +36,11 @@ const posts = [
     },
   },
   {
-    title: "Improve your customer experience",
+    title: "ترلو (Trello) چیست؟ -ابزار مدیریت پروژه حرفه ای",
     href: "#",
     category: { name: "Case Study", href: "#" },
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
+      "در دنیای امروزی که بهره‌وری و مدیریت پروژه نقش حیاتی در موفقیت تیم‌ها و کسب‌وکارها ایفا می‌کند، ابزارهای مدیریت کار مانند Trello به‌عنوان یک گزینه کاربردی و ساده به چشم می‌خورند. ",
     date: "Feb 12, 2020",
     datetime: "2020-02-12",
     imageUrl:
@@ -64,11 +64,11 @@ export default function BlogCard() {
       <div className="relative mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            From the blog
+            به روز ترین مقالات فناوری
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
-            libero labore natus atque, ducimus sed.
+            هدف مجموعه ما افزایش سطح کیفیت آموزش و ساختن راهی برای ورود
+            دانشجویان به بازار کار تخصصی است
           </p>
         </div>
         <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
