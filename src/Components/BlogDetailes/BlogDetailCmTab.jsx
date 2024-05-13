@@ -20,7 +20,7 @@ const BlogDetailCmTab = () => {
           }`}
           onClick={() => handleTabClick(0)}
         >
-          Tab 1
+          صدا
         </div>
         <div
           className={`cursor-pointer py-2 px-4 ${
@@ -30,22 +30,24 @@ const BlogDetailCmTab = () => {
           }`}
           onClick={() => handleTabClick(1)}
         >
-          Tab 2
+          متن
         </div>
       </div>
       <div className="p-4">
         {activeTab === 0 && (
           <div className=" ">
-            <h2 className="text-xl font-bold mb-2">Tab 1 Content</h2>
-            <p className="text-gray-700 mb-4">This is the content of Tab 1.</p>
+            <h2 className="text-xl font-bold mb-2 py-4 text-gray-600">
+              از شنیدن نظرتان خوشحال میشویم
+            </h2>
+            {/* <p className="text-gray-700 mb-4">This is the content of Tab 1.</p> */}
             <VoiceCommentForm />
           </div>
         )}
         {activeTab === 1 && (
           <div className="">
             <CommentForm />
-            <h2 className="text-xl font-bold mb-2">Tab 2 Content</h2>
-            <p className="text-gray-700">This is the content of Tab 2.</p>
+            {/* <h2 className="text-xl font-bold mb-2">نظر</h2>
+            <p className="text-gray-700">This is the content of Tab 2.</p> */}
           </div>
         )}
       </div>

@@ -23,7 +23,7 @@ const sortOptions = [
 const filters = [
   {
     id: "color",
-    name: "Color",
+    name: "مقالات",
     options: [
       { value: "white", label: "White", checked: false },
       { value: "beige", label: "Beige", checked: false },
@@ -35,7 +35,7 @@ const filters = [
   },
   {
     id: "category",
-    name: "Category",
+    name: "اخبار",
     options: [
       { value: "new-arrivals", label: "New Arrivals", checked: false },
       { value: "sale", label: "Sale", checked: false },
@@ -46,7 +46,7 @@ const filters = [
   },
   {
     id: "size",
-    name: "Size",
+    name: "تکنولوژی",
     options: [
       { value: "2l", label: "2L", checked: false },
       { value: "6l", label: "6L", checked: false },
@@ -67,7 +67,7 @@ export default function BlogFilter() {
   const posts = [
     {
       id: 1,
-      name: "Product 1",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
@@ -76,7 +76,7 @@ export default function BlogFilter() {
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -85,7 +85,7 @@ export default function BlogFilter() {
     },
     {
       id: 3,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -94,7 +94,7 @@ export default function BlogFilter() {
     },
     {
       id: 4,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -103,7 +103,7 @@ export default function BlogFilter() {
     },
     {
       id: 5,
-      name: "Product 1",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
@@ -112,7 +112,7 @@ export default function BlogFilter() {
     },
     {
       id: 6,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -121,7 +121,7 @@ export default function BlogFilter() {
     },
     {
       id: 7,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -130,7 +130,7 @@ export default function BlogFilter() {
     },
     {
       id: 8,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -139,7 +139,7 @@ export default function BlogFilter() {
     },
     {
       id: 9,
-      name: "Product 1",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
@@ -148,7 +148,7 @@ export default function BlogFilter() {
     },
     {
       id: 10,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -157,7 +157,7 @@ export default function BlogFilter() {
     },
     {
       id: 11,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -166,7 +166,7 @@ export default function BlogFilter() {
     },
     {
       id: 12,
-      name: "Product 2",
+      name: "فریموورک های فرانت اند",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -297,7 +297,7 @@ export default function BlogFilter() {
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              New Arrivals
+              دسته بندی مطالب
             </h1>
 
             <div className="flex items-center">

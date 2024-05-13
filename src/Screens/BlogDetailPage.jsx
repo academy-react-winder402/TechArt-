@@ -3,6 +3,7 @@ import Footer from "../Components/Common/Footer";
 import Heading from "../Components/Common/Header";
 import React, { useState, useEffect } from "react";
 import PageFramework from "../Components/Common/Course&BlogDetailSkeleone";
+import Navigation from "../Components/Common/Navigation";
 
 function BlogDetailPage() {
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,8 @@ function BlogDetailPage() {
       ) : (
         <div className="container border-2 border-red mx-auto">
           <Heading />
+          <Navigation currentPath={location.pathname} className="bg-gray-500" />
+
           <BlogDetailes />
           <Footer />
         </div>

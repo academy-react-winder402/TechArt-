@@ -35,28 +35,28 @@ const UserProfileDropdown = () => {
               className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
-              Edit Profile
+              ادیت پروفایل
             </a>
             <a
               href="#"
               className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
-              Change Password
+              تغییر پسوورد
             </a>
             <a
               href="#"
               className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
-              Logout
+              خروج
             </a>
             <a
               href="/dashboard"
               className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
-              dashboard
+              داشبورد
             </a>
           </div>
         </div>

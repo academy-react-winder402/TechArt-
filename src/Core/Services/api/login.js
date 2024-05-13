@@ -6,6 +6,7 @@ export const loginAPI = async (user) => {
 
     return response;
   } catch (error) {
+    console.log(error);
     return false;
   }
 };

@@ -22,37 +22,31 @@ const sortOptions = [
 const filters = [
   {
     id: "color",
-    name: "Color",
+    name: "دسته بندی بر اساس ...",
     options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
+      { value: "white", label: "UI/UX", checked: false },
+      { value: "beige", label: "زبان های بکند", checked: false },
+      { value: "blue", label: "زبان های فرانت", checked: true },
+      { value: "brown", label: "اجایل", checked: false },
     ],
   },
   {
     id: "category",
-    name: "Category",
+    name: "قیت",
     options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
+      { value: "new-arrivals", label: "گران ترین ", checked: false },
+      { value: "sale", label: "ارزان ترین", checked: false },
+      { value: "travel", label: "دارای تخفیف", checked: true },
+      { value: "organization", label: "رایگان", checked: false },
     ],
   },
   {
     id: "size",
-    name: "Size",
+    name: "سطح",
     options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
+      { value: "2l", label: "مبتدی", checked: false },
+      { value: "6l", label: "پیشرفته ", checked: false },
+      { value: "12l", label: "حرفه ای", checked: false },
     ],
   },
 ];
@@ -66,7 +60,7 @@ export default function CategoryFilter() {
   const courses = [
     {
       id: 1,
-      name: "Product 1",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
@@ -75,7 +69,7 @@ export default function CategoryFilter() {
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -84,7 +78,7 @@ export default function CategoryFilter() {
     },
     {
       id: 3,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -93,7 +87,7 @@ export default function CategoryFilter() {
     },
     {
       id: 4,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -102,7 +96,7 @@ export default function CategoryFilter() {
     },
     {
       id: 1,
-      name: "Product 1",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 1",
       price: "1000 ریال",
@@ -111,7 +105,7 @@ export default function CategoryFilter() {
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -120,7 +114,7 @@ export default function CategoryFilter() {
     },
     {
       id: 3,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -129,7 +123,7 @@ export default function CategoryFilter() {
     },
     {
       id: 4,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -138,7 +132,7 @@ export default function CategoryFilter() {
     },
     {
       id: 1,
-      name: "Product 1",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 1",
       price: 1000,
@@ -147,7 +141,7 @@ export default function CategoryFilter() {
     },
     {
       id: 2,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: 1000,
@@ -156,7 +150,7 @@ export default function CategoryFilter() {
     },
     {
       id: 3,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -165,7 +159,7 @@ export default function CategoryFilter() {
     },
     {
       id: 4,
-      name: "Product 2",
+      name: "React",
       imageUrl: image,
       description: "Description of Product 2",
       price: "1000 ریال",
@@ -296,14 +290,14 @@ export default function CategoryFilter() {
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              New Arrivals
+              دسته بندی دوره ها
             </h1>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                    Sort
+                    فیلتر
                     <ChevronDownIcon
                       className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -440,7 +434,9 @@ export default function CategoryFilter() {
                   <div className="mb-20 flex ">
                     <SearchBox />
                   </div>
-                  <CourseList courses={courses} />
+                  <div>
+                    <CourseList courses={courses} />
+                  </div>
                 </div>
               </div>
             </div>

@@ -58,7 +58,7 @@ const Grid = () => {
   return (
     <div className="relative bg-gray-50 dark:bg-dark px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
       <div className="absolute inset-0">
-        <div className="h-1/3 bg-white dark:bg-dark sm:h-2/3">
+        <div className="h-1/3 bg-white dark:bg-dark dark:text-medium sm:h-2/3">
           <h2>برترین دوره ها </h2>
         </div>
       </div>

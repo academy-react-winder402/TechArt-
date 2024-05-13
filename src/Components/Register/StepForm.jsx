@@ -103,10 +103,9 @@ const StepForm = () => {
             <>
               <Field
                 name="phoneNumber"
-                type="text"
+                type="number"
                 placeholder="شماره تلفن"
                 className="border border-gray-400 rounded px-4 py-2 mb-4"
-                onChange={(e) => setPhoneNumber(e.target.value)}
               />
               {errors.phoneNumber && touched.phoneNumber ? (
                 <div className="text-red-500">{errors.phoneNumber}</div>

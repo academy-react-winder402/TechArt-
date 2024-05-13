@@ -45,7 +45,7 @@ const Testimonials = () => {
   ];
   return (
     <div className="relative bg-gray-50 dark:bg-dark px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
-      <div className="absolute inset-0 pt-6">
+      <div className="absolute dark:text-medium inset-0 pt-6">
         <h2>نظرات کاربران</h2>
       </div>
       <div className="relative mx-auto max-w-7xl">

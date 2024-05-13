@@ -1,6 +1,7 @@
 export default function EditProfile() {
   return (
     <div className="container  lg:mx-auto bg-cyan-950	py-4 px-4 sm:px-6 lg:px-1">
+      <div className="py-4 text-white font-black">ویرایش پروفایل</div>
       <form className="space-y-20 lg:mx-auto divide-y rounded-lg bg-white divide-gray-200 shadow-md max-w-3xl ">
         <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
           <div className="space-y-6 sm:space-y-5">
@@ -10,7 +11,7 @@ export default function EditProfile() {
                   htmlFor="username"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  Username
+                  نام کاربری
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <div className="flex max-w-lg rounded-md shadow-sm">
@@ -30,7 +31,7 @@ export default function EditProfile() {
                   htmlFor="about"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  About
+                  درباره ی من
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <textarea
@@ -40,9 +41,7 @@ export default function EditProfile() {
                     className="block w-full max-w-96 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     defaultValue={""}
                   />
-                  <p className="mt-2 text-sm text-gray-500">
-                    Write a few sentences about yourself.
-                  </p>
+                  <p className="mt-2 text-sm text-gray-500">درباره ی من</p>
                 </div>
               </div>
 
@@ -51,7 +50,7 @@ export default function EditProfile() {
                   htmlFor="photo"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Photo
+                  عکس
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <div className="flex items-center">
@@ -68,21 +67,21 @@ export default function EditProfile() {
                       type="button"
                       className="ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
-                      Change
+                      بارگزاری
                     </button>
                   </div>
                 </div>
               </div>
 
-              <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+              <div className="grid grid-cols-3  items-start border-t border-gray-200 pt-5">
                 <label
                   htmlFor="cover-photo"
-                  className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                  className="block text-sm font-medium text-gray-700 "
                 >
-                  Cover photo
+                  عکس کاربر
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
-                  <div className="flex max-w-lg justify-center max-w-96 rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                  <div className="flex max-w-lg ml-4 justify-center pl-3 rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
                     <div className="space-y-1 text-center">
                       <svg
                         className="mx-auto h-12 w-12 text-gray-400"
@@ -126,11 +125,9 @@ export default function EditProfile() {
           <div className="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
             <div>
               <h3 className="text-lg font-medium leading-6 text-gray-900">
-                Personal Information
+                اطلاعات شخصی
               </h3>
-              <p className="mt-1 max-w-2xl text-sm text-gray-500">
-                Use a permanent address where you can receive mail.
-              </p>
+              <p className="mt-1 max-w-2xl text-sm text-gray-500"></p>
             </div>
             <div className="space-y-6 sm:space-y-5">
               <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
@@ -138,7 +135,7 @@ export default function EditProfile() {
                   htmlFor="first-name"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  First name
+                  نام
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <input
@@ -156,7 +153,7 @@ export default function EditProfile() {
                   htmlFor="last-name"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  Last name
+                  نام خانوادگی
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <input
@@ -174,7 +171,7 @@ export default function EditProfile() {
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  Email address
+                  آدرس ایمیل
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <input
@@ -192,7 +189,7 @@ export default function EditProfile() {
                   htmlFor="country"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  Country
+                  کشوز
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <select
@@ -213,7 +210,7 @@ export default function EditProfile() {
                   htmlFor="street-address"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  Street address
+                  آدرس
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <input
@@ -231,7 +228,7 @@ export default function EditProfile() {
                   htmlFor="city"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  City
+                  شهر
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <input
@@ -249,7 +246,7 @@ export default function EditProfile() {
                   htmlFor="region"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                 >
-                  State / Province
+                  استان
                 </label>
                 <div className="mt-1 sm:col-span-2 sm:mt-0">
                   <input
@@ -289,13 +286,13 @@ export default function EditProfile() {
               type="button"
               className="rounded-md border border-gray-300 bg-white mx-4  py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
-              Cancel
+              انصراف
             </button>
             <button
               type="submit"
               className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
-              Save
+              ذخیره
             </button>
           </div>
         </div>

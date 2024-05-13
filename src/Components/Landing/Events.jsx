@@ -66,7 +66,7 @@ export default function Events() {
   return (
     <div className="flow-root">
       <div className="text-45 ">
-        <h2>مسیر آموزشی آکادمی</h2>
+        <h2 className="">مسیر آموزشی آکادمی</h2>
       </div>
       <ul role="list" className="">
         {timeline.map((event, eventIdx) => (

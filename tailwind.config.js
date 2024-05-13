@@ -8,6 +8,7 @@ export default {
       colors: {
         dark: "#262626",
         medium: "#32a895",
+        light: "##fcfafa",
       },
     },
   },
