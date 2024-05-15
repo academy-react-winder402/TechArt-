@@ -1,9 +1,9 @@
-import StepForm from "../Components/Register/StepForm";
+import RegisterStepHandler from "../Components/Auth/RegisterStepHandler";
 
 function SignUpPage() {
   return (
     <div className="container py-40 mx-auto">
-      <StepForm />
+      <RegisterStepHandler />
     </div>
   );
 }

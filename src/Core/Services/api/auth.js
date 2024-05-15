@@ -1,19 +1,18 @@
-import axios from "axios";
+import http from "../interceptor";
 
-// مرحله ۱: فراخوانی تابع loginAPI
 export const loginAPI = async (user) => {
   try {
-    const response = await axios.post("/Sign/Login", user);
-    return response.data; // فرض شده است که response.data شامل داده‌های مربوطه از سمت سرور است
+    const response = await http.post("/Sign/Login", user);
+
+    return response;
   } catch (error) {
     return false;
   }
 };
 
-// مرحله ۲: فراخوانی تابع registerAPI
 export const registerAPI = async (phoneNumber) => {
   try {
-    const response = await axios.post(
+    const response = await http.post(
       "/Sign/SendVerifyMessage",
       { phoneNumber },
       {
@@ -23,16 +22,16 @@ export const registerAPI = async (phoneNumber) => {
         },
       }
     );
-    return response.data; // فرض شده است که response.data شامل داده‌های مربوطه از سمت سرور است
+
+    return response;
   } catch (error) {
     return false;
   }
 };
 
-// مرحله ۳: فراخوانی تابع verifyMessageAPI
 export const verifyMessageAPI = async (phoneNumber, verifyCode) => {
   try {
-    const response = await axios.post(
+    const response = await http.post(
       "/Sign/VerifyMessage",
       { phoneNumber, verifyCode },
       {
@@ -42,16 +41,15 @@ export const verifyMessageAPI = async (phoneNumber, verifyCode) => {
         },
       }
     );
-    return response.data; // فرض شده است که response.data شامل داده‌های مربوطه از سمت سرور است
+
+    return response;
   } catch (error) {
     return false;
   }
 };
-
-// تابع اضافی برای ثبت‌نام پس از تایید
 export const signUpAPI = async (password, gmail, phoneNumber) => {
   try {
-    const response = await axios.post(
+    const response = await http.post(
       "/Sign/Register",
       { password, gmail, phoneNumber },
       {
@@ -61,7 +59,8 @@ export const signUpAPI = async (password, gmail, phoneNumber) => {
         },
       }
     );
-    return response.data; // فرض شده است که response.data شامل داده‌های مربوطه از سمت سرور است
+
+    return response;
   } catch (error) {
     return false;
   }
