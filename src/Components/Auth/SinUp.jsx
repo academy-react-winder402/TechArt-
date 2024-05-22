@@ -3,7 +3,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../redux/authSlice";
+import { registerUser } from "../../Redux/authSlice";
 
 const PasswordEmailForm = () => {
   const dispatch = useDispatch();

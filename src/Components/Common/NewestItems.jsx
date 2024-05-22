@@ -38,7 +38,7 @@ function classNames(...classes) {
 export default function Newest() {
   return (
     <div>
-      <h2 className="text-sm pt-20  font-medium text-gray-500">جدیدترین ها</h2>
+      <h2 className="text-sm pt-5  font-medium text-gray-500">جدیدترین ها</h2>
       <ul
         role="list"
         className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-1 	"

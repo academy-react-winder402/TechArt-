@@ -122,13 +122,15 @@ export default function BlogMainContent() {
           <h2>ابزار مدیریت پروژه حرفه ای</h2>
 
           <figure>
-            <img
-              className="w-full rounded-lg"
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3"
-              alt=""
-              width={1310}
-              height={873}
-            />
+            <div className="flex justify-center">
+              <img
+                className="max-h-64	w-auto rounded-lg"
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3"
+                alt=""
+                width={1310}
+                height={873}
+              />
+            </div>
             <figcaption>
               Sagittis scelerisque nulla cursus in enim consectetur quam.
             </figcaption>

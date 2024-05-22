@@ -6,14 +6,14 @@ import { ChevronDownIcon, PlusIcon } from "@heroicons/react/20/solid";
 const filters = [
   {
     id: "color",
-    name: "Color",
+    name: "دسته بندی مقالات",
     options: [
-      { value: "white", label: "White" },
-      { value: "beige", label: "Beige" },
-      { value: "blue", label: "Blue" },
-      { value: "brown", label: "Brown" },
-      { value: "green", label: "Green" },
-      { value: "purple", label: "Purple" },
+      { value: "front-end", label: "front-end" },
+      { value: "back-end", label: "back-end" },
+      { value: "ui", label: "رابط کاربری" },
+      { value: "ux", label: "تجربه کاربری" },
+      { value: "school news", label: "اخبار مدرسه" },
+      { value: "tech news", label: "اخبار تکنولوژی" },
     ],
   },
 ];
@@ -26,7 +26,7 @@ export default function BlogDetailsFilter() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white rounded-lg">
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
@@ -60,7 +60,7 @@ export default function BlogDetailsFilter() {
                 <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
                   <div className="flex items-center justify-between px-4">
                     <h2 className="text-lg font-medium text-gray-900">
-                      Filters
+                      موضوعات
                     </h2>
                     <button
                       type="button"
@@ -134,70 +134,65 @@ export default function BlogDetailsFilter() {
         </Transition.Root>
 
         <main className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
-            <aside>
-              <h2 className="sr-only">Filters</h2>
+          <aside>
+            <h2 className="sr-only">دسته بندی ها </h2>
 
-              <button
-                type="button"
-                className="inline-flex items-center lg:hidden"
-                onClick={() => setMobileFiltersOpen(true)}
-              >
-                <span className="text-sm font-medium text-gray-700">
-                  Filters
-                </span>
-                <PlusIcon
-                  className="ml-1 h-5 w-5 flex-shrink-0 text-gray-400"
-                  aria-hidden="true"
-                />
-              </button>
+            <button
+              type="button"
+              className="inline-flex items-center lg:hidden"
+              onClick={() => setMobileFiltersOpen(true)}
+            >
+              <span className="text-sm font-medium text-gray-700">
+                دسته بندی ها
+              </span>
+              <PlusIcon
+                className="ml-1 h-5 w-5 flex-shrink-0 text-gray-400"
+                aria-hidden="true"
+              />
+            </button>
 
-              <div className="hidden lg:block">
-                <form className="space-y-10 divide-y divide-gray-200">
-                  {filters.map((section, sectionIdx) => (
-                    <div
-                      key={section.name}
-                      className={sectionIdx === 0 ? null : "pt-10"}
-                    >
-                      <fieldset>
-                        <legend className="block text-sm font-medium text-gray-900">
-                          {section.name}
-                        </legend>
-                        <div className="space-y-3 pt-6">
-                          {section.options.map((option, optionIdx) => (
-                            <div
-                              key={option.value}
-                              className="flex items-center"
+            <div className="hidden lg:block">
+              <form className="space-y-10 divide-y divide-gray-200">
+                {filters.map((section, sectionIdx) => (
+                  <div
+                    key={section.name}
+                    className={sectionIdx === 0 ? null : "pt-10"}
+                  >
+                    <fieldset>
+                      <legend className="block text-sm font-medium text-gray-900">
+                        {section.name}
+                      </legend>
+                      <div className="space-y-3 pt-6">
+                        {section.options.map((option, optionIdx) => (
+                          <div key={option.value} className="flex items-center">
+                            <input
+                              id={`${section.id}-${optionIdx}`}
+                              name={`${section.id}[]`}
+                              defaultValue={option.value}
+                              type="checkbox"
+                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            />
+                            <label
+                              htmlFor={`${section.id}-${optionIdx}`}
+                              className="ml-3 text-sm text-gray-600"
                             >
-                              <input
-                                id={`${section.id}-${optionIdx}`}
-                                name={`${section.id}[]`}
-                                defaultValue={option.value}
-                                type="checkbox"
-                                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                              />
-                              <label
-                                htmlFor={`${section.id}-${optionIdx}`}
-                                className="ml-3 text-sm text-gray-600"
-                              >
-                                {option.label}
-                              </label>
-                            </div>
-                          ))}
-                        </div>
-                      </fieldset>
-                    </div>
-                  ))}
-                </form>
-              </div>
-            </aside>
-
-            {/* Product grid */}
-            <div className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
-              {/* Replace with your content */}
-              <div className="h-96 rounded-lg  lg:h-full" />
-              {/* /End replace */}
+                              {option.label}
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </fieldset>
+                  </div>
+                ))}
+              </form>
             </div>
+          </aside>
+
+          {/* Product grid */}
+          <div className="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
+            {/* Replace with your content */}
+            <div className="h-96 rounded-lg  lg:h-full" />
+            {/* /End replace */}
           </div>
         </main>
       </div>

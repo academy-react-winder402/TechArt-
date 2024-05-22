@@ -85,17 +85,17 @@ export default function Features() {
                     className="pointer-events-none absolute inset-0 rounded-lg border-2 border-indigo-600"
                     aria-hidden="true"
                   />
-                  <div className="absolute inset-x-0 top-0 translate-y-px transform">
-                    <div className="flex -translate-y-1/2 transform justify-center">
+                  <div className="absolute inset-x-0  top-0 translate-y-px transform">
+                    <div className="flex  -translate-y-1/2 transform justify-center">
                       <span className="inline-flex rounded-full bg-indigo-600 px-4 py-1 text-base font-semibold text-white">
                         آکادمی تک آرت
                       </span>
                     </div>
                   </div>
-                  <div className="rounded-t-lg bg-white px-6 pt-12 pb-10">
+                  <div className="rounded-t-lg  bg-white -mt-5 px-6 pt-12 pb-10">
                     <div>
                       <h3
-                        className="text-center text-3xl font-semibold tracking-tight text-gray-900 sm:-mx-6"
+                        className="text-center   text-3xl font-semibold tracking-tight text-gray-900 sm:-mx-6"
                         id="tier-growth"
                       >
                         افتخارات
@@ -121,7 +121,7 @@ export default function Features() {
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-10">
+                    <div className="mt-10 ">
                       <div className="rounded-lg shadow-md">
                         <a
                           href="#"

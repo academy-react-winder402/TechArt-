@@ -1,9 +1,8 @@
-// components/PhoneRegister.js
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { sendPhoneNumber } from "../redux/authSlice";
+import { sendPhoneNumber, setPhoneNumber } from "../../Redux/authSlice";
 
 const PhoneRegister = () => {
   const dispatch = useDispatch();
@@ -19,6 +18,7 @@ const PhoneRegister = () => {
   });
 
   const handleSubmit = (values) => {
+    dispatch(setPhoneNumber(values.phoneNumber));
     dispatch(sendPhoneNumber(values.phoneNumber));
   };
 

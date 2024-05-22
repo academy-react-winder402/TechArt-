@@ -136,7 +136,7 @@ export default function CourseDetailFilter() {
         <main className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
             <aside>
-              <h2 className="sr-only">Filters</h2>
+              <h2 className="sr-only">دسته بندی دروس</h2>
 
               <button
                 type="button"
@@ -144,7 +144,7 @@ export default function CourseDetailFilter() {
                 onClick={() => setMobileFiltersOpen(true)}
               >
                 <span className="text-sm font-medium text-gray-700">
-                  Filters
+                  موضوعات
                 </span>
                 <PlusIcon
                   className="ml-1 h-5 w-5 flex-shrink-0 text-gray-400"

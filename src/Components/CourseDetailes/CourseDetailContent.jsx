@@ -8,11 +8,13 @@ const CourseDetailContent = ({ children }) => {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <div className="w-1/4 bg-gray-200 p-4 ">
-        {/* Sidebar content */}
-        <SearchBox />
-        <AcardeonCategory />
-        <Newest />
+      <div className="w-1/4  p-4 ">
+        <div className="sticky top-0">
+          {/* Sidebar content */}
+          <SearchBox />
+          <AcardeonCategory />
+          <Newest />
+        </div>
       </div>
 
       {/* Main Content */}
