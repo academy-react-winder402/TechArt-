@@ -1,10 +1,8 @@
-import axios from "axios";
+import http from "../interceptor/index";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Initialize react-toastify
-
-export const mainCourses = async (
+export const Courses = async (
   PageNumber = 1,
   RowsOfPage = 8,
   SortingCol = "cost",
@@ -16,16 +14,27 @@ export const mainCourses = async (
   CostUp = undefined
 ) => {
   try {
-    const result = await axios.get(
+    console.log(
+      "logs..........",
+      PageNumber,
+      RowsOfPage,
+      SortingCol,
+      SortType,
+      Query,
+      TechCount,
+      ListTech,
+      CostDown,
+      CostUp
+    );
+    const result = await http.get(
       `/Home/GetCoursesWithPagination?PageNumber=${PageNumber}&RowsOfPage=${RowsOfPage}&SortingCol=${SortingCol}&SortType=${SortType}${
         Query ? `&Query=${Query}` : ""
       }&TechCount=${TechCount}${ListTech ? `&ListTech=${ListTech}` : ""}${
         CostDown && CostUp ? `&CostDown=${CostDown}&CostUp=${CostUp}` : ""
       }`
     );
-    console.log("API Response:", result.data); // بررسی داده‌ها در کنسول
-    return result.data;
+    return result;
   } catch (error) {
-    toast.error("Error : " + error?.message);
+    toast.error("Error: " + error?.message);
   }
 };

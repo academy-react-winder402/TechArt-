@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Pagination from "../Common/Pagination";
+import "react-toastify/dist/ReactToastify.css";
 
 const API_URL = "/Home/GetCoursesWithPagination";
 
 function CourseList() {
   const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalCount, setTotalCount] = useState(0); // تعریف totalCount با useState
+  const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -27,8 +28,9 @@ function CourseList() {
           TechCount: 0,
         },
       });
-      setCourses(response.data.courseFilterDtos || []); // اطمینان از اینکه همیشه یک آرایه است
-      setTotalCount(response.data.totalCount || 0); // به‌روزرسانی totalCount
+      const { courseFilterDtos, totalCount } = response.data;
+      setCourses(courseFilterDtos || []); // اطمینان از اینکه همیشه یک آرایه است
+      setTotalCount(totalCount || 0); // به‌روزرسانی totalCount
     } catch (error) {
       toast.error("Error fetching courses: " + error?.message);
     } finally {
@@ -52,7 +54,6 @@ function CourseList() {
                 <h2>{course.title}</h2>
                 <p>{course.describe}</p>
                 <img src={course.tumbImageAddress} alt={course.title} />
-                {/* سایر جزئیات دوره */}
               </div>
             ))
           ) : (

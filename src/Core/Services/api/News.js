@@ -16,7 +16,7 @@ export const News = async (
         Query ? `&Query=${Query}` : ""
       }`
     );
-    return result.data;
+    return result;
   } catch (error) {
     toast.error("Error: " + error?.message);
   }
