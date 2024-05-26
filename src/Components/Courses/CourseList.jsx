@@ -1,88 +1,72 @@
-// const products = [
-//     {
-//       id: 1,
-//       name: 'Basic Tee 8-Pack',
-//       href: '#',
-//       price: '$256',
-//       description: 'Get the full lineup of our Basic Tees. Have a fresh shirt all week, and an extra for laundry day.',
-//       options: '8 colors',
-//       imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-01.jpg',
-//       imageAlt: 'Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green.',
-//     },
-//     {
-//       id: 2,
-//       name: 'Basic Tee',
-//       href: '#',
-//       price: '$32',
-//       description: 'Look like a visionary CEO and wear the same black t-shirt every day.',
-//       options: 'Black',
-//       imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg',
-//       imageAlt: 'Front of plain black t-shirt.',
-//     },
-//     // More products...
-//   ]
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
+import Pagination from "../Common/Pagination";
 
-// export default function CourseList() {
-//   return (
-//     <div className="bg-white">
-//       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-//         <h2 className="sr-only">Products</h2>
+const API_URL = "/Home/GetCoursesWithPagination";
 
-//         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-//           {products.map((product) => (
-//             <div
-//               key={product.id}
-//               className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
-//             >
-//               <div className="aspect-w-3 aspect-h-4 bg-gray-200 group-hover:opacity-75 sm:aspect-none sm:h-96">
-//                 <img
-//                   src={product.imageSrc}
-//                   alt={product.imageAlt}
-//                   className="h-full w-full object-cover object-center sm:h-full sm:w-full"
-//                 />
-//               </div>
-//               <div className="flex flex-1 flex-col space-y-2 p-4">
-//                 <h3 className="text-sm font-medium text-gray-900">
-//                   <a href={product.href}>
-//                     <span aria-hidden="true" className="absolute inset-0" />
-//                     {product.name}
-//                   </a>
-//                 </h3>
-//                 <p className="text-sm text-gray-500">{product.description}</p>
-//                 <div className="flex flex-1 flex-col justify-end">
-//                   <p className="text-sm italic text-gray-500">{product.options}</p>
-//                   <p className="text-base font-medium text-gray-900">{product.price}</p>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-// ProductListComponent.js
-import React from "react";
-import { Link } from "react-router-dom";
-import CardComponent from "../Common/Card";
+function CourseList() {
+  const [courses, setCourses] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0); // تعریف totalCount با useState
+  const [loading, setLoading] = useState(false);
 
-const CourseList = ({ courses }) => {
+  useEffect(() => {
+    fetchCourses(currentPage);
+  }, [currentPage]);
+
+  const fetchCourses = async (page) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(API_URL, {
+        params: {
+          PageNumber: page,
+          RowsOfPage: 8,
+          SortingCol: "cost",
+          SortType: "DESC",
+          TechCount: 0,
+        },
+      });
+      setCourses(response.data.courseFilterDtos || []); // اطمینان از اینکه همیشه یک آرایه است
+      setTotalCount(response.data.totalCount || 0); // به‌روزرسانی totalCount
+    } catch (error) {
+      toast.error("Error fetching courses: " + error?.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {courses?.map((course) => (
-        <Link key={course.id} to={`/coursedetail/${course.id}`}>
-          <CardComponent
-            title={course.name}
-            imageUrl={course.imageUrl}
-            description={course.description}
-            price={course.price}
-            athor={course.athor}
-            date={course.date}
-          />
-        </Link>
-      ))}
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="courses">
+          {courses.length > 0 ? (
+            courses.map((course) => (
+              <div key={course.courseId} className="course">
+                <h2>{course.title}</h2>
+                <p>{course.describe}</p>
+                <img src={course.tumbImageAddress} alt={course.title} />
+                {/* سایر جزئیات دوره */}
+              </div>
+            ))
+          ) : (
+            <p>No courses available.</p>
+          )}
+        </div>
+      )}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(totalCount / 8)}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
-};
+}
 
 export default CourseList;
