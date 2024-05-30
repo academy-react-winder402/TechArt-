@@ -1,8 +1,8 @@
-import http from "../interceptor/index";
+import http from "../../interceptor/index";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const Courses = async (
+export const CoursesAPI = async (
   PageNumber = 1,
   RowsOfPage = 8,
   SortingCol = "cost",

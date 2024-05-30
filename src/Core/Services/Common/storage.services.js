@@ -1,7 +1,6 @@
 const setItem = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
-
 const getItem = (key) => {
   if (localStorage.getItem(key)) return JSON.parse(localStorage.getItem(key));
   return false;
@@ -17,7 +16,7 @@ const setItemGeneric = (key, value) => {
 };
 
 const removeItem = (key) => {
-  if (getItem(key) === false) return false;
+  if (getItem(key === false)) return false;
   localStorage.removeItem(key);
 };
 
@@ -26,10 +25,10 @@ const clearStorage = () => {
 };
 
 export {
-  setItem,
-  getItem,
-  removeItem,
-  clearStorage,
   setItemGeneric,
+  clearStorage,
+  getItem,
+  setItem,
+  removeItem,
   getItemGeneric,
 };

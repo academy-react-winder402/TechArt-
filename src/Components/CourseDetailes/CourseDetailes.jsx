@@ -4,6 +4,7 @@ import CourseInfoTab from "./CourseInfoTab";
 import RecentCourse from "./RecentCourse";
 import { useParams } from "react-router-dom";
 import CouresExplain from "./CourseExplain";
+import { CourseComments } from "./CourseCommet";
 
 export default function CourseDetailes() {
   const { id } = useParams();
@@ -12,6 +13,7 @@ export default function CourseDetailes() {
       <CouresExplain courseId={id} />
       <CourseInfoTab courseId={id} />
       <RecentCourse courseId={id} />
+      <CourseComments courseId={id} />
     </CourseDetailContent>
   );
 }

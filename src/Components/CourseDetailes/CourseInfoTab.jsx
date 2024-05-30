@@ -37,7 +37,7 @@ const CourseInfoTab = () => {
   return (
     <div className="container mx-auto mt-8">
       <Tab>
-        <TabPane label="توضیحات دوره">
+        <TabPane label="نظرات دوره">
           <p>This is the content of tab 1.</p>
         </TabPane>
         <TabPane label="دانلود جلسات">

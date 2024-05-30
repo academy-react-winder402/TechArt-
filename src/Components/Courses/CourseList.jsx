@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Pagination from "../Common/Pagination";
 import "react-toastify/dist/ReactToastify.css";
-
-const API_URL = "/Home/GetCoursesWithPagination";
+import { CoursesAPI } from "../../Core/Services/api/Course";
+import CardComponent from "../Common/Card";
 
 function CourseList() {
-  const [courses, setCourses] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     fetchCourses(currentPage);
@@ -19,23 +19,13 @@ function CourseList() {
   const fetchCourses = async (page) => {
     setLoading(true);
     try {
-      const response = await axios.get(API_URL, {
-        params: {
-          PageNumber: page,
-          RowsOfPage: 8,
-          SortingCol: "cost",
-          SortType: "DESC",
-          TechCount: 0,
-        },
-      });
-      const { courseFilterDtos, totalCount } = response.data;
-      setCourses(courseFilterDtos || []); // اطمینان از اینکه همیشه یک آرایه است
-      setTotalCount(totalCount || 0); // به‌روزرسانی totalCount
+      const response = await CoursesAPI();
+      setCourses(response?.courseFilterDtos);
+      setTotalCount(response?.totalCount);
     } catch (error) {
-      toast.error("Error fetching courses: " + error?.message);
-    } finally {
-      setLoading(false);
+      toast.error("Failed to fetch courses");
     }
+    setLoading(false);
   };
 
   const handlePageChange = (page) => {
@@ -50,11 +40,15 @@ function CourseList() {
         <div className="courses">
           {courses.length > 0 ? (
             courses.map((course) => (
-              <div key={course.courseId} className="course">
-                <h2>{course.title}</h2>
-                <p>{course.describe}</p>
-                <img src={course.tumbImageAddress} alt={course.title} />
-              </div>
+              <CardComponent
+                key={course.courseId}
+                author={course.author}
+                date={course.date}
+                title={course.title}
+                imageUrl={course.tumbImageAddress}
+                description={course.describe}
+                price={course.price}
+              />
             ))
           ) : (
             <p>No courses available.</p>
