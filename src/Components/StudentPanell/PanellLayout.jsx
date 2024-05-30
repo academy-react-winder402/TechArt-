@@ -4,6 +4,9 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import PanellSidebar from "./PanellSidebar";
 import MyCalendar from "./Calendar";
+import MyCoursesPanell from "./MyCourse";
+import MyComment from "./MyComment";
+import MyCourseReserve from "./MyCourseReserve";
 
 const user = {
   name: "Tom Cook",
@@ -336,7 +339,10 @@ export default function PanellLayout() {
                   </h2>
                   <div className="overflow-hidden rounded-lg bg-white shadow">
                     <div className="p-6">
-                      <MyCalendar />
+                      {/* <MyCalendar /> */}
+                      {/* <MyCoursesPanell /> */}
+                      {/* <MyComment /> */}
+                      <MyCourseReserve />
                     </div>
                   </div>
                 </section>

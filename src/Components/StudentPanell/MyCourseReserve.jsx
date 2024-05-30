@@ -8,7 +8,8 @@ const people = [
   // More people...
 ];
 
-export default function MyCoursesPanell() {
+export default function MyCourseReserve
+() {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -67,9 +68,12 @@ export default function MyCoursesPanell() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={person.email}>
+                <tbody className="bg-white">
+                  {people.map((person, personIdx) => (
+                    <tr
+                      key={person.email}
+                      className={personIdx % 2 === 0 ? undefined : "bg-gray-50"}
+                    >
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {person.name}
                       </td>
