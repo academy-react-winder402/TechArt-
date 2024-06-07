@@ -1,14 +1,13 @@
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-// import profileImage from "./feature/profileImage";
-// import reserveId from "./feature/reserveId";
-// import commentDetail from "./feature/commentDetail";
-// import CommentNews from "./feature/CommentNews";
-// import paletteTheme from "./feature/palleteTheme";
+import { combineReducers } from "@reduxjs/toolkit";
+
 import filterCourse from "./filterCourse";
 import newsCategory from "./newsCategory";
 import user from "./user";
 import filterNews from "./filterNews";
+import searchSlice from "./SearchSlice";
+
 const userPersist = persistReducer(
   {
     key: "user",
@@ -17,16 +16,12 @@ const userPersist = persistReducer(
   user
 );
 
-const rootReducer = {
+const rootReducer = combineReducers({
   user: userPersist,
-  filterCourse: filterCourse,
-  newsCategory: newsCategory,
-  filterNews: filterNews,
-  // profileImage: profileImage,
-  // reserveId: reserveId,
-  // commentDetail: commentDetail,
-  // CommentNews: CommentNews,
-  // paletteTheme: paletteTheme,
-};
+  filterCourse,
+  newsCategory,
+  filterNews,
+  searchSlice: searchSlice,
+});
 
 export default rootReducer;

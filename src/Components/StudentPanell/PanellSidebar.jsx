@@ -1,26 +1,26 @@
 import {
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
   HomeIcon,
-  InboxIcon,
   UsersIcon,
+  FolderIcon,
+  CalendarIcon,
+  InboxIcon,
+  ChartBarIcon,
 } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: "داشبورد", icon: HomeIcon, href: "#", current: true },
-  { name: " پروفایل من", icon: UsersIcon, href: "#", current: false },
-  { name: "دورره های من", icon: FolderIcon, href: "#", current: false },
-  { name: "تقویم آموزشی", icon: CalendarIcon, href: "#", current: false },
-  { name: "کامنت ها", icon: InboxIcon, href: "#", current: false },
-  { name: "مالی", icon: ChartBarIcon, href: "#", current: false },
+  { name: "داشبورد", icon: HomeIcon, component: "MyCalendar" },
+  { name: " پروفایل من", icon: UsersIcon, component: "EditProfile" },
+  { name: "دورره های من", icon: FolderIcon, component: "MyCoursesPanell" },
+  { name: "تقویم آموزشی", icon: CalendarIcon, component: "MyCalendar" },
+  { name: "کامنت ها", icon: InboxIcon, component: "MyComment" },
+  { name: "مالی", icon: ChartBarIcon, component: "MyCourseReserve" },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function PanellSidebar() {
+export default function PanellSidebar({ setActiveComponent }) {
   return (
     <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5 pb-4">
       <div className="mt-5 flex flex-grow flex-col">
@@ -35,12 +35,12 @@ export default function PanellSidebar() {
         <nav className="flex-1 space-y-8 bg-white px-2" aria-label="Sidebar">
           <div className="space-y-1">
             {navigation.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
+                onClick={() => setActiveComponent(item.component)}
                 className={classNames(
                   item.current
-                    ? "bg-amber-500	text-gray-900"
+                    ? "bg-amber-500 text-gray-900"
                     : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                   "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                 )}
@@ -55,7 +55,7 @@ export default function PanellSidebar() {
                   aria-hidden="true"
                 />
                 {item.name}
-              </a>
+              </button>
             ))}
           </div>
         </nav>

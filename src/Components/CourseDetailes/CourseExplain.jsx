@@ -15,7 +15,10 @@ export default function CouresExplain() {
           <LikeButton />
         </div>
         <div className="flex items-center mt-2">
-          <BookmarkButton />
+          <BookmarkButton
+            successMessage="این  دوره به لیست علاقه مندی شما اضافه شد"
+            errorMessage="این دوره از لیست علاقه مندی شما حذف شد"
+          />
         </div>
       </div>
       <p className="mt-6  text-md leading-8 text-gray-600 text-justify">

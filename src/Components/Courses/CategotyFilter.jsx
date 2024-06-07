@@ -1,4 +1,8 @@
-import { Fragment, useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import { toast } from "react-toastify";
+import { courseLevel } from "../../Core/Services/api/CourseLevel";
+import { category } from "../../Core/Services/api/CourseCategory";
+import { useDispatch } from "react-redux";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -10,7 +14,7 @@ import {
 } from "@heroicons/react/20/solid";
 import CourseList from "./CourseList";
 import SearchBox from "../Common/SearchBox";
-import image from "../../assets/Images/02.jpg";
+
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
   { name: "Best Rating", href: "#", current: false },
@@ -19,154 +23,58 @@ const sortOptions = [
   { name: "Price: High to Low", href: "#", current: false },
 ];
 
-const filters = [
-  {
-    id: "color",
-    name: "دسته بندی بر اساس ...",
-    options: [
-      { value: "white", label: "UI/UX", checked: false },
-      { value: "beige", label: "زبان های بکند", checked: false },
-      { value: "blue", label: "زبان های فرانت", checked: true },
-      { value: "brown", label: "اجایل", checked: false },
-    ],
-  },
-  {
-    id: "category",
-    name: "قیت",
-    options: [
-      { value: "new-arrivals", label: "گران ترین ", checked: false },
-      { value: "sale", label: "ارزان ترین", checked: false },
-      { value: "travel", label: "دارای تخفیف", checked: true },
-      { value: "organization", label: "رایگان", checked: false },
-    ],
-  },
-  {
-    id: "size",
-    name: "سطح",
-    options: [
-      { value: "2l", label: "مبتدی", checked: false },
-      { value: "6l", label: "پیشرفته ", checked: false },
-      { value: "12l", label: "حرفه ای", checked: false },
-    ],
-  },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function CategoryFilter() {
+function CategoryFilter() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const courses = [
-    {
-      id: 1,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 1",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 2,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 3,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 4,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 1,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 1",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 2,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 3,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 4,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 1,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 1",
-      price: 1000,
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 2,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: 1000,
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 3,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-    {
-      id: 4,
-      name: "React",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1043/06/06",
-    },
-  ];
+  const [filterOptions, setFilterOptions] = useState([]);
+  const dispatch = useDispatch();
+  const courses = [];
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      const levels = await courseLevel();
+      const levelOptions = levels.map((item) => ({
+        value: item.id,
+        label: item.levelName,
+        checked: false,
+      }));
+
+      const categories = await category();
+      const categoryOptions = categories.map((item) => ({
+        value: item.id,
+        label: item.techName,
+        checked: false,
+      }));
+
+      setFilterOptions([
+        { id: "level", name: "سطح", options: levelOptions },
+        { id: "sobject", name: "موضوعات", options: categoryOptions },
+        {
+          id: "cost",
+          name: "قیمت",
+          options: [
+            { value: "new-arrivals", label: "گران ترین", checked: false },
+            { value: "sale", label: "ارزان ترین", checked: false },
+            { value: "travel", label: "دارای تخفیف", checked: true },
+            { value: "organization", label: "رایگان", checked: false },
+          ],
+        },
+      ]);
+    } catch (error) {
+      toast.error("Failed to fetch filter options");
+    }
+  };
+
+  const flilterByCourseLevel = () => {
+    dispatch({});
+  };
 
   return (
     <div className="bg-white">
@@ -203,27 +111,27 @@ export default function CategoryFilter() {
                 <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
                   <div className="flex items-center justify-between px-4">
                     <h2 className="text-lg font-medium text-gray-900">
-                      Filters
+                      فیلترها
                     </h2>
                     <button
                       type="button"
                       className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
                       onClick={() => setMobileFiltersOpen(false)}
                     >
-                      <span className="sr-only">Close menu</span>
+                      <span className="sr-only">بستن منو</span>
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
 
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
-                    <h3 className="sr-only">Categories</h3>
+                    <h3 className="sr-only">دسته‌ها</h3>
                     <ul
                       role="list"
                       className="px-2 py-3 font-medium text-gray-900"
                     ></ul>
 
-                    {filters.map((section) => (
+                    {filterOptions.map((section) => (
                       <Disclosure
                         as="div"
                         key={section.id}
@@ -288,16 +196,16 @@ export default function CategoryFilter() {
         </Transition.Root>
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
+          <div className="flex           items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              دسته بندی دوره ها
+              دسته بندی دوره‌ها
             </h1>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                    فیلتر
+                    مرتب‌سازی
                     <ChevronDownIcon
                       className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -351,7 +259,7 @@ export default function CategoryFilter() {
                 className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
               >
-                <span className="sr-only">Filters</span>
+                <span className="sr-only">فیلترها</span>
                 <FunnelIcon className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>
@@ -359,19 +267,19 @@ export default function CategoryFilter() {
 
           <section aria-labelledby="products-heading" className="pt-6 pb-24">
             <h2 id="products-heading" className="sr-only">
-              Products
+              محصولات
             </h2>
 
-            <div className="flex   gap-x-8 gap-y-10  border-red">
+            <div className="flex gap-x-8 gap-y-10 border-red">
               {/* Filters */}
               <form className="hidden lg:block">
-                <h3 className="sr-only">Categories</h3>
+                <h3 className="sr-only">دسته‌ها</h3>
                 <ul
                   role="list"
                   className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
                 ></ul>
 
-                {filters.map((section) => (
+                {filterOptions.map((section) => (
                   <Disclosure
                     as="div"
                     key={section.id}
@@ -429,9 +337,9 @@ export default function CategoryFilter() {
                   </Disclosure>
                 ))}
               </form>
-              <div className=" ">
+              <div className="">
                 <div>
-                  <div className="mb-20 flex ">
+                  <div className="mb-20 flex">
                     <SearchBox />
                   </div>
                   <div>
@@ -446,3 +354,5 @@ export default function CategoryFilter() {
     </div>
   );
 }
+
+export default CategoryFilter;

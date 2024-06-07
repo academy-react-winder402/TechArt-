@@ -33,11 +33,11 @@ const PostList = () => {
         <Link key={post.id} to={`/blogdetail/${post.id}`}>
           <CardComponent
             key={index}
-            title={post.name}
-            imageUrl={post.imageUrl}
-            description={post.description}
+            title={post.title}
+            imageUrl={post.tumbImageAddress}
+            description={post.describe}
             price={post.price}
-            athor={post.athor}
+            athor={post.author}
             date={post.date}
           />
         </Link>

@@ -1,26 +1,48 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AddCourseFavorite } from "../../Core/Services/api/CourseBookmark";
 
-const BookmarkButton = () => {
+const BookmarkButton = ({ courseId, successMessage, errorMessage }) => {
   const [bookmarked, setBookmarked] = useState(false);
 
-  const handleClick = () => {
-    setBookmarked(!bookmarked);
-    if (!bookmarked) {
-      toast.success("این دوره به لیست علاقه مندی شما اضافه شد");
-    } else {
-      toast.error("این دوره از لیست علاقه مندی شما حذف شد");
+  const handleClick = async () => {
+    const token = localStorage.getItem("authToken"); // فرض می‌کنیم که توکن در localStorage ذخیره شده است
+    if (!token) {
+      toast.error("لطفاً ابتدا وارد حساب کاربری خود شوید.");
+      return;
+    }
+
+    const obj = {
+      courseId: courseId,
+    };
+
+    try {
+      const response = await AddCourseFavorite(obj);
+      if (response?.status === 200) {
+        setBookmarked(!bookmarked);
+        toast.success(successMessage);
+      } else {
+        toast.error(errorMessage);
+      }
+    } catch (error) {
+      toast.error("خطایی رخ داد: " + error.message);
     }
   };
 
   return (
     <>
+      <ToastContainer />
       <button
-        className={`flex items-center space-x-2 px-4 py-2 rounded-lg border border-gray-300 ${
+        className={`flex items-center space-x-2 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
           bookmarked ? "bg-yellow-400 text-white" : "bg-white text-gray-700"
         }`}
         onClick={handleClick}
+        aria-label={
+          bookmarked
+            ? "برداشتن از نشان‌گذاری‌ها"
+            : "اضافه کردن به نشان‌گذاری‌ها"
+        }
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +60,7 @@ const BookmarkButton = () => {
             clipRule="evenodd"
           />
         </svg>
-        <span>{bookmarked ? "Bookmarked" : "Bookmark"}</span>
+        <span>{bookmarked ? "نشان‌گذاری شد" : "نشان‌گذاری"}</span>
       </button>
     </>
   );

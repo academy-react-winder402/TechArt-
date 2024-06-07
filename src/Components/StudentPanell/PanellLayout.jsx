@@ -1,12 +1,23 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  BellIcon,
+  XMarkIcon,
+  CalendarIcon,
+  ChartBarIcon,
+  FolderIcon,
+  HomeIcon,
+  InboxIcon,
+  UsersIcon,
+} from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import PanellSidebar from "./PanellSidebar";
 import MyCalendar from "./Calendar";
 import MyCoursesPanell from "./MyCourse";
 import MyComment from "./MyComment";
 import MyCourseReserve from "./MyCourseReserve";
+import EditProfile from "./EditProfile";
 
 const user = {
   name: "Tom Cook",
@@ -14,11 +25,16 @@ const user = {
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
+
 const navigation = [
-  { name: "صفحه اصلی", href: "/", current: true },
-  { name: "پروفایل", href: "#", current: false },
-  { name: "تماس  با ما", href: "#", current: false },
+  { name: "داشبورد", icon: HomeIcon, component: "MyCalendar" },
+  { name: " پروفایل من", icon: UsersIcon, component: "EditProfile" },
+  { name: "دورره های من", icon: FolderIcon, component: "MyCoursesPanell" },
+  { name: "تقویم آموزشی", icon: CalendarIcon, component: "MyCalendar" },
+  { name: "کامنت ها", icon: InboxIcon, component: "MyComment" },
+  { name: "مالی", icon: ChartBarIcon, component: "MyCourseReserve" },
 ];
+
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
@@ -30,23 +46,33 @@ function classNames(...classes) {
 }
 
 export default function PanellLayout() {
+  const [activeComponent, setActiveComponent] = useState("MyCalendar");
+
+  const renderComponent = (componentName) => {
+    switch (componentName) {
+      case "MyCalendar":
+        return <MyCalendar />;
+      case "EditProfile":
+        return <EditProfile />;
+      case "MyCoursesPanell":
+        return <MyCoursesPanell />;
+      case "MyComment":
+        return <MyComment />;
+      case "MyCourseReserve":
+        return <MyCourseReserve />;
+      default:
+        return <MyCalendar />;
+    }
+  };
+
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full">
-        <Popover as="header" className="bg-cyan-950	 pb-24">
+        <Popover as="header" className="bg-cyan-950 pb-24">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="relative flex items-center justify-center py-5 lg:justify-between">
-                  {/* Right section on desktop */}
                   <div className="hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5">
                     <button
                       type="button"
@@ -55,8 +81,6 @@ export default function PanellLayout() {
                       <span className="sr-only">View notifications</span>
                       <BellIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
-
-                    {/* Profile dropdown */}
                     <Menu as="div" className="relative ml-4 flex-shrink-0">
                       <div>
                         <Menu.Button className="flex rounded-full bg-white text-sm ring-2 ring-white ring-opacity-20 focus:outline-none focus:ring-opacity-100">
@@ -94,8 +118,6 @@ export default function PanellLayout() {
                       </Transition>
                     </Menu>
                   </div>
-
-                  {/* Search */}
                   <div className="min-w-0 flex-1 px-12 lg:hidden">
                     <div className="mx-auto w-full max-w-xs">
                       <label htmlFor="desktop-search" className="sr-only">
@@ -118,10 +140,7 @@ export default function PanellLayout() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Menu button */}
                   <div className="absolute right-0 flex-shrink-0 lg:hidden">
-                    {/* Mobile menu button */}
                     <Popover.Button className="inline-flex items-center justify-center rounded-md bg-transparent p-2 text-indigo-200 hover:bg-white hover:bg-opacity-10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
@@ -143,9 +162,9 @@ export default function PanellLayout() {
                     <div className="col-span-2">
                       <nav className="flex space-x-4">
                         {navigation.map((item) => (
-                          <a
+                          <button
                             key={item.name}
-                            href={item.href}
+                            onClick={() => setActiveComponent(item.component)}
                             className={classNames(
                               item.current ? "text-white" : "text-indigo-100",
                               "text-sm font-medium rounded-md bg-white bg-opacity-0 px-3 py-2 hover:bg-opacity-10"
@@ -153,7 +172,7 @@ export default function PanellLayout() {
                             aria-current={item.current ? "page" : undefined}
                           >
                             {item.name}
-                          </a>
+                          </button>
                         ))}
                       </nav>
                     </div>
@@ -182,7 +201,6 @@ export default function PanellLayout() {
                   </div>
                 </div>
               </div>
-
               <Transition.Root as={Fragment}>
                 <div className="lg:hidden">
                   <Transition.Child
@@ -196,7 +214,6 @@ export default function PanellLayout() {
                   >
                     <Popover.Overlay className="fixed inset-0 z-20 bg-black bg-opacity-25" />
                   </Transition.Child>
-
                   <Transition.Child
                     as={Fragment}
                     enter="duration-150 ease-out"
@@ -231,36 +248,17 @@ export default function PanellLayout() {
                             </div>
                           </div>
                           <div className="mt-3 space-y-1 px-2">
-                            <a
-                              href="#"
-                              className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800"
-                            >
-                              Home
-                            </a>
-                            <a
-                              href="#"
-                              className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800"
-                            >
-                              Profile
-                            </a>
-                            <a
-                              href="#"
-                              className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800"
-                            >
-                              Resources
-                            </a>
-                            <a
-                              href="#"
-                              className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800"
-                            >
-                              Company Directory
-                            </a>
-                            <a
-                              href="#"
-                              className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800"
-                            >
-                              Openings
-                            </a>
+                            {navigation.map((item) => (
+                              <button
+                                key={item.name}
+                                onClick={() =>
+                                  setActiveComponent(item.component)
+                                }
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800"
+                              >
+                                {item.name}
+                              </button>
+                            ))}
                           </div>
                         </div>
                         <div className="pt-4 pb-2">
@@ -313,36 +311,32 @@ export default function PanellLayout() {
             </>
           )}
         </Popover>
-        <main className="-mt-24 pb-8">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <main className="-mt-24 pb-8 h-screen overflow-auto">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 h-full">
             <h1 className="sr-only">Page title</h1>
-            {/* Main 3 column grid */}
-            <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8">
-              {/* Right column */}
+            <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8 h-full">
               <div className="grid grid-cols-1 gap-4">
                 <section aria-labelledby="section-2-title">
                   <h2 className="sr-only" id="section-2-title">
                     Section title
                   </h2>
-                  <div className="overflow-hidden rounded-lg bg-white shadow">
+                  <div className="overflow-hidden rounded-lg bg-white shadow h-full">
                     <div className="p-6">
-                      <PanellSidebar />
+                      <PanellSidebar setActiveComponent={setActiveComponent} />
                     </div>
                   </div>
                 </section>
               </div>
-              {/* Left column */}
-              <div className="grid grid-cols-1 gap-4 lg:col-span-2">
-                <section aria-labelledby="section-1-title">
+              <div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
+                <section aria-labelledby="section-1-title" className="h-full">
                   <h2 className="sr-only" id="section-1-title">
                     Section title
                   </h2>
-                  <div className="overflow-hidden rounded-lg bg-white shadow">
-                    <div className="p-6">
-                      {/* <MyCalendar /> */}
-                      {/* <MyCoursesPanell /> */}
-                      {/* <MyComment /> */}
-                      <MyCourseReserve />
+                  <div className="overflow-hidden rounded-lg bg-white shadow h-full">
+                    <div className="p-6 h-full">
+                      <div className="h-full">
+                        {renderComponent(activeComponent)}
+                      </div>
                     </div>
                   </div>
                 </section>

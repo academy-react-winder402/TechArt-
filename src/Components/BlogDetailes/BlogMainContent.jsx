@@ -141,7 +141,10 @@ export default function BlogMainContent() {
               <LikeButton />
             </div>
             <div className="flex items-center mt-2">
-              <BookmarkButton />
+              <BookmarkButton
+                successMessage="این مطلب به لیست علاقه مندی شما اضافه شد"
+                errorMessage="این مطلب از لیست علاقه مندی شما حذف شد"
+              />
             </div>
           </div>
           <div className="pt-10">
