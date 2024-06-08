@@ -1,49 +1,66 @@
-// src/redux/authSlice.js
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Initial state of the authentication slice
 const initialState = {
   phoneNumber: "",
   verificationCode: "",
   registerStep: "PhoneRegister",
   email: "",
   password: "",
+  loading: false,
+  error: null,
 };
 
+// Async thunk to send phone number for verification
 export const sendPhoneNumber = createAsyncThunk(
   "auth/sendPhoneNumber",
   async (phoneNumber, thunkAPI) => {
-    const response = await axios.post("/Sign/SendVerifyMessage", {
-      phoneNumber,
-    });
-    return response.data;
+    try {
+      const response = await axios.post("/Sign/SendVerifyMessage", {
+        phoneNumber,
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
 );
 
+// Async thunk to send verification code
 export const sendVerificationCode = createAsyncThunk(
   "auth/sendVerificationCode",
-  async ({ phoneNumber, verifyCode }, thunkAPI) => {
-    const response = await axios.post("/Sign/SendVerifyMessage", {
-      phoneNumber,
-      verifyCode,
-    });
-    return response.data;
+  async ({ phoneNumber, verificationCode }, thunkAPI) => {
+    try {
+      const response = await axios.post("/Sign/VerifyCode", {
+        phoneNumber,
+        verificationCode,
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
 );
 
+// Async thunk to register user
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ email, password, phoneNumber }, thunkAPI) => {
-    const response = await axios.post("/Sign/Register", {
-      email,
-      password,
-      phoneNumber,
-    });
-    return response.data;
+    try {
+      const response = await axios.post("/Sign/Register", {
+        email,
+        password,
+        phoneNumber,
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
   }
 );
 
+// Auth slice containing reducers and extra reducers for handling async thunks
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -66,18 +83,49 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Handle sendPhoneNumber
+      .addCase(sendPhoneNumber.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(sendPhoneNumber.fulfilled, (state, action) => {
         state.registerStep = "PhoneConfirm";
+        state.loading = false;
+      })
+      .addCase(sendPhoneNumber.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // Handle sendVerificationCode
+      .addCase(sendVerificationCode.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
       .addCase(sendVerificationCode.fulfilled, (state, action) => {
         state.registerStep = "PasswordEmail";
+        state.loading = false;
+      })
+      .addCase(sendVerificationCode.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      // Handle registerUser
+      .addCase(registerUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.registerStep = "Complete";
+        state.loading = false;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
+// Export actions
 export const {
   setPhoneNumber,
   setVerificationCode,
@@ -86,4 +134,5 @@ export const {
   setPassword,
 } = authSlice.actions;
 
+// Export reducer
 export default authSlice.reducer;

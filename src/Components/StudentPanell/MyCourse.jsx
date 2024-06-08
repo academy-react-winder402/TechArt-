@@ -1,35 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { MyCoursesPanel } from "../../Core/Services/api/MyCourses";
 
-// Function to fetch courses data
-const MyCoursesPanel = async () => {
-  try {
-    const result = await http.get(
-      `/SharePanel/GetMyCourses?PageNumber=1&RowsOfPage=10&SortingCol=DESC&SortType=LastUpdate&Query=`
-    );
-
-    return result.data;
-  } catch (error) {
-    alert("Error : " + error?.message);
-  }
-};
-
-export default function MyCoursesPanell() {
+export default function MyCoursesPanell({ fetchData }) {
   const [myCourses, setMyCourses] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const courses = await MyCoursesPanel();
-      setMyCourses(courses || []);
+      const result = await MyCoursesPanel();
+      setMyCourses(result || []);
     };
 
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">دور های من</h1>
+          <h1 className="text-xl font-semibold text-gray-900">دوره های من</h1>
           <p className="mt-2 text-sm text-gray-700">
             دوست عزیز اینجا میتونید تمام دوره هایی رو که در اون شرکت دارید
             ببینید
@@ -77,9 +65,9 @@ export default function MyCoursesPanell() {
                     </th>
                     <th
                       scope="col"
-                      className="relative py-3.5 pl-3 pr-4 sm:pr-6"
+                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      <span className="sr-only">Edit</span>
+                      عملیات
                     </th>
                   </tr>
                 </thead>
@@ -98,12 +86,23 @@ export default function MyCoursesPanell() {
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {course.cost}
                       </td>
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         <a
                           href="#"
                           className="text-indigo-600 hover:text-indigo-900"
                         >
-                          Edit<span className="sr-only">, {course.name}</span>
+                          Edit
+                        </a>{" "}
+                        |
+                        <a href="#" className="text-red-600 hover:text-red-900">
+                          Delete
+                        </a>{" "}
+                        |
+                        <a
+                          href="#"
+                          className="text-blue-600 hover:text-blue-900"
+                        >
+                          Detail
                         </a>
                       </td>
                     </tr>

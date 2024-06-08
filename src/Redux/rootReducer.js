@@ -7,6 +7,7 @@ import newsCategory from "./newsCategory";
 import user from "./user";
 import filterNews from "./filterNews";
 import searchSlice from "./SearchSlice";
+import authSlice from "./authSlice";
 
 const userPersist = persistReducer(
   {
@@ -17,6 +18,8 @@ const userPersist = persistReducer(
 );
 
 const rootReducer = combineReducers({
+  auth: authSlice,
+
   user: userPersist,
   filterCourse,
   newsCategory,

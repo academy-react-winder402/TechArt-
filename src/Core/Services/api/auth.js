@@ -1,15 +1,17 @@
 import http from "../../interceptor/index";
 
+// Login API call
 export const loginAPI = async (user) => {
   try {
     const response = await http.post("/Sign/Login", user);
-
-    return response;
+    return response.data; // Assuming response data is needed
   } catch (error) {
-    return false;
+    console.error("Login API Error: ", error);
+    return { success: false, message: error.message || "Login failed" };
   }
 };
 
+// Register API call
 export const registerAPI = async (phoneNumber) => {
   try {
     const response = await http.post(
@@ -22,13 +24,14 @@ export const registerAPI = async (phoneNumber) => {
         },
       }
     );
-
-    return response;
+    return response.data; // Assuming response data is needed
   } catch (error) {
-    return false;
+    console.error("Register API Error: ", error);
+    return { success: false, message: error.message || "Registration failed" };
   }
 };
 
+// Verify Message API call
 export const verifyMessageAPI = async (phoneNumber, verifyCode) => {
   try {
     const response = await http.post(
@@ -41,12 +44,14 @@ export const verifyMessageAPI = async (phoneNumber, verifyCode) => {
         },
       }
     );
-
-    return response;
+    return response.data; // Assuming response data is needed
   } catch (error) {
-    return false;
+    console.error("Verify Message API Error: ", error);
+    return { success: false, message: error.message || "Verification failed" };
   }
 };
+
+// Sign Up API call
 export const signUpAPI = async (password, gmail, phoneNumber) => {
   try {
     const response = await http.post(
@@ -59,9 +64,9 @@ export const signUpAPI = async (password, gmail, phoneNumber) => {
         },
       }
     );
-
-    return response;
+    return response.data; // Assuming response data is needed
   } catch (error) {
-    return false;
+    console.error("Sign Up API Error: ", error);
+    return { success: false, message: error.message || "Sign up failed" };
   }
 };
