@@ -21,7 +21,7 @@ const PhoneConfirm = () => {
   const handleSubmit = async (values) => {
     const verifyData = {
       phoneNumber: phoneNumber,
-      VerifyCode: values.verifyCode,
+      verifyCode: values.verifyCode,
     };
     const result = await verifyMessageAPI(verifyData);
     if (result.success) {
