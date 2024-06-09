@@ -32,18 +32,9 @@ export const registerAPI = async (phoneNumber) => {
 };
 
 // Verify Message API call
-export const verifyMessageAPI = async (phoneNumber, verifyCode) => {
+export const verifyMessageAPI = async (obj) => {
   try {
-    const response = await http.post(
-      "/Sign/VerifyMessage",
-      { phoneNumber, verifyCode },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer null",
-        },
-      }
-    );
+    const response = await http.post("/Sign/VerifyMessage");
     return response.data; // Assuming response data is needed
   } catch (error) {
     console.error("Verify Message API Error: ", error);
@@ -52,18 +43,9 @@ export const verifyMessageAPI = async (phoneNumber, verifyCode) => {
 };
 
 // Sign Up API call
-export const signUpAPI = async (password, gmail, phoneNumber) => {
+export const signUpAPI = async (obj) => {
   try {
-    const response = await http.post(
-      "/Sign/Register",
-      { password, gmail, phoneNumber },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer null",
-        },
-      }
-    );
+    const response = await http.post("/Sign/Register");
     return response.data; // Assuming response data is needed
   } catch (error) {
     console.error("Sign Up API Error: ", error);

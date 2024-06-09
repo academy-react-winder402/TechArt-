@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import http from "../Core/interceptor/index";
 
 // Initial state of the authentication slice
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
   registerStep: "PhoneRegister",
   email: "",
   password: "",
+  token: null,
   loading: false,
   error: null,
 };
@@ -17,7 +18,7 @@ export const sendPhoneNumber = createAsyncThunk(
   "auth/sendPhoneNumber",
   async (phoneNumber, thunkAPI) => {
     try {
-      const response = await axios.post("/Sign/SendVerifyMessage", {
+      const response = await http.post("/Sign/SendVerifyMessage", {
         phoneNumber,
       });
       return response.data;
@@ -32,7 +33,7 @@ export const sendVerificationCode = createAsyncThunk(
   "auth/sendVerificationCode",
   async ({ phoneNumber, verificationCode }, thunkAPI) => {
     try {
-      const response = await axios.post("/Sign/VerifyCode", {
+      const response = await http.post("/Sign/VerifyCode", {
         phoneNumber,
         verificationCode,
       });
@@ -48,7 +49,7 @@ export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ email, password, phoneNumber }, thunkAPI) => {
     try {
-      const response = await axios.post("/Sign/Register", {
+      const response = await http.post("/Sign/Register", {
         email,
         password,
         phoneNumber,
@@ -79,6 +80,16 @@ const authSlice = createSlice({
     },
     setPassword(state, action) {
       state.password = action.payload;
+    },
+    resetAuthState(state) {
+      state.phoneNumber = "";
+      state.verificationCode = "";
+      state.email = "";
+      state.password = "";
+      state.token = null;
+      state.registerStep = "PhoneRegister";
+      state.loading = false;
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -116,6 +127,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.registerStep = "Complete";
+        state.token = action.payload.token; // ذخیره توکن
         state.loading = false;
       })
       .addCase(registerUser.rejected, (state, action) => {
@@ -132,6 +144,7 @@ export const {
   setRegisterStep,
   setEmail,
   setPassword,
+  resetAuthState,
 } = authSlice.actions;
 
 // Export reducer

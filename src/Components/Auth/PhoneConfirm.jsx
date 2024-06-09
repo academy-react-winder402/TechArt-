@@ -1,4 +1,3 @@
-// components/PhoneConfirm.js
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -15,7 +14,7 @@ const PhoneConfirm = () => {
 
   const validationSchema = Yup.object({
     verificationCode: Yup.string()
-      .matches(/^\d{5}$/, "کد تایید باید پنج رقمی باشد")
+      .matches(/^\d{4}$/, "کد تایید بایدچهار رقمی باشد")
       .required("کد تایید الزامی است"),
   });
 
@@ -39,7 +38,7 @@ const PhoneConfirm = () => {
               htmlFor="verificationCode"
               className="block text-sm font-medium text-gray-700"
             >
-              کد تایید پنج رقمی
+              کد تایید چهار رقمی
             </label>
             <div className="mt-1">
               <Field
