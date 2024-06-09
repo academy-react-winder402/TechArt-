@@ -5,13 +5,14 @@ import PhoneConfirm from "./PhoneConfirm";
 import PasswordEmailForm from "./SinUp";
 
 const RegisterStepHandler = () => {
-  const registerStep = useSelector((state) => state.auth.registerStep);
+  const { step } = useSelector((state) => state.auth);
+  console.log("step", step);
 
   return (
     <div>
-      {registerStep === "PhoneRegister" && <PhoneRegister />}
-      {registerStep === "PhoneConfirm" && <PhoneConfirm />}
-      {registerStep === "PasswordEmail" && <PasswordEmailForm />}
+      {step === "one" && <PhoneRegister />}
+      {step === "two" && <PhoneConfirm />}
+      {step === "tree" && <PasswordEmailForm />}
     </div>
   );
 };

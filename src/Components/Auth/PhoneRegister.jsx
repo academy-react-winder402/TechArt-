@@ -2,24 +2,29 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { sendPhoneNumber, setPhoneNumber } from "../../Redux/authSlice";
+import { registerAPI } from "../../Core/Services/api/auth";
+import { useNavigate } from "react-router-dom";
 
 const PhoneRegister = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const initialValues = {
     phoneNumber: "",
   };
-
   const validationSchema = Yup.object({
     phoneNumber: Yup.string()
       .matches(/^[0-9]{11}$/, "شماره تلفن معتبر نیست")
       .required("شماره تلفن الزامی است"),
   });
 
-  const handleSubmit = (values) => {
-    dispatch(setPhoneNumber(values.phoneNumber));
-    dispatch(sendPhoneNumber(values.phoneNumber));
+  const handleSubmit = async (values) => {
+    const obj = { phoneNumber: values.phoneNumber };
+    const result = await registerAPI(obj);
+    if (result.success) {
+      dispatch(setPhoneNumber(values.phoneNumber));
+      dispatch(setStep("two"));
+    }
   };
 
   return (

@@ -2,11 +2,11 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../Redux/authSlice";
+import { signUpAPI } from "../../Core/Services/api/auth";
 
 const PasswordEmailForm = () => {
   const dispatch = useDispatch();
-  const { phoneNumber, verificationCode } = useSelector((state) => state.auth);
+  const { phoneNumber } = useSelector((state) => state.auth);
 
   const initialValues = {
     email: "",
@@ -22,15 +22,13 @@ const PasswordEmailForm = () => {
       .required("رمز عبور الزامی است"),
   });
 
-  const handleSubmit = (values) => {
-    dispatch(
-      registerUser({
-        email: values.email,
-        password: values.password,
-        phoneNumber,
-        verifyCode: verificationCode,
-      })
-    );
+  const handleSubmit = async (values) => {
+    const obj = {
+      password: values.password,
+      gmail: values.email,
+      phoneNumber: phoneNumber,
+    };
+    const reslt = await signUpAPI(obj);
   };
 
   return (

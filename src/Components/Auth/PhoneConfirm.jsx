@@ -2,26 +2,29 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { sendVerificationCode } from "../../Redux/authSlice";
 
 const PhoneConfirm = () => {
   const dispatch = useDispatch();
-  const phoneNumber = useSelector((state) => state.auth.phoneNumber);
-
+  const { phoneNumber } = useSelector((state) => state.auth);
   const initialValues = {
     verificationCode: "",
   };
 
   const validationSchema = Yup.object({
     verificationCode: Yup.string()
-      .matches(/^\d{4}$/, "کد تایید بایدچهار رقمی باشد")
+      .matches(/^\d{5}$/, "کد تایید باید 5 رقمی باشد")
       .required("کد تایید الزامی است"),
   });
 
-  const handleSubmit = (values) => {
-    dispatch(
-      sendVerificationCode({ phoneNumber, verifyCode: values.verificationCode })
-    );
+  const handleSubmit = async (values) => {
+    const verifyData = {
+      phoneNumber: phoneNumber,
+      verificationCode: values.verificationCode,
+    };
+    const result = await verifyMessageAPI(verifyData);
+    if (result.success) {
+      dispatch(setStep("tree"));
+    }
   };
 
   return (
@@ -38,7 +41,7 @@ const PhoneConfirm = () => {
               htmlFor="verificationCode"
               className="block text-sm font-medium text-gray-700"
             >
-              کد تایید چهار رقمی
+              کد تایید5 رقمی
             </label>
             <div className="mt-1">
               <Field

@@ -12,19 +12,10 @@ export const loginAPI = async (user) => {
 };
 
 // Register API call
-export const registerAPI = async (phoneNumber) => {
+export const registerAPI = async (obj) => {
   try {
-    const response = await http.post(
-      "/Sign/SendVerifyMessage",
-      { phoneNumber },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer null",
-        },
-      }
-    );
-    return response.data; // Assuming response data is needed
+    const response = await http.post("/Sign/SendVerifyMessage", obj);
+    return response;
   } catch (error) {
     console.error("Register API Error: ", error);
     return { success: false, message: error.message || "Registration failed" };
@@ -34,8 +25,8 @@ export const registerAPI = async (phoneNumber) => {
 // Verify Message API call
 export const verifyMessageAPI = async (obj) => {
   try {
-    const response = await http.post("/Sign/VerifyMessage");
-    return response.data; // Assuming response data is needed
+    const response = await http.post("/Sign/VerifyMessage", obj);
+    return response; // Assuming response data is needed
   } catch (error) {
     console.error("Verify Message API Error: ", error);
     return { success: false, message: error.message || "Verification failed" };
@@ -45,8 +36,8 @@ export const verifyMessageAPI = async (obj) => {
 // Sign Up API call
 export const signUpAPI = async (obj) => {
   try {
-    const response = await http.post("/Sign/Register");
-    return response.data; // Assuming response data is needed
+    const response = await http.post("/Sign/Register", obj);
+    return response; // Assuming response data is needed
   } catch (error) {
     console.error("Sign Up API Error: ", error);
     return { success: false, message: error.message || "Sign up failed" };
