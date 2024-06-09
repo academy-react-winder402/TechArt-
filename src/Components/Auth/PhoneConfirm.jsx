@@ -2,16 +2,18 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
+import { verifyMessageAPI } from "../../Core/Services/api/auth";
+import { setStep } from "../../Redux/authSlice";
 
 const PhoneConfirm = () => {
   const dispatch = useDispatch();
   const { phoneNumber } = useSelector((state) => state.auth);
   const initialValues = {
-    verificationCode: "",
+    verifyCode: "",
   };
 
   const validationSchema = Yup.object({
-    verificationCode: Yup.string()
+    verifyCode: Yup.string()
       .matches(/^\d{5}$/, "کد تایید باید 5 رقمی باشد")
       .required("کد تایید الزامی است"),
   });
@@ -19,11 +21,11 @@ const PhoneConfirm = () => {
   const handleSubmit = async (values) => {
     const verifyData = {
       phoneNumber: phoneNumber,
-      verificationCode: values.verificationCode,
+      VerifyCode: values.verifyCode,
     };
     const result = await verifyMessageAPI(verifyData);
     if (result.success) {
-      dispatch(setStep("tree"));
+      dispatch(setStep("three"));
     }
   };
 
@@ -38,21 +40,21 @@ const PhoneConfirm = () => {
         <Form>
           <div>
             <label
-              htmlFor="verificationCode"
+              htmlFor="verifyCode"
               className="block text-sm font-medium text-gray-700"
             >
               کد تایید5 رقمی
             </label>
             <div className="mt-1">
               <Field
-                id="verificationCode"
-                name="verificationCode"
+                id="verifyCode"
+                name="verifyCode"
                 type="text"
                 autoComplete="off"
                 className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               />
               <ErrorMessage
-                name="verificationCode"
+                name="verifyCode"
                 component="div"
                 className="text-red-500 text-sm"
               />

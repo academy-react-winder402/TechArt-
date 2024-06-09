@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import http from "../Core/interceptor/index";
 
 // Initial state of the authentication slice
 const initialState = {

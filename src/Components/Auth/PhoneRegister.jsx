@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { registerAPI } from "../../Core/Services/api/auth";
 import { useNavigate } from "react-router-dom";
+import { setPhoneNumber, setStep } from "../../Redux/authSlice";
 
 const PhoneRegister = () => {
   const dispatch = useDispatch();

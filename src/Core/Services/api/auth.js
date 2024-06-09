@@ -17,7 +17,7 @@ export const registerAPI = async (obj) => {
     const response = await http.post("/Sign/SendVerifyMessage", obj);
     return response;
   } catch (error) {
-    console.error("Register API Error: ", error);
+    console.error("RegisterAPI Error: ", error);
     return { success: false, message: error.message || "Registration failed" };
   }
 };

@@ -12,7 +12,7 @@ const RegisterStepHandler = () => {
     <div>
       {step === "one" && <PhoneRegister />}
       {step === "two" && <PhoneConfirm />}
-      {step === "tree" && <PasswordEmailForm />}
+      {step === "three" && <PasswordEmailForm />}
     </div>
   );
 };
