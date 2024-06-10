@@ -9,17 +9,21 @@ export const searchCourses = async (query) => {
         SortingCol: "Active",
         SortType: "DESC",
         TechCount: 0,
+        Query: query, // اضافه کردن پارامتر جستجو
       },
     });
 
-    // فیلتر کردن داده‌ها از response.data
-    const filteredResults = response.data.filter((course) =>
-      course.name.toLowerCase().includes(query.toLowerCase())
+    // استخراج داده‌ها از courseFilterDtos
+    const courses = response.data.courseFilterDtos || [];
+
+    // فیلتر کردن داده‌ها بر اساس query
+    const filteredResults = courses.filter((course) =>
+      course.title.toLowerCase().includes(query.toLowerCase())
     );
 
     return filteredResults;
   } catch (error) {
-    console.error(error);
-    throw error;
+    console.error("Error fetching courses:", error);
+    throw new Error("Unable to fetch courses. Please try again later.");
   }
 };

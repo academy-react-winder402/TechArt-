@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSearchCourses } from "../../Redux/SearchSlice";
+import { searchCourses } from "../../Core/Services/api/Search";
 
 const SearchBox = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
-  const {
-    courses = [],
-    loading = false,
-    error = null,
-  } = useSelector((state) => state.search || {});
+  const { courses, loading, error } = useSelector((state) => state.search);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    dispatch(fetchSearchCourses(query));
+    if (query.trim() !== "") {
+      try {
+        const results = await searchCourses(query);
+        dispatch(fetchSearchCourses(results)); // فرض بر این است که این اکشن نتایج را ذخیره می‌کند
+      } catch (error) {
+        console.error(error);
+        // مدیریت خطاها
+      }
+    } else {
+      alert("Please enter a search query.");
+    }
   };
 
   return (
@@ -40,7 +47,7 @@ const SearchBox = () => {
       <div>
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
-        {courses.length > 0
+        {courses && courses.length > 0
           ? courses.map((course) => (
               <div key={course.id}>
                 <h2>{course.name}</h2>

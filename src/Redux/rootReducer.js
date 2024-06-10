@@ -6,8 +6,14 @@ import filterCourse from "./filterCourse";
 import newsCategory from "./newsCategory";
 import user from "./user";
 import filterNews from "./filterNews";
-import searchSlice from "./SearchSlice";
 import authSlice from "./authSlice";
+import searchSlice from "./SearchSlice"; // فرض بر اینکه این وارد شده است
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["auth", "user"], // state های مربوط به auth و user را ذخیره کن
+};
 
 const userPersist = persistReducer(
   {
@@ -17,14 +23,23 @@ const userPersist = persistReducer(
   user
 );
 
-const rootReducer = combineReducers({
-  auth: authSlice,
+const authPersist = persistReducer(
+  {
+    key: "auth",
+    storage,
+  },
+  authSlice
+);
 
+const rootReducer = combineReducers({
+  auth: authPersist,
   user: userPersist,
   filterCourse,
   newsCategory,
   filterNews,
-  searchSlice: searchSlice,
+  search: searchSlice, // اطمینان از نام درست
 });
 
-export default rootReducer;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export default persistedReducer;
