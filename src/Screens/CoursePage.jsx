@@ -15,7 +15,6 @@ function CoursePage() {
 
       <CategoryFilter />
 
-      <Pagination />
       <Footer />
     </div>
   );

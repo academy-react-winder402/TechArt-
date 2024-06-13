@@ -1,3 +1,5 @@
+// Search.js
+
 import http from "../../interceptor/index";
 
 export const searchCourses = async (query) => {
@@ -13,8 +15,11 @@ export const searchCourses = async (query) => {
       },
     });
 
-    // استخراج داده‌ها از courseFilterDtos
-    const courses = response.data.courseFilterDtos || [];
+    // بررسی موجود بودن ویژگی courseFilterDtos در پاسخ
+    const courses =
+      response.data && response.data.courseFilterDtos
+        ? response.data.courseFilterDtos
+        : [];
 
     // فیلتر کردن داده‌ها بر اساس query
     const filteredResults = courses.filter((course) =>
@@ -24,6 +29,19 @@ export const searchCourses = async (query) => {
     return filteredResults;
   } catch (error) {
     console.error("Error fetching courses:", error);
-    throw new Error("Unable to fetch courses. Please try again later.");
+
+    // بازگرداندن خطای مناسب
+    if (error.response) {
+      throw new Error(
+        error.response.data ||
+          "Unable to fetch courses. Please try again later."
+      );
+    } else if (error.request) {
+      throw new Error(
+        "No response received from the server. Please check your network connection."
+      );
+    } else {
+      throw new Error("An unexpected error occurred. Please try again later.");
+    }
   }
 };

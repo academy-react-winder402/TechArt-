@@ -1,27 +1,23 @@
-import React, { useState } from "react";
+// SearchBox.js
+
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSearchCourses } from "../../Redux/SearchSlice";
-import { searchCourses } from "../../Core/Services/api/Search";
+import { fetchSearchCourses, setQuery } from "../../Redux/SearchSlice";
 
 const SearchBox = () => {
-  const [query, setQuery] = useState("");
   const dispatch = useDispatch();
-  const { courses, loading, error } = useSelector((state) => state.search);
+  const { query, courses, loading, error } = useSelector(
+    (state) => state.search
+  );
 
   const handleInputChange = (e) => {
-    setQuery(e.target.value);
+    dispatch(setQuery(e.target.value));
   };
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     if (query.trim() !== "") {
-      try {
-        const results = await searchCourses(query);
-        dispatch(fetchSearchCourses(results)); // فرض بر این است که این اکشن نتایج را ذخیره می‌کند
-      } catch (error) {
-        console.error(error);
-        // مدیریت خطاها
-      }
+      dispatch(fetchSearchCourses(query));
     } else {
       alert("Please enter a search query.");
     }
@@ -49,9 +45,9 @@ const SearchBox = () => {
         {error && <p>Error: {error}</p>}
         {courses && courses.length > 0
           ? courses.map((course) => (
-              <div key={course.id}>
-                <h2>{course.name}</h2>
-                <p>{course.description}</p>
+              <div key={course.courseId}>
+                <h2>{course.title}</h2>
+                <p>{course.describe}</p>
               </div>
             ))
           : !loading && <p>No courses found</p>}
