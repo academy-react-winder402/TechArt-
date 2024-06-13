@@ -1,6 +1,5 @@
 import Footer from "../Components/Common/Footer";
 import Heading from "../Components/Common/Header";
-import EditProfile from "../Components/StudentPanell/EditProfile";
 
 function EditProfilePage() {
   return (

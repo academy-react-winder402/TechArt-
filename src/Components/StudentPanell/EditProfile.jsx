@@ -1,24 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setUserInfo, setLoading, setError } from "../../Redux/userSlice"; // Import actions from userSlice
+import { UserInfo } from "../../Core/Services/api/UserInfo";
 export default function EditProfile() {
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.user.userInfo);
+  const isLoading = useSelector((state) => state.user.loading);
+  const error = useSelector((state) => state.user.error);
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        dispatch(setLoading(true));
+        const result = await UserInfo();
+        dispatch(setLoading(false));
+        dispatch(setUserInfo(result.data)); // Assuming result.data contains user info
+      } catch (error) {
+        dispatch(setLoading(false));
+        dispatch(setError(error.message));
+      }
+    };
+
+    fetchUserInfo();
+  }, [dispatch]);
+
   const formik = useFormik({
     initialValues: {
-      username: "",
-      about: "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      country: "",
-      streetAddress: "",
-      city: "",
-      region: "",
-      postalCode: "",
+      username: userInfo?.username || "",
+      about: userInfo?.userAbout || "",
+      firstName: userInfo?.fName || "",
+      lastName: userInfo?.lName || "",
+      email: userInfo?.email || "",
+      country: userInfo?.homeAddress?.country || "",
+      streetAddress: userInfo?.homeAddress?.streetAddress || "",
+      city: userInfo?.homeAddress?.city || "",
+      region: userInfo?.homeAddress?.region || "",
+      postalCode: userInfo?.homeAddress?.postalCode || "",
     },
     validationSchema: Yup.object({
       username: Yup.string().required("نام کاربری اجباری است"),
-      about: Yup.string().required("درباره ی من اجباری است"),
+      about: Yup.string().required("درباره‌ی من اجباری است"),
       firstName: Yup.string().required("نام اجباری است"),
       lastName: Yup.string().required("نام خانوادگی اجباری است"),
       email: Yup.string()
@@ -30,8 +53,16 @@ export default function EditProfile() {
       region: Yup.string(),
       postalCode: Yup.string(),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        dispatch(setLoading(true));
+        const result = await EditProfile(values);
+        dispatch(setLoading(false));
+        dispatch(setUserInfo(result.data)); // Assuming result.data contains updated user info
+      } catch (error) {
+        dispatch(setLoading(false));
+        dispatch(setError(error.message));
+      }
     },
   });
 
