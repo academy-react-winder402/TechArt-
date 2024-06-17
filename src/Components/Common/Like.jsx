@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
   LikeCourse,
   DisableLikeCourse,
 } from "../../Core/Services/api/CourseLike";
-const LikeButton = ({ courseId, successMessage, errorMessage }) => {
+
+const LikeButton = ({ courseId }) => {
   const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    // فرض کنید تابعی برای بررسی لایک بودن دوره دارید
+    const checkIfLiked = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        // وضعیت اولیه لایک را بررسی کنید
+        // const initialLikedStatus = await getLikedStatus(courseId);
+        // setLiked(initialLikedStatus);
+      }
+    };
+
+    checkIfLiked();
+  }, [courseId]);
 
   const handleClick = async () => {
     const token = localStorage.getItem("token");
@@ -15,26 +30,22 @@ const LikeButton = ({ courseId, successMessage, errorMessage }) => {
       return;
     }
 
-    const obj = {
-      courseId: courseId,
-    };
-
     try {
       if (!liked) {
         const response = await LikeCourse(courseId);
-        if (response?.status === 200) {
+        if (response?.success) {
           setLiked(true);
-          toast.success(successMessage);
+          toast.success(response.message);
         } else {
-          toast.error(errorMessage);
+          toast.error(response.message);
         }
       } else {
-        const response = await DisableLikeCourse(obj);
-        if (response?.status === 200) {
+        const response = await DisableLikeCourse(courseId);
+        if (response?.success) {
           setLiked(false);
-          toast.success("لایک برداشته شد");
+          toast.success(response.message);
         } else {
-          toast.error("خطایی در برداشتن لایک رخ داد");
+          toast.error(response.message);
         }
       }
     } catch (error) {
@@ -56,13 +67,14 @@ const LikeButton = ({ courseId, successMessage, errorMessage }) => {
           className="h-5 w-5"
           viewBox="0 0 20 20"
           fill="currentColor"
+          style={{ paddingRight: "4px" }}
         >
           <path
             fillRule="evenodd"
             d={
               liked
-                ? "M10 3.82a2.36 2.36 0 00-1.25.37l-.14.09a.75.75 0 00-.36.64v.18l.55 5.73c0 .17-.04.3-.14.39-.1.1-.23.15-.4.15l-.13-.01c-.28 0-.47-.13-.56-.4-.02-.08-.05-.16-.08-.24l-.38-3.25-1.63-1.52a2.5 2.5 0 00-3.5 3.58l3.56 3.31a.75.75 0 001.04 0l3.56-3.31a2.5 2.5 0 000-3.58l-1.63-1.52-.38 3.25c-.02.08-.06.16-.08.24-.09.27-.28.4-.56.4-.14 0-.27-.05-.4-.15-.1-.09-.14-.22-.14-.39l.55-5.73v-.18a.75.75 0 00-.36-.64l-.14-.09a2.36 2.36 0 00-1.25-.37z"
-                : "M10 3.82a2.36 2.36 0 00-1.25.37l-.14.09a.75.75 0 00-.36.64v.18l.55 5.73c0 .17-.04.3-.14.39-.1.1-.23.15-.4.15l-.13-.01c-.28 0-.47-.13-.56-.4-.02-.08-.05-.16-.08-.24l-.38-3.25-1.63-1.52a2.5 2.5 0 00-3.5 3.58l3.56 3.31a.75.75 0 001.04 0l3.56-3.31a2.5 2.5 0 000-3.58l-1.63-1.52-.38 3.25c-.02.08-.06.16-.08.24-.09.27-.28.4-.56.4-.14 0-.27-.05-.4-.15-.1-.09-.14-.22-.14-.39l.55-5.73v-.18a.75.75 0 00-.36-.64l-.14-.09a2.36 2.36 0 00-1.25-.37z"
+                ? "M3.172 3.172a4 4 0 015.656 0L10 4.343l1.172-1.171a4 4 0 015.656 5.656L10 16.657l-6.828-6.829a4 4 0 010-5.656z"
+                : "M10 3.172a4 4 0 00-5.656 5.656l6.828 6.828 6.828-6.828A4 4 0 0010 3.172z"
             }
             clipRule="evenodd"
           />

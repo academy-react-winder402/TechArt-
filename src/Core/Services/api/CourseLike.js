@@ -1,23 +1,25 @@
 import http from "../../interceptor/index";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export const LikeCourse = async (id) => {
   try {
-    const result = await http.post(`/Course/AddCourseLike?CourseId=${id}`);
-    toast.success("دوره با موفقیت لایک شد");
+    const result = await http.post(`/Course/AddCourseLike`, null, {
+      params: { CourseId: id },
+    });
     return result;
   } catch (error) {
-    toast.error("خطا: " + error?.message);
+    const errorMessage = error?.response?.message || "خطا در لایک کردن دوره";
+    throw new Error(errorMessage);
   }
 };
 
-export const DisableLikeCourse = async (obj) => {
+export const DisableLikeCourse = async (id) => {
   try {
-    const result = await http.delete(`/Course/DeleteCourseLike`, { data: obj });
-    toast.success("لایک برداشته شد");
+    const result = await http.delete(`/Course/DeleteCourseLike`, {
+      params: { CourseId: id },
+    });
     return result;
   } catch (error) {
-    toast.error("خطا: " + error?.message);
+    const errorMessage = error?.response?.message || "خطا در برداشتن لایک";
+    throw new Error(errorMessage);
   }
 };

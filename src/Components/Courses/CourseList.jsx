@@ -19,7 +19,7 @@ function CourseList() {
   const fetchCourses = async (page) => {
     setLoading(true);
     try {
-      const response = await CoursesAPI(currentPage);
+      const response = await CoursesAPI(page);
       setCourses(response?.courseFilterDtos);
       setTotalCount(response?.totalCount);
     } catch (error) {
@@ -28,8 +28,8 @@ function CourseList() {
     setLoading(false);
   };
 
-  const handlePageChange = (e) => {
-    setCurrentPage(e.selected + 1);
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage);
   };
 
   return (
