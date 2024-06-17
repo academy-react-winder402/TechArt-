@@ -43,14 +43,14 @@ const SearchBox = () => {
       <div>
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
-        {courses && courses.length > 0
-          ? courses.map((course) => (
-              <div key={course.courseId}>
-                <h2>{course.title}</h2>
-                <p>{course.describe}</p>
-              </div>
-            ))
-          : !loading && <p>No courses found</p>}
+        {courses &&
+          courses.length > 0 &&
+          courses.map((course) => (
+            <div key={course.courseId}>
+              <h2>{course.title}</h2>
+              <p>{course.describe}</p>
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { loginAPI } from "./../../Core/Services/api/login";
 import { toast, ToastContainer } from "react-toastify";
+import { setItem } from "../../Core/Services/Common/storage.services";
 
 const LoginForm = () => {
   const location = useLocation(); // Initialize useLocation hook
@@ -30,6 +31,8 @@ const LoginForm = () => {
     if (user) {
       // Redirect to the homepage if login is successful
       // Access current pathname from location object
+
+      setItem("token", user.token);
       toast.success("خوش امدید");
       Navigate("/");
       // Redirect to the homepage

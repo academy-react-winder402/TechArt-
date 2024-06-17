@@ -8,7 +8,7 @@ import { FormComment } from "./CmForm";
 import { getItem } from "../../../Core/Services/Common/storage.services";
 
 const CommentHolder = () => {
-  const CardId = useParams().id;
+  const CardId = useParams().courseId;
   const [data, setData] = useState([]);
   const [reFetch, setReFetch] = useState(false);
   console.log("comment id", CardId);

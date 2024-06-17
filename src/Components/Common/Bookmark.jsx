@@ -7,7 +7,7 @@ const BookmarkButton = ({ courseId, successMessage, errorMessage }) => {
   const [bookmarked, setBookmarked] = useState(false);
 
   const handleClick = async () => {
-    const token = localStorage.getItem("authToken"); // فرض می‌کنیم که توکن در localStorage ذخیره شده است
+    const token = localStorage.getItem("token");
     if (!token) {
       toast.error("لطفاً ابتدا وارد حساب کاربری خود شوید.");
       return;

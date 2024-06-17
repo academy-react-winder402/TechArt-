@@ -19,7 +19,7 @@ function CourseList() {
   const fetchCourses = async (page) => {
     setLoading(true);
     try {
-      const response = await CoursesAPI();
+      const response = await CoursesAPI(currentPage);
       setCourses(response?.courseFilterDtos);
       setTotalCount(response?.totalCount);
     } catch (error) {
@@ -28,8 +28,8 @@ function CourseList() {
     setLoading(false);
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  const handlePageChange = (e) => {
+    setCurrentPage(e.selected + 1);
   };
 
   return (
@@ -38,9 +38,12 @@ function CourseList() {
         <p>در حال بارگذاری...</p>
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {courses.length > 0 ? (
+          {courses?.length > 0 ? (
             courses.map((course) => (
-              <Link key={course.id} to={`/coursedetail/${course.id}`}>
+              <Link
+                key={course.courseId}
+                to={`/coursedetail/${course.courseId}`}
+              >
                 <CardComponent
                   key={course.courseId}
                   author={course.author}

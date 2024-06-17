@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MyCommentCourse } from "../../Core/Services/api/PanellCourseComment";
+
 export default function MyComment() {
   const [comments, setComments] = useState([]);
 
@@ -72,7 +73,7 @@ export default function MyComment() {
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {comments.map((comment) => (
                     <tr key={comment.id}>
-                      <td className="whitespace-nowrap py-4  pl-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">
+                      <td className="whitespace-nowrap py-4 pl-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">
                         {comment.about}
                       </td>
                       <td className="whitespace-nowrap pl-3 py-4 text-sm text-gray-500">
@@ -89,18 +90,18 @@ export default function MyComment() {
                           href="#"
                           className="text-indigo-600 hover:text-indigo-900"
                         >
-                          Edit
+                          ویرایش
                         </a>{" "}
                         |
                         <a href="#" className="text-red-600 hover:text-red-900">
-                          Delete
+                          حذف
                         </a>{" "}
                         |
                         <a
                           href="#"
                           className="text-blue-600 hover:text-blue-900"
                         >
-                          Detail
+                          جزئیات
                         </a>
                       </td>
                     </tr>

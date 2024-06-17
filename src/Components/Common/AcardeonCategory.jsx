@@ -2,7 +2,7 @@ import { Disclosure } from "@headlessui/react";
 import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CourseDetails } from "../../Core/Services/api/CourseDetail"; // مسیر صحیح فایل api.js را وارد کنید
+import { CourseDetails } from "../../Core/Services/api/CourseDetail";
 
 export default function AcardeonCategory() {
   const [courseDetail, setCourseDetail] = useState({});

@@ -3,7 +3,7 @@ import image from "../../assets/Images/04.jpg";
 import BookmarkButton from "../Common/Bookmark";
 import LikeButton from "../Common/Like";
 
-export default function CouresExplain() {
+export default function CouresExplain({ courseId }) {
   return (
     <div className="flex-col ">
       <div className="rounded-xl overflow-hidden">
@@ -16,6 +16,7 @@ export default function CouresExplain() {
         </div>
         <div className="flex items-center mt-2">
           <BookmarkButton
+            courseId={courseId}
             successMessage="این  دوره به لیست علاقه مندی شما اضافه شد"
             errorMessage="این دوره از لیست علاقه مندی شما حذف شد"
           />

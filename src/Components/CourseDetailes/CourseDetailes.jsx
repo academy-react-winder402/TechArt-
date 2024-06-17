@@ -7,13 +7,13 @@ import CouresExplain from "./CourseExplain";
 import { CourseComments } from "./CourseCommet";
 
 export default function CourseDetailes() {
-  const { id } = useParams();
+  const { courseId } = useParams();
   return (
     <CourseDetailContent>
-      <CouresExplain courseId={id} />
-      <CourseInfoTab courseId={id} />
-      <RecentCourse courseId={id} />
-      <CourseComments courseId={id} />
+      <CouresExplain courseId={courseId} />
+      <CourseInfoTab courseId={courseId} />
+      <RecentCourse courseId={courseId} />
+      <CourseComments courseId={courseId} />
     </CourseDetailContent>
   );
 }
