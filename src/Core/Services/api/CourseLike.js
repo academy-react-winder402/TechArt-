@@ -1,10 +1,11 @@
 import http from "../../interceptor/index";
 
 export const LikeCourse = async (CourseId) => {
+  // تعریف پارامترها
+  const params = { CourseId: CourseId };
+
   try {
-    const result = await http.post(`/Course/AddCourseLike`, null, {
-      params: { CourseId: CourseId },
-    });
+    const result = await http.post(`/Course/AddCourseLike`, null, { params });
     return result;
   } catch (error) {
     const errorMessage = error?.response?.message || "خطا در لایک کردن دوره";
@@ -13,10 +14,10 @@ export const LikeCourse = async (CourseId) => {
 };
 
 export const DisableLikeCourse = async (CourseId) => {
+  const params = { CourseId: CourseId };
+
   try {
-    const result = await http.delete(`/Course/DeleteCourseLike`, {
-      params: { CourseId: CourseId },
-    });
+    const result = await http.delete(`/Course/DeleteCourseLike`, { params });
     return result;
   } catch (error) {
     const errorMessage = error?.response?.message || "خطا در برداشتن لایک";

@@ -45,10 +45,10 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           >
             <ReactPaginate
               previousLabel={
-                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+                <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
               }
               nextLabel={
-                <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
               }
               breakLabel={"..."}
               breakClassName={"break-me"}
@@ -60,8 +60,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
               activeClassName={"active"}
               pageClassName="relative z-10 inline-flex items-center border px-4 py-2 text-sm font-medium border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
               activeLinkClassName="border-indigo-500 bg-indigo-50 text-indigo-600"
-              previousClassName="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
-              nextClassName="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+              previousClassName="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+              nextClassName="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
               disabledClassName="disabled"
             />
           </nav>
