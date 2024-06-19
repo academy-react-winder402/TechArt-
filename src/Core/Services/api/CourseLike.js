@@ -1,8 +1,7 @@
 import http from "../../interceptor/index";
 
 export const LikeCourse = async (CourseId) => {
-  // تعریف پارامترها
-  const params = { CourseId: CourseId };
+  const params = { CourseId: CourseId ? CourseId : undefined };
 
   try {
     const result = await http.post(`/Course/AddCourseLike`, null, { params });
@@ -14,7 +13,7 @@ export const LikeCourse = async (CourseId) => {
 };
 
 export const DisableLikeCourse = async (CourseId) => {
-  const params = { CourseId: CourseId };
+  const params = { CourseId: CourseId ? CourseId : undefined };
 
   try {
     const result = await http.delete(`/Course/DeleteCourseLike`, { params });
