@@ -1,6 +1,6 @@
 import http from "../../interceptor/index";
 
-export const EditProfile = async (obj) => {
+export const EditProfileApi = async (obj) => {
   try {
     const result = await http.put(`/SharePanel/UpdateProfileInfo`, obj);
 

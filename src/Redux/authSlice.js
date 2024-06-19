@@ -1,12 +1,12 @@
+// src/features/auth/authSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
-// Initial state of the authentication slice
 const initialState = {
   phoneNumber: "",
   step: "one",
+  isAuthenticated: false, // وضعیت ورود
 };
 
-// Auth slice containing reducers and extra reducers for handling async thunks
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -17,11 +17,17 @@ const authSlice = createSlice({
     setStep(state, action) {
       state.step = action.payload;
     },
+    login(state) {
+      state.isAuthenticated = true;
+    },
+    logout(state) {
+      state.isAuthenticated = false;
+    },
   },
 });
 
 // Export actions
-export const { setPhoneNumber, setStep } = authSlice.actions;
+export const { setPhoneNumber, setStep, login, logout } = authSlice.actions;
 
 // Export reducer
 export default authSlice.reducer;

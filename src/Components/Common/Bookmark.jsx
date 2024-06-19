@@ -19,7 +19,7 @@ const BookmarkButton = ({ courseId, successMessage, errorMessage }) => {
 
     try {
       const response = await AddCourseFavorite(obj);
-      if (response?.status === 200) {
+      if (response?.success) {
         setBookmarked(!bookmarked);
         toast.success(successMessage);
       } else {

@@ -37,7 +37,7 @@ const rootReducer = combineReducers({
   filterCourse,
   newsCategory,
   filterNews,
-  search: searchSlice, // اطمینان از نام درست
+  search: searchSlice, 
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

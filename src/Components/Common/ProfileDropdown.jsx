@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 
+import { useDispatch } from "react-redux";
+import { logout } from "../../Redux/authSlice";
+
 const UserProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    //  منطق اضافی مانند ریدایرکت کردن کاربر را اینجا اضافه میکنم.
   };
 
   return (
@@ -31,13 +40,6 @@ const UserProfileDropdown = () => {
         >
           <div className="py-1" role="none">
             <a
-              href="/editprofile"
-              className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
-              role="menuitem"
-            >
-              ادیت پروفایل
-            </a>
-            <a
               href="#"
               className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
@@ -46,6 +48,7 @@ const UserProfileDropdown = () => {
             </a>
             <a
               href="#"
+              onClick={handleLogout}
               className="block px-4 py-2 text-sm text-yellow-500 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >

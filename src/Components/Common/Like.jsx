@@ -6,7 +6,7 @@ import {
   DisableLikeCourse,
 } from "../../Core/Services/api/CourseLike";
 
-const LikeButton = ({ courseId }) => {
+const LikeButton = ({ CourseId }) => {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const LikeButton = ({ courseId }) => {
     };
 
     checkIfLiked();
-  }, [courseId]);
+  }, [CourseId]);
 
   const handleClick = async () => {
     const token = localStorage.getItem("token");
@@ -32,7 +32,7 @@ const LikeButton = ({ courseId }) => {
 
     try {
       if (!liked) {
-        const response = await LikeCourse(courseId);
+        const response = await LikeCourse(CourseId);
         if (response?.success) {
           setLiked(true);
           toast.success(response.message);
@@ -40,7 +40,7 @@ const LikeButton = ({ courseId }) => {
           toast.error(response.message);
         }
       } else {
-        const response = await DisableLikeCourse(courseId);
+        const response = await DisableLikeCourse(CourseId);
         if (response?.success) {
           setLiked(false);
           toast.success(response.message);

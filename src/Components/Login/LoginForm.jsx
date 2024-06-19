@@ -1,74 +1,52 @@
+// src/components/LoginForm.jsx
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // Import useLocation
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import { loginAPI } from "./../../Core/Services/api/login";
 import { toast, ToastContainer } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { login } from "../../Redux/authSlice";
+import { loginAPI } from "./../../Core/Services/api/login";
 import { setItem } from "../../Core/Services/Common/storage.services";
 
 const LoginForm = () => {
-  const location = useLocation(); // Initialize useLocation hook
-  const Navigate = useNavigate();
-
-  const [userObj, setUserObj] = useState({ PhoneOrGmail: "", Password: "" });
-
-  // const validationSchema = Yup.object({
-  //   email: Yup.string()
-  //     .email("Invalid email address")
-  //     .required("Email is required"),
-  //   password: Yup.string().required("Password is required"),
-  // });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [userObj, setUserObj] = useState({ email: "", password: "" });
 
   const onSubmit = async (values) => {
-    console.log("userObj:", values);
-    const obj = {
-      phoneOrGmail: values?.email,
-      password: values?.password,
+    //فرایند لاگین
+    const user = await loginAPI({
+      phoneOrGmail: values.email,
+      password: values.password,
       rememberMe: true,
-    };
-    const user = await loginAPI(obj);
-    // Check if login is successful
-    if (user) {
-      // Redirect to the homepage if login is successful
-      // Access current pathname from location object
+    });
 
+    if (user) {
+      // تنظیم توکن
       setItem("token", user.token);
-      toast.success("خوش امدید");
-      Navigate("/");
-      // Redirect to the homepage
-    } // Call LoginUser function upon form submission
+      toast.success("خوش آمدید. لطفا پروفایل خود را تکمیل کنید ");
+      dispatch(login());
+      navigate("/");
+    }
   };
 
   return (
     <>
-      <div className="flex flex-col bg-yellow-400 py-6  sm:px-6 mt-5 flex-grow ">
-        <div className=" sm:w-full sm:max-w-md">
+      <div className="flex flex-col bg-yellow-400 py-6 sm:px-6 mt-5 flex-grow">
+        <div className="sm:w-full sm:max-w-md">
           <h2 className="mt-3 text-center text-3xl font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Or{" "}
-            <a
-              href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              start your 14-day free trial
-            </a>
-          </p>
         </div>
 
-        <Formik
-          initialValues={userObj}
-          // validationSchema={validationSchema}
-          onSubmit={onSubmit}
-        >
+        <Formik initialValues={userObj} onSubmit={onSubmit}>
           {(formik) => (
-            <Form className="mt-8  sm:w-full sm:max-w-md">
+            <Form className="mt-8 sm:w-full sm:max-w-md">
               <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <div className="space-y-6">
                   <div>
                     <label
-                      htmlFor="n"
+                      htmlFor="email"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Email address
@@ -76,9 +54,9 @@ const LoginForm = () => {
                     <Field
                       id="email"
                       name="email"
-                      type=""
+                      type="email"
                       autoComplete="email"
-                      className="block w-full appearance-none rounded-md  py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      className="block w-full appearance-none rounded-md py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
                     <ErrorMessage
                       name="email"
@@ -122,15 +100,6 @@ const LoginForm = () => {
                       >
                         Remember me
                       </label>
-                    </div>
-
-                    <div className="text-sm">
-                      <a
-                        href="#"
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
-                      >
-                        Forgot your password?
-                      </a>
                     </div>
                   </div>
 

@@ -1,9 +1,9 @@
 import http from "../../interceptor/index";
 
-export const LikeCourse = async (id) => {
+export const LikeCourse = async (CourseId) => {
   try {
     const result = await http.post(`/Course/AddCourseLike`, null, {
-      params: { CourseId: id },
+      params: { CourseId: CourseId },
     });
     return result;
   } catch (error) {
@@ -12,10 +12,10 @@ export const LikeCourse = async (id) => {
   }
 };
 
-export const DisableLikeCourse = async (id) => {
+export const DisableLikeCourse = async (CourseId) => {
   try {
     const result = await http.delete(`/Course/DeleteCourseLike`, {
-      params: { CourseId: id },
+      params: { CourseId: CourseId },
     });
     return result;
   } catch (error) {
