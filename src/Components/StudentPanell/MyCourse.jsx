@@ -71,9 +71,9 @@ export default function MyCoursesPanel({ Query }) {
             <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
               <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                 <table className="table-auto w-full rounded-xl border-separate border-spacing-y-2 dark:shadow-[0px_4px_60px_0px_rgba(1,1,1,0.09)] shadow-xl">
-                  <thead className="bg-[#d1a2f8] dark:bg-dark">
-                    <tr className="h-16 font-shabnamBold text-[23px] text-white">
-                      <th className="rounded-tr-lg">ردیف</th>
+                  <thead className="bg-gray-300 divide-gray-300 dark:bg-dark">
+                    <tr className="h-10 font-shabnamBold text-[13px] ">
+                      <th className="">ردیف</th>
                       <th className="">تصاویر</th>
                       <th className="">نام دوره</th>
                       <th className="">نام گروه</th>
@@ -81,8 +81,12 @@ export default function MyCoursesPanel({ Query }) {
                       <th className=""> سطح دوره</th>
                       <th className="">نوع کلاس</th>
                       <th className="">قیمت</th>
-                      <th className=" rounded-tl-xl border-gray-100">
-                        وضعیت پرداخت
+                      <th className="  border-gray-100">وضعیت پرداخت</th>
+                      <th
+                        scope="col"
+                        className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 "
+                      >
+                        عملیات
                       </th>
                     </tr>
                   </thead>
@@ -104,36 +108,58 @@ export default function MyCoursesPanel({ Query }) {
                             alt="Course"
                           />
                         </td>
-                        <td className="font-shabnam text-[18px] transition duration-200 text-[#252627] hover:text-[#602f88]">
+                        <td className="font-shabnam text-[14px] transition duration-200 text-[#252627] hover:text-[#602f88]">
                           <Link
                             to={`/course-details/${course.courseId}/mainDetails`}
                           >
                             {course.courseTitle}
                           </Link>
                         </td>
-                        <td className="font-shabnam text-[18px] text-[#252627]">
+                        <td className="font-shabnam text-[14px] text-[#252627]">
                           {course.groupName}
                         </td>
-                        <td className="font-shabnam text-[18px] text-[#252627]">
+                        <td className="font-shabnam text-[14px] text-[#252627]">
                           {course.fullName}
                         </td>
-                        <td className="font-shabnam text-[18px] text-[#252627]">
+                        <td className="font-shabnam text-[14px] text-[#252627]">
                           {course.levelName}
                         </td>
-                        <td className="font-shabnam text-[18px] text-[#252627]">
+                        <td className="font-shabnam text-[14px] text-[#252627]">
                           {course.typeName}
                         </td>
-                        <td className="font-shabnam text-[18px] text-[#252627]">
+                        <td className="font-shabnam text-[14px] text-[#252627]">
                           {course.cost}
                         </td>
-                        <td className="font-shabnam text-[18px] text-[#252627]">
+                        <td className="font-shabnam text-[14px] text-[#252627]">
                           {course.paymentStatus === "پرداخت نشده" ? (
-                            <button className="hover:bg-opacity-90 transition duration-200 dark:hover:bg-opacity-70 dark:text-white dark:bg-[#7a3988] cursor-pointer text-[18px] font-shabnam bg-[#9E58AE] rounded-[10px] text-center px-2 py-2 text-white">
+                            <button className="hover:bg-opacity-90 transition duration-200 dark:hover:bg-opacity-70 dark:text-white dark:bg-blue cursor-pointer text-[14px] font-shabnam bg-blue-900	 rounded-[10px] text-center px-2 py-2 text-white">
                               پرداخت
                             </button>
                           ) : (
                             "پرداخت شده"
                           )}
+                        </td>
+                        <td className="whitespace-nowrap pr-3 py-4 text-sm text-gray-500">
+                          <a
+                            href="#"
+                            className="text-indigo-600 hover:text-indigo-900"
+                          >
+                            ویرایش
+                          </a>{" "}
+                          |
+                          <a
+                            href="#"
+                            className="text-red-600 hover:text-red-900"
+                          >
+                            حذف
+                          </a>{" "}
+                          |
+                          <a
+                            href="#"
+                            className="text-blue-600 hover:text-blue-900"
+                          >
+                            جزئیات
+                          </a>
                         </td>
                       </tr>
                     ))}

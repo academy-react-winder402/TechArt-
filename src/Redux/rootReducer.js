@@ -8,6 +8,8 @@ import user from "./user";
 import filterNews from "./filterNews";
 import authSlice from "./authSlice";
 import searchSlice from "./SearchSlice"; // فرض بر اینکه این وارد شده است
+import CourseSlice from "./CourseSlice";
+import { thunk } from "redux-thunk";
 
 const persistConfig = {
   key: "root",
@@ -37,7 +39,9 @@ const rootReducer = combineReducers({
   filterCourse,
   newsCategory,
   filterNews,
-  search: searchSlice, 
+  search: searchSlice,
+  course: CourseSlice,
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

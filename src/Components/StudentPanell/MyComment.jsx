@@ -7,7 +7,7 @@ export default function MyComment() {
   useEffect(() => {
     const fetchData = async () => {
       const comments = await MyCommentCourse();
-      setComments(comments || []);
+      setComments(comments.myCommentsDtos);
     };
 
     fetchData();
