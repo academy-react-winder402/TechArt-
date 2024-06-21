@@ -7,9 +7,11 @@ import newsCategory from "./newsCategory";
 import user from "./user";
 import filterNews from "./filterNews";
 import authSlice from "./authSlice";
-import searchSlice from "./SearchSlice"; // فرض بر اینکه این وارد شده است
+import searchSlice from "./SearchSlice";
 import CourseSlice from "./CourseSlice";
-import { thunk } from "redux-thunk";
+import commentDetailReducer from "./CorseComment"; // import کردن reducer مربوط به commentDetail
+
+// import { thunk } from "redux-thunk";
 
 const persistConfig = {
   key: "root",
@@ -41,6 +43,8 @@ const rootReducer = combineReducers({
   filterNews,
   search: searchSlice,
   course: CourseSlice,
+  commentDetail: commentDetailReducer, // اضافه کردن reducer مربوط به commentDetail
+
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });
 

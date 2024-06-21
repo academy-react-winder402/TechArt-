@@ -54,7 +54,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
               breakClassName={"break-me"}
               pageCount={totalPages}
               marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={8}
               onPageChange={handlePageClick}
               containerClassName={"pagination"}
               activeClassName={"active"}

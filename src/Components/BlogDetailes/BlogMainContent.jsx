@@ -215,7 +215,7 @@ import http from "../../Core/interceptor/index";
 export const ArticleData = async (id) => {
   try {
     const result = await http.get(`/News/${id}`);
-    return result.data; //
+    return result; //
   } catch (error) {
     alert("خطا: " + error?.message);
     throw error;
@@ -231,7 +231,7 @@ export default function BlogMainContent() {
   const getData = async () => {
     try {
       const items = await ArticleData(id);
-      setData(items.detailsNewsDto);
+      setData(items?.detailsNewsDto);
       console.log(items);
     } catch (err) {
       setError(err);

@@ -196,7 +196,7 @@ function CategoryFilter() {
         </Transition.Root>
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex           items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               دسته بندی دوره‌ها
             </h1>
@@ -270,7 +270,7 @@ function CategoryFilter() {
               محصولات
             </h2>
 
-            <div className="flex gap-x-8 gap-y-10 border-red">
+            <div className="flex flex-col lg:flex-row lg:gap-x-8 gap-y-10">
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">دسته‌ها</h3>
@@ -337,12 +337,12 @@ function CategoryFilter() {
                   </Disclosure>
                 ))}
               </form>
-              <div className="">
-                <div>
-                  <div className="mb-20 flex">
+              <div className="flex-1 flex flex-col items-center justify-center">
+                <div className="w-full max-w-3xl">
+                  <div className="mb-20 flex justify-center">
                     <SearchBox />
                   </div>
-                  <div>
+                  <div className="w-full">
                     <CourseList courses={courses} />
                   </div>
                 </div>

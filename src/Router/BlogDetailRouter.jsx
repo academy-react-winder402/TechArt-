@@ -3,7 +3,7 @@ import { BlogDetailPage } from "../Screens/BlogDetailPage";
 
 const BlogDetailRouter = [
   {
-    path: "/blogdetail/:blogId",
+    path: "/blogdetail/:id",
     element: <BlogDetailPage />,
   },
 ];

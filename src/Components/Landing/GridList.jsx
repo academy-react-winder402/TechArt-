@@ -16,7 +16,7 @@ const Grid = () => {
   useEffect(() => {
     const fetchTopCourses = async () => {
       try {
-        const result = await TopCourse(4); // فراخوانی 4 دوره برتر
+        const result = await TopCourse(10); // فراخوانی 4 دوره برتر
         if (result.error) {
           throw new Error(result.error);
         }

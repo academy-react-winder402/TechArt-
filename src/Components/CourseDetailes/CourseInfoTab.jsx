@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { CourseComments } from "./CourseCommet";
 
 const Tab = ({ children }) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -34,10 +36,14 @@ const TabPane = ({ children }) => {
 };
 
 const CourseInfoTab = () => {
+  const { courseId } = useParams();
+
   return (
     <div className="container mx-auto mt-8">
       <Tab>
-        <TabPane label="نظرات دوره">{/* <CommentHolder /> */}</TabPane>
+        <TabPane label="نظرات دوره">
+          <CourseComments courseId={courseId} />
+        </TabPane>
         <TabPane label="دانلود جلسات">
           <p>This is the content of tab 2.</p>
         </TabPane>
