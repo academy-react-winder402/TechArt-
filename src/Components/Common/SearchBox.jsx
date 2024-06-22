@@ -1,23 +1,45 @@
-// SearchBox.js
-
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSearchCourses, setQuery } from "../../Redux/SearchSlice";
+import React, { useState } from "react";
+import http from "../../Core/interceptor/index";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SearchBox = () => {
-  const dispatch = useDispatch();
-  const { query, courses, loading, error } = useSelector(
-    (state) => state.search
-  );
+  const [query, setQuery] = useState("");
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
-    dispatch(setQuery(e.target.value));
+    setQuery(e.target.value);
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
     if (query.trim() !== "") {
-      dispatch(fetchSearchCourses(query));
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await http.get("/Home/GetCoursesWithPagination", {
+          params: {
+            PageNumber: 1,
+            RowsOfPage: 10,
+            SortingCol: "Active",
+            SortType: "DESC",
+            Query: query,
+            TechCount: 0,
+          },
+        });
+
+        const coursesData = response.courseFilterDtos || [];
+        setCourses(coursesData);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+        toast.error("Error: " + error?.message);
+        setError("Unable to fetch courses. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
     } else {
       alert("Please enter a search query.");
     }
@@ -40,7 +62,7 @@ const SearchBox = () => {
           className="min-w-4 flex-1 px-4 lg:my-1 lg:py-2 rounded-l-lg border border-gray-200 focus:outline-none focus:border-blue-400 transition duration-300"
         />
       </form>
-      <div>
+      {/* <div>
         {loading && <p>Loading...</p>}
         {error && <p>Error: {error}</p>}
         {courses &&
@@ -51,7 +73,8 @@ const SearchBox = () => {
               <p>{course.describe}</p>
             </div>
           ))}
-      </div>
+        {courses && courses.length === 0 && <p>No courses found.</p>}
+      </div> */}
     </div>
   );
 };

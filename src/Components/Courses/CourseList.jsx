@@ -5,21 +5,23 @@ import Pagination from "../Common/Pagination";
 import "react-toastify/dist/ReactToastify.css";
 import CardComponent from "../Common/Card";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function CourseList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState([]);
+  const { query } = useSelector((state) => state.search);
 
   useEffect(() => {
-    fetchCourses(currentPage);
-  }, [currentPage]);
+    fetchCourses();
+  }, [currentPage, query]);
 
-  const fetchCourses = async (page) => {
+  const fetchCourses = async (currentPage, query) => {
     setLoading(true);
     try {
-      const response = await CoursesAPI(page);
+      const response = await CoursesAPI(currentPage, query);
       setCourses(response?.courseFilterDtos);
       setTotalCount(response?.totalCount);
     } catch (error) {

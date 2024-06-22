@@ -44,7 +44,6 @@ const rootReducer = combineReducers({
   search: searchSlice,
   course: CourseSlice,
   commentDetail: commentDetailReducer, // اضافه کردن reducer مربوط به commentDetail
-
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 });
 
