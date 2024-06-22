@@ -3,26 +3,27 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const CoursesAPI = async (
-  PageNumber = 1,
-  RowsOfPage = 8,
-  SortingCol = "cost",
-  SortType = "DESC",
-  Query = undefined,
-  TechCount = 0,
-  ListTech = undefined,
-  CostDown = undefined,
-  CostUp = undefined
+  PageNumber,
+  RowsOfPage,
+  SortingCol,
+  SortType,
+  Query,
+  TechCount,
+  ListTech,
+  CostDown,
+  CostUp
 ) => {
   try {
     const params = {
-      PageNumber,
-      RowsOfPage,
-      SortingCol,
-      SortType,
-      TechCount,
-      ListTech,
-      CostDown,
-      CostUp,
+      PageNumber: PageNumber ? PageNumber : undefined,
+      Query: Query ? Query : undefined,
+      RowsOfPage: RowsOfPage ? RowsOfPage : 8,
+      SortingCol: SortingCol ? SortingCol : "cost",
+      SortType: SortType ? SortType : "DESC",
+      TechCount: TechCount ? TechCount : 0,
+      ListTech: ListTech ? ListTech : undefined,
+      CostDown: CostDown ? CostDown : undefined,
+      CostUp: CostUp ? CostUp : undefined,
     };
 
     if (Query) {

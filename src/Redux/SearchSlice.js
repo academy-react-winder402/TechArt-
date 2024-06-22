@@ -13,12 +13,12 @@ const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    setQuery: (state, action) => {
+    setQueryR: (state, action) => {
       state.query = action.payload;
     },
   },
 });
 
 // صدور اعمال و reducer
-export const { setQuery } = searchSlice.actions;
+export const { setQueryR } = searchSlice.actions;
 export default searchSlice.reducer;

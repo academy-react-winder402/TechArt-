@@ -18,7 +18,7 @@ function CourseList() {
     fetchCourses();
   }, [currentPage, query]);
 
-  const fetchCourses = async (currentPage, query) => {
+  const fetchCourses = async () => {
     setLoading(true);
     try {
       const response = await CoursesAPI(currentPage, query);
@@ -31,7 +31,7 @@ function CourseList() {
   };
 
   const handlePageChange = (selectedPage) => {
-    setCurrentPage(selectedPage);
+    setCurrentPage(selectedPage.selected + 1);
   };
 
   return (

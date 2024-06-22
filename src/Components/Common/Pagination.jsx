@@ -3,11 +3,6 @@ import React from "react";
 import ReactPaginate from "react-paginate";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const handlePageClick = (data) => {
-    const selectedPage = data.selected + 1;
-    onPageChange(selectedPage);
-  };
-
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
@@ -55,7 +50,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
               pageCount={totalPages}
               marginPagesDisplayed={2}
               pageRangeDisplayed={8}
-              onPageChange={handlePageClick}
+              onPageChange={onPageChange}
               containerClassName={"pagination"}
               activeClassName={"active"}
               pageClassName="relative z-10 inline-flex items-center border px-4 pt-3  text-sm font-medium border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
