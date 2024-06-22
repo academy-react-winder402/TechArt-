@@ -9,7 +9,7 @@ const CardComponent = ({
   price,
 }) => {
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg mb-20">
+    <div className="max-w-xs rounded overflow-hidden shadow-lg mb-20 h-60">
       <img
         className="relative w-full z-0 bg-cover"
         src={imageUrl}

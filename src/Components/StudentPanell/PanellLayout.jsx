@@ -72,7 +72,17 @@ export default function PanellLayout() {
           {({ open }) => (
             <>
               <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                <div className="relative flex items-center justify-center py-5 lg:justify-between">
+                <div className="relative flex items-center justify-between py-5 lg:justify-between">
+                  <button
+                    type="button"
+                    className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-white"
+                    onClick={() => {
+                      // انتقال به صفحه اصلی
+                      window.location.href = "/";
+                    }}
+                  >
+                    ورود به صفحه اصلی
+                  </button>
                   <div className="hidden lg:ml-4 lg:flex lg:items-center lg:pr-0.5">
                     <button
                       type="button"
@@ -159,7 +169,7 @@ export default function PanellLayout() {
                 </div>
                 <div className="hidden border-t border-white border-opacity-20 py-5 lg:block">
                   <div className="grid grid-cols-3 items-center gap-8">
-                    <div className="col-span-2">
+                    {/* <div className="col-span-2">
                       <nav className="flex space-x-4">
                         {navigation.map((item) => (
                           <button
@@ -175,7 +185,7 @@ export default function PanellLayout() {
                           </button>
                         ))}
                       </nav>
-                    </div>
+                    </div> */}
                     <div>
                       <div className="mx-auto w-full max-w-md">
                         <label htmlFor="mobile-search" className="sr-only">
