@@ -35,14 +35,14 @@ const Comment = ({
   currentUserEmotion,
   refetch,
 }) => {
-  const CardId = useParams().id;
+  const { courseId } = useParams();
   const [data, setData] = useState([]);
   const [commentId, setCommentId] = useState([]);
   const [reFetch, setReFetch] = useState(false);
   const { fName, userImage } = useSelector((state) => state.user);
 
   const getComment = async () => {
-    const items = await CourseReplyComment(CardId, id);
+    const items = await CourseReplyComment(courseId, id);
     setData(items);
   };
 
@@ -63,7 +63,7 @@ const Comment = ({
   const onSubmit = async (value) => {
     var formdata = new FormData();
     formdata.append("CommentId", commentId);
-    formdata.append("CourseId", CardId);
+    formdata.append("CourseId", courseId);
     formdata.append("Title", value.title);
     formdata.append("Describe", value.text);
     const send = await AddReplyCommentCourse(formdata);
@@ -99,7 +99,7 @@ const Comment = ({
 
   useEffect(() => {
     getComment();
-  }, [CardId, reFetch]);
+  }, [courseId, reFetch]);
 
   return (
     <div className="flex flex-col items-center w-full m-auto  rounded-xl p-4 border border-[rgba(236,238,239)] ">

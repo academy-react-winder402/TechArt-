@@ -30,18 +30,18 @@ const Reply = ({
   const [reply, setReply] = useState();
   const { fName, userImage } = useSelector((state) => state.user);
 
-  const CardId = useParams().id;
+  const { courseId } = useParams();
   // send like
   const sendLike = async () => {
     const send = await CommentLikeCourse(id);
     refetch();
     console.log("Send reply Like", send);
     if (send.success == true) {
-      toast.success("لایک کردی سید");
+      toast.success("لایک کردید");
     } else toast.error(send.message);
   };
 
-  console.log("id", CardId);
+  console.log("id", courseId);
 
   // DissLike Comment
   const disliked = async () => {
@@ -50,7 +50,7 @@ const Reply = ({
     refetch();
     console.log("DissLike Comment Reply", diss);
     if (diss.success == true) {
-      toast.success("دیس لایک کردی سید");
+      toast.success("دیس لایک کردید");
     }
   };
 
@@ -61,7 +61,7 @@ const Reply = ({
     refetch();
     console.log("DeleteLikeReply", handleDelete);
     if (handleDelete.success == true) {
-      toast.success("لایک حذف شد سید");
+      toast.success("لایک حذف شد");
     } else toast.error(handleDelete.message);
   };
 
