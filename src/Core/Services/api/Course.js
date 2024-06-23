@@ -4,10 +4,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const CoursesAPI = async (
   PageNumber,
+  Query,
   RowsOfPage,
   SortingCol,
   SortType,
-  Query,
   TechCount,
   ListTech,
   CostDown,
