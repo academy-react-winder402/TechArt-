@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Button from "./RegisterButton";
+import { signUpAPI } from "../../Core/Services/api/auth";
 
 const StepForm = () => {
   const [step, setStep] = useState(1);
@@ -47,19 +48,14 @@ const StepForm = () => {
   };
 
   const handleSubmitStep3 = async () => {
-    try {
-      // فراخوانی API برای ثبت‌نام
-      await fetch(`${baseApi}/Sign/Register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ phoneNumber, password, gmail }),
-      });
-      console.log("ثبت‌نام با موفقیت انجام شد!");
-      // انجام هرگونه اقدام بعدی مانند انتقال به صفحه ورود و غیره
-    } catch (error) {
-      console.error("خطا در ثبت‌نام:", error);
+
+    const obj ={
+      password:value.password,
+      gmail:value.gmail,
+      phoneNumber:value.phoneNumber,
+    }
+
+    const res = await signUpAPI(obj)
     }
   };
 
