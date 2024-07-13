@@ -1,6 +1,5 @@
-// src/components/LoginForm.jsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Import Link
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
@@ -101,6 +100,15 @@ const LoginForm = () => {
                         Remember me
                       </label>
                     </div>
+                  </div>
+
+                  <div className="text-sm">
+                    <Link
+                      to="/forgot-password"
+                      className="font-medium text-indigo-600 hover:text-indigo-500"
+                    >
+                      رمز عبور خود را فراموش کرده اید؟
+                    </Link>
                   </div>
 
                   <div>

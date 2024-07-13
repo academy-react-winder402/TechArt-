@@ -11,6 +11,8 @@ import { EditProfilePageRouter } from "./EditProfileRouter";
 import { LoginPageRouter } from "./LoginRouter";
 import { PanellRouter } from "./PanellRouter";
 import { SignUpPageRouter } from "./SignUpPageRouter";
+import { ForgetFormRouter } from "./ForgetFormRouter";
+import { ForgetFormStep2Router } from "./ForgetFormStep2Router";
 const router = createBrowserRouter([
   ...CoursePageRouter,
   ...BlogPageRouter,
@@ -20,6 +22,8 @@ const router = createBrowserRouter([
   ...BlogDetailRouter,
   ...EditProfilePageRouter,
   ...SignUpPageRouter,
+  ...ForgetFormRouter,
+  ...ForgetFormStep2Router,
 
   {
     path: "/",
@@ -56,6 +60,15 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <SignUpPageRouter />,
+  },
+
+  {
+    path: "/forgot-password",
+    element: <ForgetFormRouter />,
+  },
+  {
+    path: "/resetpassword/:ConfigValue",
+    element: <ForgetFormStep2Router />,
   },
 ]);
 

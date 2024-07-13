@@ -82,11 +82,8 @@ const Grid = () => {
                   <div className="flex flex-1 flex-col justify-between bg-white dark:bg-medium p-6">
                     <div className="flex-1">
                       <h3 className="text-lg font-semibold">{course.title}</h3>
-                      <p className="mt-2 text-sm text-gray-600">
-                        {course.describe}
-                      </p>
                     </div>
-                    <div className="mt-6 flex items-center">
+                    <div className="mt-6 flex items-center font-semibold">
                       <span className="text-gray-900 font-medium">
                         {course.cost} ریال
                       </span>
@@ -96,11 +93,7 @@ const Grid = () => {
                         استاد: {course.teacherName}
                       </span>
                     </div>
-                    <div className="mt-2 flex items-center">
-                      <span className="text-sm text-gray-500">
-                        کلاس: {course.classRoomName}
-                      </span>
-                    </div>
+
                     <div className="mt-2 flex items-center">
                       <span className="text-sm text-gray-500">
                         سطح: {course.levelName}

@@ -13,19 +13,22 @@ function CourseList() {
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState([]);
   const { query } = useSelector((state) => state.search);
+  const selectedLevelId = useSelector(
+    (state) => state.filterCourse.selectedLevelId
+  );
 
   useEffect(() => {
     fetchCourses();
-  }, [currentPage, query]);
+  }, [currentPage, query, selectedLevelId]);
 
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const response = await CoursesAPI(currentPage, query);
-      setCourses(response?.courseFilterDtos);
-      setTotalCount(response?.totalCount);
+      const response = await CoursesAPI(currentPage, query, selectedLevelId);
+      setCourses(response?.courseFilterDtos || []);
+      setTotalCount(response?.totalCount || 0);
     } catch (error) {
-      toast.error("Failed to fetch courses");
+      toast.error("دریافت دوره‌ها با مشکل مواجه شد");
     }
     setLoading(false);
   };
@@ -40,14 +43,13 @@ function CourseList() {
         <p>در حال بارگذاری...</p>
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {courses?.length > 0 ? (
+          {courses.length > 0 ? (
             courses.map((course) => (
               <Link
                 key={course.courseId}
                 to={`/coursedetail/${course.courseId}`}
               >
                 <CardComponent
-                  key={course.courseId}
                   author={course.author}
                   date={course.date}
                   title={course.title}

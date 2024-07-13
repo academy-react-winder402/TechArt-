@@ -57,22 +57,22 @@ const CommentHolder = () => {
                 cx="5"
                 cy="5"
                 r="5"
-                fill="#7946c5"
+                fill="#164e63"
               />
             </svg>
-            <h4 className="mr-3   text-[#7946c5] font-shabnamBold text-[26px]">
+            <h4 className="mr-3   text-[#164e63] font-shabnamBold text-[26px]">
               دیدگاه و پرسش
             </h4>
           </li>
           <li className="flex flex-wrap justify-between mt-1 w-[44%]">
-            <div className="hover:border-transparent hover:bg-[#a57ac9] text-[#8d5db4] hover:text-white border-[2px] border-[#8d5db4] transition duration-300 cursor-pointer rounded-[6px] flex justify-center items-center w-[39%] h-[50%]">
+            {/* <div className="hover:border-transparent hover:bg-[#a57ac9] text-[#8d5db4] hover:text-white border-[2px] border-[#8d5db4] transition duration-300 cursor-pointer rounded-[6px] flex justify-center items-center w-[39%] h-[50%]">
               <p className="font-shabnamMeduim  mt-1 text-[18px]">
                 دنبال کردن نظرات
               </p>
-            </div>
-            <div className=" border-transparent text-white border-[2px] hover:text-[#8d5db4] hover:border-[#8d5db4] hover:bg-white transition duration-300 cursor-pointer  flex justify-center items-center  w-[58%] h-[50%] rounded-[6px] bg-[#a57ac9]">
+            </div> */}
+            <div className=" border-transparent text-[#eab308] border-[2px] hover:text-[#164e63] hover:border-[#164e63] hover:bg-[#eab308] transition duration-300 cursor-pointer  flex justify-center items-center  w-[58%] h-[50%] rounded-[6px] bg-[#164e63]">
               <p
-                className="indent-2 font-shabnamMeduim text-[19px]"
+                className="indent-2 font-shabnamMeduim text-[16px]"
                 onClick={show}
               >
                 افزودن دیدگاه و پرسش{" "}

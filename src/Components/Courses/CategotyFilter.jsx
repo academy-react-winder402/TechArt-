@@ -14,6 +14,7 @@ import {
 } from "@heroicons/react/20/solid";
 import CourseList from "./CourseList";
 import SearchBox from "../Common/SearchBox";
+import { setCourseLevel } from "../../Redux/CourseLevelSlice";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -31,7 +32,6 @@ function CategoryFilter() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [filterOptions, setFilterOptions] = useState([]);
   const dispatch = useDispatch();
-  const courses = [];
 
   useEffect(() => {
     getData();
@@ -72,8 +72,8 @@ function CategoryFilter() {
     }
   };
 
-  const flilterByCourseLevel = () => {
-    dispatch({});
+  const handleLevelChange = (levelId) => {
+    dispatch(setCourseLevel(levelId));
   };
 
   return (
@@ -168,11 +168,14 @@ function CategoryFilter() {
                                   >
                                     <input
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
-                                      name={`${section.id}[]`}
+                                      name={`${section.id}`}
                                       defaultValue={option.value}
-                                      type="checkbox"
+                                      type="radio"
                                       defaultChecked={option.checked}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                      onChange={() =>
+                                        handleLevelChange(option.value)
+                                      }
                                     />
                                     <label
                                       htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -249,14 +252,7 @@ function CategoryFilter() {
 
               <button
                 type="button"
-                className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
-              >
-                <span className="sr-only">View grid</span>
-                <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+                className="ml-4 p-2 text-gray-400 hover:text-gray-500 lg:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
               >
                 <span className="sr-only">فیلترها</span>
@@ -265,13 +261,12 @@ function CategoryFilter() {
             </div>
           </div>
 
-          <section aria-labelledby="products-heading" className="pt-6 pb-24">
+          <section aria-labelledby="products-heading" className="pb-24 pt-6">
             <h2 id="products-heading" className="sr-only">
               محصولات
             </h2>
 
-            <div className="flex flex-col lg:flex-row lg:gap-x-8 gap-y-10">
-              {/* Filters */}
+            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               <form className="hidden lg:block">
                 <h3 className="sr-only">دسته‌ها</h3>
                 <ul
@@ -316,11 +311,14 @@ function CategoryFilter() {
                               >
                                 <input
                                   id={`filter-${section.id}-${optionIdx}`}
-                                  name={`${section.id}[]`}
+                                  name={`${section.id}`}
                                   defaultValue={option.value}
-                                  type="checkbox"
+                                  type="radio"
                                   defaultChecked={option.checked}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  onChange={() =>
+                                    handleLevelChange(option.value)
+                                  }
                                 />
                                 <label
                                   htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -337,15 +335,10 @@ function CategoryFilter() {
                   </Disclosure>
                 ))}
               </form>
-              <div className="flex-1 flex flex-col items-center justify-center">
-                <div className="w-full max-w-3xl">
-                  <div className="mb-20 flex justify-center">
-                    <SearchBox />
-                  </div>
-                  <div className="w-full">
-                    <CourseList courses={courses} />
-                  </div>
-                </div>
+
+              <div className="lg:col-span-3">
+                <SearchBox />
+                <CourseList />
               </div>
             </div>
           </section>
