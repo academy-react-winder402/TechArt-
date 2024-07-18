@@ -11,7 +11,8 @@ export const CoursesAPI = async (
   TechCount,
   ListTech,
   CostDown,
-  CostUp
+  CostUp,
+  LevelName // اضافه کردن LevelName به پارامترها
 ) => {
   try {
     const params = {
@@ -24,22 +25,16 @@ export const CoursesAPI = async (
       ListTech: ListTech ? ListTech : undefined,
       CostDown: CostDown ? CostDown : undefined,
       CostUp: CostUp ? CostUp : undefined,
+      LevelName: LevelName ? LevelName : undefined, // اضافه کردن LevelName به پارامترها
     };
-
-    if (Query) {
-      params.Query = Query;
-    }
 
     const result = await http.get("/Home/GetCoursesWithPagination", { params });
 
-    // بررسی موجود بودن ویژگی courseFilterDtos در پاسخ
-
-    return result;
+    return result; // فرض بر این است که داده‌ها در result.data قرار دارند
   } catch (error) {
     console.error("Error fetching courses:", error);
     toast.error("Error: " + error?.message);
 
-    // بازگرداندن خطای مناسب
     if (error.response) {
       throw new Error(
         error.response || "Unable to fetch courses. Please try again later."

@@ -1,4 +1,3 @@
-// Redux/store.js
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -7,7 +6,7 @@ import rootReducer from "./rootReducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth"], // فقط state مربوط به auth را در localStorage ذخیره کن
+  whitelist: ["auth"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -23,3 +22,5 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export default store;

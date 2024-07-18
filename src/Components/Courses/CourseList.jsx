@@ -6,31 +6,42 @@ import "react-toastify/dist/ReactToastify.css";
 import CardComponent from "../Common/Card";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import SearchBox from "../Common/SearchBox";
 
 function CourseList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState([]);
-  const { query } = useSelector((state) => state.search);
-  const selectedLevelId = useSelector(
-    (state) => state.filterCourse.selectedLevelId
-  );
+  const query = useSelector((state) => state.search.query);
+  const selectedLevel = useSelector((state) => state.courseLevel.selectedLevel);
 
   useEffect(() => {
     fetchCourses();
-  }, [currentPage, query, selectedLevelId]);
+  }, [currentPage, query, selectedLevel]);
 
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const response = await CoursesAPI(currentPage, query, selectedLevelId);
+      const response = await CoursesAPI(
+        currentPage,
+        query,
+        8,
+        "cost",
+        "DESC",
+        0,
+        [],
+        undefined,
+        undefined,
+        selectedLevel ? selectedLevel.levelName : undefined // ارسال levelName به API
+      );
       setCourses(response?.courseFilterDtos || []);
       setTotalCount(response?.totalCount || 0);
     } catch (error) {
-      toast.error("دریافت دوره‌ها با مشکل مواجه شد");
+      toast.error("Failed to fetch courses");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const handlePageChange = (selectedPage) => {
@@ -38,7 +49,8 @@ function CourseList() {
   };
 
   return (
-    <div>
+    <React.Fragment>
+      {/* <SearchBox /> */}
       {loading ? (
         <p>در حال بارگذاری...</p>
       ) : (
@@ -50,12 +62,12 @@ function CourseList() {
                 to={`/coursedetail/${course.courseId}`}
               >
                 <CardComponent
-                  author={course.author}
-                  date={course.date}
+                  author={course.teacherName}
+                  date={course.lastUpdate}
                   title={course.title}
                   imageUrl={course.tumbImageAddress}
                   description={course.describe}
-                  price={course.price}
+                  price={course.cost}
                 />
               </Link>
             ))
@@ -69,7 +81,7 @@ function CourseList() {
         totalPages={Math.ceil(totalCount / 8)}
         onPageChange={handlePageChange}
       />
-    </div>
+    </React.Fragment>
   );
 }
 

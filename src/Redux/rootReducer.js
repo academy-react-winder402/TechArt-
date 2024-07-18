@@ -1,6 +1,6 @@
+import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { combineReducers } from "@reduxjs/toolkit";
 
 import filterCourse from "./filterCourse";
 import newsCategory from "./newsCategory";
@@ -9,9 +9,8 @@ import filterNews from "./filterNews";
 import authSlice from "./authSlice";
 import searchSlice from "./SearchSlice";
 import CourseSlice from "./CourseSlice";
-import commentDetailReducer from "./CorseComment"; // import کردن reducer مربوط به commentDetail
-
-// import { thunk } from "redux-thunk";
+import commentDetailReducer from "./CorseComment";
+import courseLevelReducer from "./CourseLevelSlice"; // وارد کردن courseLevelSlice
 
 const persistConfig = {
   key: "root",
@@ -43,8 +42,8 @@ const rootReducer = combineReducers({
   filterNews,
   search: searchSlice,
   course: CourseSlice,
-  commentDetail: commentDetailReducer, // اضافه کردن reducer مربوط به commentDetail
-  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+  commentDetail: commentDetailReducer,
+  courseLevel: courseLevelReducer, // اضافه کردن courseLevelSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

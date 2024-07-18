@@ -10,20 +10,21 @@ import {
   FunnelIcon,
   MinusIcon,
   PlusIcon,
-  Squares2X2Icon,
 } from "@heroicons/react/20/solid";
 import CourseList from "./CourseList";
 import SearchBox from "../Common/SearchBox";
 import { setCourseLevel } from "../../Redux/CourseLevelSlice";
 
+// Options for sorting courses
 const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
+  { name: "محبوب‌ترین", href: "#", current: true },
+  { name: "بهترین امتیاز", href: "#", current: false },
+  { name: "جدیدترین", href: "#", current: false },
+  { name: "قیمت: کم به زیاد", href: "#", current: false },
+  { name: "قیمت: زیاد به کم", href: "#", current: false },
 ];
 
+// Function to join class names conditionally
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -33,45 +34,47 @@ function CategoryFilter() {
   const [filterOptions, setFilterOptions] = useState([]);
   const dispatch = useDispatch();
 
+  // Fetch course levels and categories on component mount
   useEffect(() => {
+    const getData = async () => {
+      try {
+        const levels = await courseLevel();
+        const levelOptions = levels.map((item) => ({
+          value: item.id,
+          label: item.levelName,
+          checked: false,
+        }));
+
+        const categories = await category();
+        const categoryOptions = categories.map((item) => ({
+          value: item.id,
+          label: item.techName,
+          checked: false,
+        }));
+
+        setFilterOptions([
+          { id: "level", name: "سطح", options: levelOptions },
+          { id: "subject", name: "موضوعات", options: categoryOptions },
+          {
+            id: "cost",
+            name: "قیمت",
+            options: [
+              { value: "expensive", label: "گران‌ترین", checked: false },
+              { value: "cheap", label: "ارزان‌ترین", checked: false },
+              { value: "discount", label: "دارای تخفیف", checked: true },
+              { value: "free", label: "رایگان", checked: false },
+            ],
+          },
+        ]);
+      } catch (error) {
+        toast.error("دریافت گزینه‌های فیلتر ناموفق بود");
+      }
+    };
+
     getData();
   }, []);
 
-  const getData = async () => {
-    try {
-      const levels = await courseLevel();
-      const levelOptions = levels.map((item) => ({
-        value: item.id,
-        label: item.levelName,
-        checked: false,
-      }));
-
-      const categories = await category();
-      const categoryOptions = categories.map((item) => ({
-        value: item.id,
-        label: item.techName,
-        checked: false,
-      }));
-
-      setFilterOptions([
-        { id: "level", name: "سطح", options: levelOptions },
-        { id: "sobject", name: "موضوعات", options: categoryOptions },
-        {
-          id: "cost",
-          name: "قیمت",
-          options: [
-            { value: "new-arrivals", label: "گران ترین", checked: false },
-            { value: "sale", label: "ارزان ترین", checked: false },
-            { value: "travel", label: "دارای تخفیف", checked: true },
-            { value: "organization", label: "رایگان", checked: false },
-          ],
-        },
-      ]);
-    } catch (error) {
-      toast.error("Failed to fetch filter options");
-    }
-  };
-
+  // Handle level change and dispatch the action
   const handleLevelChange = (levelId) => {
     dispatch(setCourseLevel(levelId));
   };
@@ -169,7 +172,7 @@ function CategoryFilter() {
                                     <input
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
                                       name={`${section.id}`}
-                                      defaultValue={option.value}
+                                      value={option.value}
                                       type="radio"
                                       defaultChecked={option.checked}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
@@ -199,9 +202,9 @@ function CategoryFilter() {
         </Transition.Root>
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-16">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              دسته بندی دوره‌ها
+              فروشگاه
             </h1>
 
             <div className="flex items-center">
@@ -252,11 +255,14 @@ function CategoryFilter() {
 
               <button
                 type="button"
-                className="ml-4 p-2 text-gray-400 hover:text-gray-500 lg:hidden"
+                className="inline-flex items-center lg:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
               >
                 <span className="sr-only">فیلترها</span>
-                <FunnelIcon className="h-5 w-5" aria-hidden="true" />
+                <FunnelIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
               </button>
             </div>
           </div>
@@ -312,7 +318,7 @@ function CategoryFilter() {
                                 <input
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}`}
-                                  defaultValue={option.value}
+                                  value={option.value}
                                   type="radio"
                                   defaultChecked={option.checked}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
