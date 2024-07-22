@@ -33,7 +33,7 @@ function CourseList() {
         [],
         undefined,
         undefined,
-        selectedLevel ? selectedLevel.levelName : undefined // ارسال levelName به API
+        selectedLevel ? selectedLevel.label : undefined // ارسال levelName به API
       );
       setCourses(response?.courseFilterDtos || []);
       setTotalCount(response?.totalCount || 0);
@@ -50,7 +50,6 @@ function CourseList() {
 
   return (
     <React.Fragment>
-      {/* <SearchBox /> */}
       {loading ? (
         <p>در حال بارگذاری...</p>
       ) : (

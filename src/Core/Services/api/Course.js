@@ -12,7 +12,7 @@ export const CoursesAPI = async (
   ListTech,
   CostDown,
   CostUp,
-  LevelName // اضافه کردن LevelName به پارامترها
+  LevelName
 ) => {
   try {
     const params = {
@@ -30,14 +30,15 @@ export const CoursesAPI = async (
 
     const result = await http.get("/Home/GetCoursesWithPagination", { params });
 
-    return result; // فرض بر این است که داده‌ها در result.data قرار دارند
+    return result; //
   } catch (error) {
     console.error("Error fetching courses:", error);
     toast.error("Error: " + error?.message);
 
     if (error.response) {
       throw new Error(
-        error.response || "Unable to fetch courses. Please try again later."
+        error.response.message ||
+          "Unable to fetch courses. Please try again later."
       );
     } else if (error.request) {
       throw new Error(
