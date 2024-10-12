@@ -18,7 +18,7 @@ export default function AdsCard() {
       </div>
       <div className="relative flex items-center space-x-3 rounded-lg bg-sky-950 dark:bg-medium	 border border-gray-300  px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400">
         <div className="min-w-0 flex-1">
-          <img src={image} alt="" className="w-auto max-h-60" />
+          <img src={image} alt="" className="max-w-20 max-h-40" />
         </div>
         <div className="flex w-8/12 text-white text-justify">
           <p>

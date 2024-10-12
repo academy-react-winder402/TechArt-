@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Define the initial state
 const initialState = {
-  selectedLevel: null,
+  selectedLevelId: null,
 };
 
 // Create the slice
@@ -11,10 +11,10 @@ const courseLevelSlice = createSlice({
   initialState,
   reducers: {
     setCourseLevel: (state, action) => {
-      state.selectedLevel = action.payload;
+      state.selectedLevelId = action.payload; // ذخیره فقط ID سطح انتخاب شده
     },
     clearCourseLevel: (state) => {
-      state.selectedLevel = null;
+      state.selectedLevelId = null;
     },
   },
 });
@@ -26,4 +26,5 @@ export const { setCourseLevel, clearCourseLevel } = courseLevelSlice.actions;
 export default courseLevelSlice.reducer;
 
 // Selector for easier access to the state
-export const selectSelectedLevel = (state) => state.courseLevel.selectedLevel;
+export const selectSelectedLevelId = (state) =>
+  state.courseLevel.selectedLevelId;

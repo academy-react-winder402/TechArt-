@@ -2,23 +2,24 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { CoursesAPI } from "../../Core/Services/api/Course";
 import Pagination from "../Common/Pagination";
-import "react-toastify/dist/ReactToastify.css";
 import CardComponent from "../Common/Card";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import SearchBox from "../Common/SearchBox";
+import { selectSelectedLevelId } from "../../Redux/CourseLevelSlice"; // Importing the selector
 
 function CourseList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState([]);
+
+  // Selectors for Redux state
   const query = useSelector((state) => state.search.query);
-  const selectedLevel = useSelector((state) => state.courseLevel.selectedLevel);
+  const selectedLevelId = useSelector(selectSelectedLevelId); // Getting selected level ID
 
   useEffect(() => {
     fetchCourses();
-  }, [currentPage, query, selectedLevel]);
+  }, [currentPage, query, selectedLevelId]); // Dependency array includes selectedLevelId
 
   const fetchCourses = async () => {
     setLoading(true);
@@ -26,14 +27,14 @@ function CourseList() {
       const response = await CoursesAPI(
         currentPage,
         query,
-        8,
-        "cost",
-        "DESC",
-        0,
-        [],
-        undefined,
-        undefined,
-        selectedLevel ? selectedLevel.label : undefined // ارسال levelName به API
+        8, // Default rows per page
+        undefined, // SortingCol
+        undefined, // SortType
+        undefined, // TechCount
+        undefined, // ListTech
+        undefined, // CostDown
+        undefined, // CostUp
+        selectedLevelId // Pass only the selected level ID
       );
       setCourses(response?.courseFilterDtos || []);
       setTotalCount(response?.totalCount || 0);

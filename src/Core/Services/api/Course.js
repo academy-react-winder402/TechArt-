@@ -12,27 +12,28 @@ export const CoursesAPI = async (
   ListTech,
   CostDown,
   CostUp,
-  LevelName
+  id
 ) => {
   try {
     const params = {
-      PageNumber: PageNumber ? PageNumber : undefined,
-      Query: Query ? Query : undefined,
-      RowsOfPage: RowsOfPage ? RowsOfPage : 8,
-      SortingCol: SortingCol ? SortingCol : "cost",
-      SortType: SortType ? SortType : "DESC",
-      TechCount: TechCount ? TechCount : 0,
-      ListTech: ListTech ? ListTech : undefined,
-      CostDown: CostDown ? CostDown : undefined,
-      CostUp: CostUp ? CostUp : undefined,
-      LevelName: LevelName ? LevelName : undefined, // اضافه کردن LevelName به پارامترها
+      PageNumber: PageNumber || undefined,
+      Query: Query || undefined,
+      RowsOfPage: RowsOfPage || 8,
+      SortingCol: SortingCol || "cost",
+      SortType: SortType || "DESC",
+      TechCount: TechCount || 0,
+      ListTech: ListTech || undefined,
+      CostDown: CostDown || undefined,
+      CostUp: CostUp || undefined,
+      id: id || undefined,
     };
 
     const result = await http.get("/Home/GetCoursesWithPagination", { params });
 
-    return result; //
+    return result;
   } catch (error) {
     console.error("Error fetching courses:", error);
+
     toast.error("Error: " + error?.message);
 
     if (error.response) {
