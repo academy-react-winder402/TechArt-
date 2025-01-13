@@ -24,7 +24,6 @@ function CourseDetailPage() {
           <Heading />
           <Navigation currentPath={location.pathname} className="bg-gray-500" />
           <CourseDetailes />
-          <Footer />
         </div>
       )}
     </>

@@ -19,7 +19,7 @@ function CourseList() {
 
   useEffect(() => {
     fetchCourses();
-  }, [currentPage, query, selectedLevelId]); // Dependency array includes selectedLevelId
+  }, [currentPage, query, selectedLevelId?.value]); // Dependency array includes selectedLevelId
 
   const fetchCourses = async () => {
     setLoading(true);
@@ -34,7 +34,7 @@ function CourseList() {
         undefined, // ListTech
         undefined, // CostDown
         undefined, // CostUp
-        selectedLevelId // Pass only the selected level ID
+        selectedLevelId?.value // Pass only the selected level ID
       );
       setCourses(response?.courseFilterDtos || []);
       setTotalCount(response?.totalCount || 0);

@@ -1,6 +1,5 @@
 import Footer from "../Components/Common/Footer";
 import Heading from "../Components/Common/Header";
-import Layout from "../Components/Common/Layout";
 import AdsCard from "../Components/Landing/AdsCard";
 import BlogCard from "../Components/Landing/BlogCard";
 import Events from "../Components/Landing/Events";
@@ -15,7 +14,6 @@ import ScrowllToTopButton from "./../Components/Common/ScrowlToTopButton";
 function Landing() {
   return (
     <div className="container  mx-auto">
-      <Heading />
       <HeroSections />
 
       <Shortcut />
@@ -26,7 +24,6 @@ function Landing() {
       <Events />
       <TestimonialSection />
       <BlogCard />
-      <Footer />
 
       <ScrowllToTopButton />
     </div>

@@ -1,12 +1,42 @@
-import React from "react";
+// src/layouts/PublicLayout.js
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
-const MainContent = (props) => {
+export const PublicLayout = () => {
   return (
-    <>
-      <div className="container mx-auto px-2 sm:px-6 lg:px-1">
-        {props.Children}
-      </div>
-    </>
+    <div>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 };
-export default MainContent;
+
+// src/layouts/PrivateLayout.js
+
+// export const PrivateLayout = () => {
+//   return (
+//     <div>
+//       <Header />
+//       <main>
+//         <Outlet />
+//       </main>
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// src/layouts/AuthLayout.js
+
+// export const AuthLayout = () => {
+//   return (
+//     <div>
+//       <main>
+//         <Outlet />
+//       </main>
+//     </div>
+//   );
+// };

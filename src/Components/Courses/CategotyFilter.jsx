@@ -74,7 +74,6 @@ function CategoryFilter() {
   const handleLevelChange = (option) => {
     dispatch(setCourseLevel(option));
   };
-
   return (
     <div className="bg-white">
       <div>
@@ -156,8 +155,8 @@ function CategoryFilter() {
                                 </span>
                               </Disclosure.Button>
                             </h3>
-                            <Disclosure.Panel className="pt-6">
-                              <div className="space-y-6">
+                            <Disclosure.Panel className="pt-6 ">
+                              <div className="space-y-6 ">
                                 {section.options.map((option, optionIdx) => (
                                   <div
                                     key={option.value}

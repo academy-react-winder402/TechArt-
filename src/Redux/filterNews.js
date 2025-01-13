@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const filterNews = createSlice({
   name: "filterNews",
   initialState: {
-    RowsOfPage: 3,
+    RowsOfPage: 10,
     SortingCol: "insertDate",
     SortType: "DESC",
     Query: undefined,

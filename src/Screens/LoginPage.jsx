@@ -6,11 +6,13 @@ import PageSections from "./../Components/Login/PageSections";
 
 function LoginPage() {
   return (
-    <div className="container border-2 border-red mx-auto">
-      <Heading />
+    <main>
+      <div className="container border-2 border-red mx-auto">
+        <Heading />
 
-      <PageSections />
-    </div>
+        <PageSections />
+      </div>
+    </main>
   );
 }
 

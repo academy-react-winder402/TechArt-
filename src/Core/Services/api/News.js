@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const News = async (
   PageNumber = 1,
-  RowsOfPage = 3,
+  RowsOfPage = 10,
   SortingCol = "insertDate",
   SortType = "DESC",
   Query = undefined

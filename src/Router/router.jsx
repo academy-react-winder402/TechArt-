@@ -3,6 +3,7 @@ import { BlogPage } from "../Screens/BlogPage";
 import { CoursePage } from "../Screens/CoursePage";
 import { Landing } from "../Screens/Landing";
 import { LoginPage } from "../Screens/LoginPage";
+import { PublicLayout } from "../Components/Common/Layout";
 import { BlogDetailRouter } from "./BlogDetailRouter";
 import { BlogPageRouter } from "./BlogPageRouter";
 import { CourseDetailRouter } from "./CourseDetailRouter";
@@ -13,62 +14,39 @@ import { PanellRouter } from "./PanellRouter";
 import { SignUpPageRouter } from "./SignUpPageRouter";
 import { ForgetFormRouter } from "./ForgetFormRouter";
 import { ForgetFormStep2Router } from "./ForgetFormStep2Router";
-const router = createBrowserRouter([
-  ...CoursePageRouter,
-  ...BlogPageRouter,
-  ...LoginPageRouter,
-  ...PanellRouter,
-  ...CourseDetailRouter,
-  ...BlogDetailRouter,
-  ...EditProfilePageRouter,
-  ...SignUpPageRouter,
-  ...ForgetFormRouter,
-  ...ForgetFormStep2Router,
 
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />,
-  },
-  {
-    path: "/courses",
-    element: <CoursePageRouter />,
-  },
-  {
-    path: "/blogs",
-    element: <BlogPageRouter />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/dashboard",
-    element: <PanellRouter />,
-  },
-  {
-    path: "/coursedetail",
-    element: <CourseDetailRouter />,
-  },
-  {
-    path: "/blogdetail",
-    element: <BlogDetailRouter />,
-  },
-  {
-    path: "/editprofile",
-    element: <EditProfilePageRouter />,
-  },
-  {
-    path: "/register",
-    element: <SignUpPageRouter />,
-  },
-
-  {
-    path: "/forgot-password",
-    element: <ForgetFormRouter />,
-  },
-  {
-    path: "/resetpassword/:ConfigValue",
-    element: <ForgetFormStep2Router />,
+    element: <PublicLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Landing />,
+      },
+      {
+        path: "/courses",
+        element: <CoursePage />,
+      },
+      {
+        path: "/blogs",
+        element: <BlogPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      // اضافه کردن مسیرهای دیگر به درستی زیر PublicLayout
+      ...CoursePageRouter,
+      ...BlogPageRouter,
+      ...CourseDetailRouter,
+      ...BlogDetailRouter,
+      ...EditProfilePageRouter,
+      ...PanellRouter,
+      ...SignUpPageRouter,
+      ...ForgetFormRouter,
+      ...ForgetFormStep2Router,
+    ],
   },
 ]);
 

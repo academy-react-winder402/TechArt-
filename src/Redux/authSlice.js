@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   phoneNumber: "",
   step: "one",
-  isAuthenticated: false, // وضعیت ورود
+  isAuthenticated: JSON.parse(localStorage.getItem("isAuthenticated")) || false,
 };
 
 const authSlice = createSlice({
@@ -19,9 +19,11 @@ const authSlice = createSlice({
     },
     login(state) {
       state.isAuthenticated = true;
+      localStorage.setItem("isAuthenticated", true); // ذخیره وضعیت ورود
     },
     logout(state) {
       state.isAuthenticated = false;
+      localStorage.removeItem("isAuthenticated"); // حذف وضعیت ورود
     },
   },
 });

@@ -25,7 +25,7 @@ export const CoursesAPI = async (
       ListTech: ListTech || undefined,
       CostDown: CostDown || undefined,
       CostUp: CostUp || undefined,
-      id: id || undefined,
+      courseLevelId: id || undefined,
     };
 
     const result = await http.get("/Home/GetCoursesWithPagination", { params });

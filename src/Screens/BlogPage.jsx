@@ -7,12 +7,8 @@ import Pagination from "../Components/Common/Pagination";
 function BlogPage() {
   return (
     <div className="container border-2 border-red mx-auto">
-      <Heading />
       <MiniHeroBlog />
       <BlogFilter />
-
-      <Pagination />
-      <Footer />
     </div>
   );
 }

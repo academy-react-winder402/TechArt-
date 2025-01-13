@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -10,7 +10,11 @@ import {
 } from "@heroicons/react/20/solid";
 import SearchBox from "../Common/SearchBox";
 import PostList from "./BlogList";
-import image from "../../assets/Images/03.jpg";
+import {
+  ListNewsCategory,
+  getNewsWithCategory,
+} from "../../Core/Services/api/NewsCategory";
+import { toast } from "react-toastify"; // Added missing import
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -20,159 +24,68 @@ const sortOptions = [
   { name: "Price: High to Low", href: "#", current: false },
 ];
 
-const filters = [
-  {
-    id: "color",
-    name: "مقالات",
-    options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
-    ],
-  },
-  {
-    id: "category",
-    name: "اخبار",
-    options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
-    ],
-  },
-  {
-    id: "size",
-    name: "تکنولوژی",
-    options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
-    ],
-  },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function BlogFilter() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const posts = [
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const result = await ListNewsCategory();
+        if (result) {
+          setCategories(result);
+        } else {
+          toast.error("Failed to fetch categories.");
+        }
+      } catch (error) {
+        toast.error(
+          error?.message || "An error occurred while fetching categories."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  const handleCategorySelect = (categoryId) => {
+    setSelectedCategory(categoryId);
+    fetchPostsForCategory(categoryId);
+  };
+
+  const fetchPostsForCategory = async (categoryId) => {
+    try {
+      const result = await getNewsWithCategory(categoryId);
+      if (result) {
+        setPosts(result);
+      } else {
+        toast.error("Failed to fetch posts for the selected category.");
+      }
+    } catch (error) {
+      toast.error(error?.message || "An error occurred while fetching posts.");
+    }
+  };
+
+  const filters = [
     {
-      id: 1,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 1",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
+      id: "category",
+      name: "دسته بندی ها",
+      options: categories.map((category) => ({
+        value: category.id,
+        label: category.categoryName,
+        checked: false,
+      })),
     },
-    {
-      id: 2,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 3,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 4,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 5,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 1",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 6,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 7,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 8,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 9,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 1",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 10,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 11,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
-    {
-      id: 12,
-      name: "فریموورک های فرانت اند",
-      imageUrl: image,
-      description: "Description of Product 2",
-      price: "1000 ریال",
-      athor: "admin",
-      date: "1403/06/06",
-    },
+    // other filters...
   ];
 
   return (
@@ -224,12 +137,6 @@ export default function BlogFilter() {
 
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
-                    <h3 className="sr-only">Categories</h3>
-                    <ul
-                      role="list"
-                      className="px-2 py-3 font-medium text-gray-900"
-                    ></ul>
-
                     {filters.map((section) => (
                       <Disclosure
                         as="div"
@@ -268,10 +175,13 @@ export default function BlogFilter() {
                                     <input
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
                                       name={`${section.id}[]`}
-                                      defaultValue={option.value}
+                                      value={option.value}
                                       type="checkbox"
                                       defaultChecked={option.checked}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                      onChange={() =>
+                                        handleCategorySelect(option.value)
+                                      }
                                     />
                                     <label
                                       htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -369,15 +279,9 @@ export default function BlogFilter() {
               Products
             </h2>
 
-            <div className="flex   gap-x-8 gap-y-10  border-red">
+            <div className="flex  gap-x-20  border-t border-gray-200">
               {/* Filters */}
               <form className="hidden lg:block">
-                <h3 className="sr-only">Categories</h3>
-                <ul
-                  role="list"
-                  className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                ></ul>
-
                 {filters.map((section) => (
                   <Disclosure
                     as="div"
@@ -416,10 +320,13 @@ export default function BlogFilter() {
                                 <input
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
-                                  defaultValue={option.value}
+                                  value={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  onChange={() =>
+                                    handleCategorySelect(option.value)
+                                  }
                                 />
                                 <label
                                   htmlFor={`filter-${section.id}-${optionIdx}`}
@@ -436,12 +343,15 @@ export default function BlogFilter() {
                   </Disclosure>
                 ))}
               </form>
+
               <div className="flex items-center ">
                 <div>
                   <div className="mb-20 flex ">
                     <SearchBox />
                   </div>
-                  <PostList posts={posts} />
+                  {loading && <p>Loading posts...</p>}
+                  {error && <p>Error: {error.message}</p>}
+                  {!loading && !error && <PostList posts={posts} />}
                 </div>
               </div>
             </div>

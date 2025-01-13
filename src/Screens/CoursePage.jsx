@@ -10,12 +10,10 @@ function CoursePage() {
   const location = useLocation();
   return (
     <div className="container border-2 border-red mx-auto">
-      <Heading />
       <MiniHero currentPath={location.pathname} />
 
       <CategoryFilter />
 
-      <Footer />
     </div>
   );
 }

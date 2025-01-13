@@ -24,7 +24,6 @@ function BlogDetailPage() {
           <Navigation currentPath={location.pathname} className="bg-gray-500" />
 
           <BlogDetailes />
-          <Footer />
         </div>
       )}
     </>
